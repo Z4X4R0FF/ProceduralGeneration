@@ -44,7 +44,7 @@ public class TerrainGenerator : MonoBehaviour
         new List<List<int>>()
     };
     List<GameObject> terrainParts = new List<GameObject>();
-    LevelMapPoint[, ] LevelMap;
+    LevelMapPoint[,] LevelMap;
     int TerrainPartSizeX;
     int TerrainPartSizeZ;
     int NumberTerrainMeshPartsX;
@@ -60,6 +60,10 @@ public class TerrainGenerator : MonoBehaviour
 
         StartCoroutine("DoBigProcess");
 
+    }
+    private void OnDestroy()
+    {
+        UnityEditor.StaticOcclusionCulling.RemoveCacheFolder();
     }
     public IEnumerator DoBigProcess()
     {
@@ -240,15 +244,15 @@ public class TerrainGenerator : MonoBehaviour
             {
                 TerrainPartSizeX = terrainPartSizeX;
             }
-        else
-            terrainPartSizeX = MinSize ? terrainPartSizeX + 1 : terrainPartSizeX - 1;
+            else
+                terrainPartSizeX = MinSize ? terrainPartSizeX + 1 : terrainPartSizeX - 1;
         while (TerrainPartSizeZ == 0)
             if ((LevelZLength - terrainPartSizeZ) % (terrainPartSizeZ - 1) == 0)
             {
                 TerrainPartSizeZ = terrainPartSizeZ;
             }
-        else
-            terrainPartSizeZ = MinSize ? terrainPartSizeZ + 1 : terrainPartSizeZ - 1;
+            else
+                terrainPartSizeZ = MinSize ? terrainPartSizeZ + 1 : terrainPartSizeZ - 1;
         NumberTerrainMeshPartsX = (LevelXLength - terrainPartSizeX) / (TerrainPartSizeX - 1) + 1;
         NumberTerrainMeshPartsZ = (LevelZLength - terrainPartSizeZ) / (TerrainPartSizeZ - 1) + 1;
         yield return null;

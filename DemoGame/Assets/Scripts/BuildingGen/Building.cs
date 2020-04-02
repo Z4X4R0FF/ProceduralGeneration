@@ -9,6 +9,7 @@ public class Building
     public int MaxFloorCount;
     //public int MinAisleSize;
     //public int MaxAisleSize;
+    public GameObject PorchBase;
     public GameObject Porch;
     public GameObject CornerPart;
     public GameObject WallPart;
