@@ -5,7 +5,7 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 1
+    smallestOccluder: 0.9
     smallestHole: 0.2
     backfaceThreshold: 100
   m_SceneGUID: 00000000000000000000000000000000
@@ -73,7 +73,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 2
+    m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
@@ -360,10 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f12898b568884685e8e6b4c3c34ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minBuildingXAxisSize: 6
-  maxBuildingXAxisSize: 12
-  minBuildingZAxisSize: 6
-  maxBuildingZAxisSize: 12
+  minBuildingXAxisSize: 8
+  maxBuildingXAxisSize: 20
+  minBuildingZAxisSize: 8
+  maxBuildingZAxisSize: 20
   maxBuildingResizeIterations: 50
   minYardZAxisSize: 6
   minYardXAxisSize: 6
@@ -372,20 +372,22 @@ MonoBehaviour:
   - IsEven: 0
     MinFloorCount: 5
     MaxFloorCount: 6
-    PorchBase: {fileID: 3668571876242467488, guid: 8d2c30fd299067346a25eccd7ae040d1,
+    PorchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
       type: 3}
-    Porch: {fileID: 2103781800547677187, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
-    CornerPart: {fileID: 1754916420615184286, guid: ff391be766fb5ad44a0f64f7ba823e7e,
+    Porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
+    CornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
       type: 3}
-    WallPart: {fileID: 6459224217060657964, guid: 459dd0c3aac4b5f4d8053eb217f91653,
+    WallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
       type: 3}
-    WindowPart: {fileID: 2978006471736823579, guid: 2b58661bbe365094f847053b6c4172c3,
+    WindowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
       type: 3}
-    EmptyPart: {fileID: 8854095126662777594, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
+    EmptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
       type: 3}
-    CellingCornerPart: {fileID: 8377278081668836719, guid: ef195a520950d3b4aa3cfa2bd62ab599,
+    CellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
       type: 3}
-    CellingWallPart: {fileID: 786874979184103466, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+    CellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+      type: 3}
+    DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
       type: 3}
     Materials:
     - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
@@ -395,20 +397,22 @@ MonoBehaviour:
   - IsEven: 1
     MinFloorCount: 5
     MaxFloorCount: 10
-    PorchBase: {fileID: 3668571876242467488, guid: 8d2c30fd299067346a25eccd7ae040d1,
+    PorchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
       type: 3}
-    Porch: {fileID: 2103781800547677187, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
-    CornerPart: {fileID: 1754916420615184286, guid: ff391be766fb5ad44a0f64f7ba823e7e,
+    Porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
+    CornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
       type: 3}
-    WallPart: {fileID: 6459224217060657964, guid: 459dd0c3aac4b5f4d8053eb217f91653,
+    WallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
       type: 3}
-    WindowPart: {fileID: 2978006471736823579, guid: 2b58661bbe365094f847053b6c4172c3,
+    WindowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
       type: 3}
-    EmptyPart: {fileID: 8854095126662777594, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
+    EmptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
       type: 3}
-    CellingCornerPart: {fileID: 8377278081668836719, guid: ef195a520950d3b4aa3cfa2bd62ab599,
+    CellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
       type: 3}
-    CellingWallPart: {fileID: 786874979184103466, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+    CellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+      type: 3}
+    DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
       type: 3}
     Materials:
     - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
@@ -442,22 +446,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingPoint: {x: 0, y: 0, z: 0}
-  LevelXLength: 60
-  LevelZLength: 60
+  LevelXLength: 200
+  LevelZLength: 200
   LevelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
   TerrainPartSizeMin: 4
   TerrainPartSizeMax: 255
   MinSize: 0
-  PerlinNoiseScale: 175
-  HeightMultiplier: 15
+  PerlinNoiseScale: 250
+  HeightMultiplier: 35
   StreetsAlongX:
   - Width: 5
-    Count: 2
+    Count: 3
     StreetRadius: 20
   StreetsAlongZ:
   - Width: 3
-    Count: 2
+    Count: 3
     StreetRadius: 20
   Soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
   Road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}

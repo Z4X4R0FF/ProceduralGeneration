@@ -51,7 +51,7 @@ public class TerrainGenerator : MonoBehaviour
     int NumberTerrainMeshPartsZ;
     public bool IsDone = false;
 
-    void Awake()
+    void Start()
     {
 
         LevelXLength++;

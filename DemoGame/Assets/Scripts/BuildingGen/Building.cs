@@ -17,5 +17,6 @@ public class Building
     public GameObject EmptyPart;
     public GameObject CellingCornerPart;
     public GameObject CellingWallPart;
+    public GameObject DoorFramePart;
     public List<Material> Materials;
 }
