@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3391153661041762651}
   - component: {fileID: -2090734256543233214}
+  - component: {fileID: 3448440884912417315}
+  - component: {fileID: 4626999835011980850}
+  - component: {fileID: 6156584168308175518}
   m_Layer: 0
   m_Name: building_corner
   m_TagString: Untagged
@@ -49,6 +52,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeshFilters: []
   MeshRenderers: []
+--- !u!65 &3448440884912417315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921300615196523711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.075978994}
+  m_Center: {x: 0, y: 0.5, z: 0.4620105}
+--- !u!65 &4626999835011980850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921300615196523711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06432414, y: 1, z: 1}
+  m_Center: {x: 0.46783793, y: 0.5, z: 0}
+--- !u!65 &6156584168308175518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921300615196523711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.016507387, z: 1}
+  m_Center: {x: 0, y: -0.002415657, z: 0}
 --- !u!1 &4362767928738573217
 GameObject:
   m_ObjectHideFlags: 0

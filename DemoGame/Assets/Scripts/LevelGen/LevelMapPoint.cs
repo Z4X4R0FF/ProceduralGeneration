@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class LevelMapPoint
+public struct LevelMapPoint
 {
     public LevelMapPoint(
         bool isStreetAlongXRadius,

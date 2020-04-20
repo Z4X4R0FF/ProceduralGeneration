@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Jobs;
 using UnityEngine;
+using Unity.Jobs;
 
 public class BuildingGenerator : MonoBehaviour
 {
@@ -939,10 +941,162 @@ public class BuildingGenerator : MonoBehaviour
                 }
             }
         }
-        yield return StartCoroutine(CombineMesh(buildingParent, building));
+        yield return StartCoroutine(SpawnBuildingRoof(startingZ, startingX, y, zAxisSize, xAxisSize, building, buildingParent, buildingFaceZAxis, buildingPorchPosition));
+
     }
 
-    IEnumerator CombineMesh(GameObject buildingMainParent, Building building)
+    private IEnumerator SpawnBuildingRoof(
+        int startingZ,
+        int startingX,
+        float startingY,
+        int zAxisSize,
+        int xAxisSize,
+        Building building,
+        GameObject buildingParent,
+        bool buildingFaceZAxis,
+        System.Tuple<int, int> buildingPorchPosition)
+    {
+        float y = startingY;
+        for (int z = startingZ; z < startingZ + zAxisSize; z++)
+        {
+            for (int x = startingX; x < startingX + xAxisSize; x++)
+            {
+                GameObject part = null;
+                if (buildingFaceZAxis)
+                {
+                    if (z == buildingPorchPosition.Item2)
+                    {
+                        if (x == buildingPorchPosition.Item1)
+                        {
+                            part = Instantiate(building.RoofPorchPart, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f), Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 270f, 0f));
+                            part.transform.SetParent(buildingParent.transform);
+                            continue;
+
+                        }
+                    }
+                    else
+                    {
+                        if (buildingPorchPosition.Item2 == startingZ)
+                        {
+                            if (z == startingZ + 1)
+                            {
+                                if (x == buildingPorchPosition.Item1)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        else if (buildingPorchPosition.Item2 == startingZ + zAxisSize - 1)
+                        {
+                            if (z == startingZ + zAxisSize - 2)
+                            {
+                                if (x == buildingPorchPosition.Item1)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (x == buildingPorchPosition.Item1)
+                    {
+                        if (z == buildingPorchPosition.Item2)
+                        {
+                            part = Instantiate(building.RoofPorchPart, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f), Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 0f, 0f));
+                            part.transform.SetParent(buildingParent.transform);
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (buildingPorchPosition.Item1 == startingX)
+                        {
+                            if (x == startingX + 1)
+                            {
+                                if (z == buildingPorchPosition.Item2)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        else if (buildingPorchPosition.Item1 == startingX + xAxisSize - 1)
+                        {
+                            if (x == startingX + xAxisSize - 2)
+                            {
+                                if (z == buildingPorchPosition.Item2)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (z == startingZ)
+                {
+                    if (x == startingX)
+                    {
+                        part = Instantiate(building.RoofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
+                    }
+                    else if (x == startingX + xAxisSize - 1)
+                    {
+                        part = Instantiate(building.RoofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
+                    }
+                    else
+                    {
+                        part = Instantiate(building.RoofSidePart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
+                    }
+                }
+                else if (z == startingZ + zAxisSize - 1)
+                {
+                    if (x == startingX)
+                    {
+                        part = Instantiate(building.RoofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -180f, 0f));
+                    }
+                    else if (x == startingX + xAxisSize - 1)
+                    {
+                        part = Instantiate(building.RoofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f));
+                    }
+                    else
+                    {
+                        part = Instantiate(building.RoofSidePart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f));
+                    }
+                }
+                else
+                {
+                    if (x == startingX)
+                    {
+                        part = Instantiate(building.RoofSidePart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
+                    }
+                    else if (x == startingX + xAxisSize - 1)
+                    {
+                        part = Instantiate(building.RoofSidePart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
+                    }
+                    else
+                    {
+                        part = Instantiate(building.RoofTopPart, new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
+                    }
+                }
+                if (part != null)
+                    part.transform.SetParent(buildingParent.transform);
+            }
+        }
+
+        CombineMesh(buildingParent, building);
+        // var buildingData = new InstantiatedBuildingData();
+        // buildingData.buildingMaterials = building.Materials;
+        // buildingData.buildingMainParent = buildingParent;
+        // var job = new CombineMeshJob()
+        // {
+        //     buildingData = buildingData,
+        // }.Schedule();
+        // job.Complete();
+
+        yield return null;
+    }
+
+    void CombineMesh(GameObject buildingMainParent, Building building)
     {
         ComponentLoader[] loaders = buildingMainParent.GetComponentsInChildren<ComponentLoader>().ToArray();
         MeshFilter[] meshFilters = loaders.SelectMany(r => r.MeshFilters).ToArray();
@@ -985,7 +1139,6 @@ public class BuildingGenerator : MonoBehaviour
                     filters[j].gameObject.SetActive(false);
                     combineList.Add(combine);
                 }
-                if (j % 50 == 0) yield return null;
             }
             Mesh mesh = new Mesh();
             mesh.CombineMeshes(combineList.ToArray());
@@ -994,7 +1147,6 @@ public class BuildingGenerator : MonoBehaviour
             buildingParent.transform.gameObject.SetActive(true);
             buildingParent.GetComponent<MeshRenderer>().material = building.Materials[i];
             buildingParent.isStatic = true;
-            //yield return null;
         }
     }
     System.Tuple<int, int> SetPorchPosition(int startingZ, int startingX, int zAxisSize, int xAxisSize, bool buildingFaceZAxis)
@@ -1019,7 +1171,7 @@ public class BuildingGenerator : MonoBehaviour
                 z = startingZ;
             }
             else
-                z = LevelMap[startingZ, x].y > LevelMap[startingZ + zAxisSize - 1, x].y ? startingZ : startingZ + zAxisSize - 1;//Random.Range(0, 2) == 1 ? startingZ : startingZ + zAxisSize - 1;
+                z = LevelMap[startingZ, x].y > LevelMap[startingZ + zAxisSize - 1, x].y ? startingZ : startingZ + zAxisSize - 1;
         }
         else
         {
@@ -1040,7 +1192,7 @@ public class BuildingGenerator : MonoBehaviour
                 x = startingX;
             }
             else
-                x = LevelMap[z, startingX].y > LevelMap[z, startingX + xAxisSize - 1].y ? startingX : startingX + xAxisSize - 1;//Random.Range(0, 2) == 1 ? startingX : startingX + xAxisSize - 1;
+                x = LevelMap[z, startingX].y > LevelMap[z, startingX + xAxisSize - 1].y ? startingX : startingX + xAxisSize - 1;
         }
         var position = new System.Tuple<int, int>(x, z);
         return position;

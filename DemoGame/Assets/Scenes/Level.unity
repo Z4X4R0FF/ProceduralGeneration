@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 714242152}
   - component: {fileID: 714242153}
   - component: {fileID: 714242150}
+  - component: {fileID: 714242154}
   m_Layer: 0
   m_Name: GenerationManager
   m_TagString: Untagged
@@ -389,6 +390,14 @@ MonoBehaviour:
       type: 3}
     DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
       type: 3}
+    RoofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
+      type: 3}
+    RoofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
+      type: 3}
+    RoofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
+      type: 3}
+    RoofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
+      type: 3}
     Materials:
     - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
@@ -413,6 +422,14 @@ MonoBehaviour:
     CellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
       type: 3}
     DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
+      type: 3}
+    RoofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
+      type: 3}
+    RoofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
+      type: 3}
+    RoofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
+      type: 3}
+    RoofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
     Materials:
     - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
@@ -446,8 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingPoint: {x: 0, y: 0, z: 0}
-  LevelXLength: 120
-  LevelZLength: 120
+  LevelXLength: 40
+  LevelZLength: 40
   LevelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
   TerrainPartSizeMin: 4
@@ -477,6 +494,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714242149}
   m_Mesh: {fileID: 0}
+--- !u!114 &714242154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714242149}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eee742d80526804493c658d6ff12c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingPoint: {x: 0, y: 0, z: 0}
+  LevelXLength: 500
+  LevelZLength: 500
+  LevelWall: {fileID: 0}
+  TerrainPartSizeMin: 4
+  TerrainPartSizeMax: 255
+  MinSize: 0
+  PerlinNoiseScale: 250
+  HeightMultiplier: 35
+  StreetsAlongX:
+  - Width: 5
+    Count: 3
+    StreetRadius: 20
+  StreetsAlongZ:
+  - Width: 4
+    Count: 2
+    StreetRadius: 20
+  Soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
+  Road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+  Pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+  Grass: {fileID: 0}
+  Materials: []
+  IsDone: 0
 --- !u!1 &1262548582
 GameObject:
   m_ObjectHideFlags: 0

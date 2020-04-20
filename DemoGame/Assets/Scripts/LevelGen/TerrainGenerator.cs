@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Jobs;
 using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class TerrainGenerator : MonoBehaviour
@@ -59,7 +60,6 @@ public class TerrainGenerator : MonoBehaviour
         Materials = new Material[4] { Soil, Road, Pavement, Grass };
 
         StartCoroutine("DoBigProcess");
-
     }
     private void OnDestroy()
     {
@@ -315,4 +315,7 @@ public class TerrainGenerator : MonoBehaviour
                 Quaternion.Euler(0f, -90f, 0f));
         }
     }
+
+
 }
+

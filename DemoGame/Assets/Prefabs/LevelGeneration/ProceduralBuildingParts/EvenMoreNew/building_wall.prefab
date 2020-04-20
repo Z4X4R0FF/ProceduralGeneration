@@ -168,6 +168,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3636354246224511345}
   - component: {fileID: 2771825122319081992}
+  - component: {fileID: 7187242765331194500}
+  - component: {fileID: 6274600015549430184}
   m_Layer: 0
   m_Name: building_wall
   m_TagString: Untagged
@@ -207,6 +209,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeshFilters: []
   MeshRenderers: []
+--- !u!65 &7187242765331194500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6385500712770947367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.01706636, z: 1}
+  m_Center: {x: 0, y: -0.009080589, z: 0}
+--- !u!65 &6274600015549430184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6385500712770947367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06858587, y: 1.0163552, z: 1}
+  m_Center: {x: 0.4686129, y: 0.49258167, z: 0}
 --- !u!1 &7082522622071720207
 GameObject:
   m_ObjectHideFlags: 0

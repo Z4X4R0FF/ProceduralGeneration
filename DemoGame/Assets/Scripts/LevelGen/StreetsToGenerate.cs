@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StreetsToGenerate
+public struct StreetsToGenerate
 {
     public int Width;
     public int Count;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8077556447805632403}
   - component: {fileID: -1662603130560873481}
+  - component: {fileID: 7369794377718968796}
   m_Layer: 0
   m_Name: celling_corner
   m_TagString: Untagged
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeshFilters: []
   MeshRenderers: []
+--- !u!65 &7369794377718968796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245960210881091037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4826043486233687974
 GameObject:
   m_ObjectHideFlags: 0

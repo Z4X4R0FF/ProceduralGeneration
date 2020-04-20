@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class Building
+public struct Building
 {
     public bool IsEven;
     public int MinFloorCount;
     public int MaxFloorCount;
-    //public int MinAisleSize;
-    //public int MaxAisleSize;
     public GameObject PorchBase;
     public GameObject Porch;
     public GameObject CornerPart;
@@ -18,5 +16,9 @@ public class Building
     public GameObject CellingCornerPart;
     public GameObject CellingWallPart;
     public GameObject DoorFramePart;
+    public GameObject RoofSidePart;
+    public GameObject RoofCornerPart;
+    public GameObject RoofTopPart;
+    public GameObject RoofPorchPart;
     public List<Material> Materials;
 }

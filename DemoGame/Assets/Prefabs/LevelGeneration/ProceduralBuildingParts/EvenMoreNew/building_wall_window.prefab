@@ -326,6 +326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5852854360023946559}
   - component: {fileID: 3699648639009596283}
+  - component: {fileID: 1346363155608139504}
+  - component: {fileID: 2962649089783909344}
   m_Layer: 0
   m_Name: building_wall_window
   m_TagString: Untagged
@@ -366,6 +368,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeshFilters: []
   MeshRenderers: []
+--- !u!65 &1346363155608139504
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222388518487080800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.025981069, z: 1}
+  m_Center: {x: 0, y: -0.009695232, z: 0}
+--- !u!65 &2962649089783909344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222388518487080800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06717259, y: 0.9969857, z: 1}
+  m_Center: {x: 0.4664137, y: 0.50387204, z: 0}
 --- !u!1 &8571456831622398313
 GameObject:
   m_ObjectHideFlags: 0
