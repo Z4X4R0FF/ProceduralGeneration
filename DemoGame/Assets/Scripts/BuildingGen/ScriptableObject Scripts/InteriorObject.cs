@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "InteriorObject", menuName = "DemoGame/InteriorObject", order = 0)]
-public class InteriorObject : ScriptableObject {
-    [SerializeField]
-    public GameObject Prefab;
-    [SerializeField]
-    public InteriorObjectType Type;
-    [SerializeField]
-    public float Length;
-    [SerializeField]
-    public float Width;
+public class InteriorObject : ScriptableObject
+{
+    [SerializeField] public float length;
+    [SerializeField] public GameObject prefab;
+    [SerializeField] public InteriorObjectType type;
+    [SerializeField] public float width;
 }

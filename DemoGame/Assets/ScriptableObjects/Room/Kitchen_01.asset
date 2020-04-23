@@ -18,4 +18,4 @@ MonoBehaviour:
   minZLength: 2
   maxXLength: 5
   maxZLength: 5
-  Wall: {fileID: 0}
+  Wall: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653, type: 3}

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjectToInstantiate
 {
-    public GameObject Prefab;
     public Vector3 Position;
+    public GameObject Prefab;
     public Quaternion Rotation;
 }

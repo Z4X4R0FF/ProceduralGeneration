@@ -1,24 +1,29 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
+using UnityEngine.Serialization;
+
+[Serializable]
 public struct Building
 {
-    public bool IsEven;
-    public int MinFloorCount;
-    public int MaxFloorCount;
-    public GameObject PorchBase;
-    public GameObject Porch;
-    public GameObject CornerPart;
-    public GameObject WallPart;
-    public GameObject WindowPart;
-    public GameObject EmptyPart;
-    public GameObject CellingCornerPart;
-    public GameObject CellingWallPart;
-    public GameObject DoorFramePart;
-    public GameObject RoofSidePart;
-    public GameObject RoofCornerPart;
-    public GameObject RoofTopPart;
-    public GameObject RoofPorchPart;
-    public List<Material> Materials;
+    public bool isEven;
+    public int minFloorCount;
+    public int maxFloorCount;
+    public int minFlatCount;
+    public int maxFlatCount;
+    public List<Flat> flats;
+    [Header("Building Parts")] public GameObject porchBase;
+    public GameObject porch;
+    public GameObject cornerPart;
+    public GameObject wallPart;
+    public GameObject windowPart;
+    public GameObject emptyPart;
+    public GameObject cellingCornerPart;
+    public GameObject cellingWallPart;
+    public GameObject doorFramePart;
+    public GameObject roofSidePart;
+    public GameObject roofCornerPart;
+    public GameObject roofTopPart;
+    public GameObject roofPorchPart;
+    [Header("Materials")] public List<Material> materials;
 }

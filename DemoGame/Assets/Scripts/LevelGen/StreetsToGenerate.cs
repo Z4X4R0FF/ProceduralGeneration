@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[System.Serializable]
+[Serializable]
 public struct StreetsToGenerate
 {
-    public int Width;
-    public int Count;
+    [FormerlySerializedAs("Width")] public int width;
+    [FormerlySerializedAs("Count")] public int count;
+
+    [FormerlySerializedAs("StreetRadius")]
     [Tooltip("Number of squares that will be banned for placing another streets")]
-    public int StreetRadius;
+    public int streetRadius;
 }

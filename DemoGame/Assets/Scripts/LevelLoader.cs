@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,15 +8,15 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
-    IEnumerator LoadAsynchronously(int sceneIndex)
+
+    private IEnumerator LoadAsynchronously(int sceneIndex)
     {
         //GameObject.Find("GenerationManager").GetComponent<TerrainGenerator>().DoBigProcess();
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        var operation = SceneManager.LoadSceneAsync(sceneIndex);
         while (!operation.isDone)
         {
             Debug.Log(operation.progress);
             yield return null;
         }
-
     }
 }

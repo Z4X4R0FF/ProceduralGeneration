@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-public struct LevelMapPoint
+﻿public struct LevelMapPoint
 {
     public LevelMapPoint(
         bool isStreetAlongXRadius,
@@ -17,8 +14,9 @@ public struct LevelMapPoint
         WasHandledByBuildingGenerator = false;
         HasAssignedObject = false;
         MaterialNumber = 0;
-        y = 0;
+        Y = 0;
     }
+
     public bool IsStreetAlongZRadius;
     public bool IsStreetAlongXRadius;
     public bool IsStreetAlongX;
@@ -27,5 +25,5 @@ public struct LevelMapPoint
     public bool WasHandledByBuildingGenerator;
     public bool HasAssignedObject;
     public int MaterialNumber;
-    public float y;
+    public float Y;
 }

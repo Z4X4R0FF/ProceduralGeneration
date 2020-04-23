@@ -1,21 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float moveSpeed=0.05f;
-    void Start()
-    {
-        
-    }
+    private readonly float _moveSpeed = 0.05f;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float moveHorizontal = Input.GetAxis ("Horizontal");
-        float moveVertical = Input.GetAxis ("Vertical");
-        transform.Translate(moveHorizontal*moveSpeed,0,moveVertical*moveSpeed);
+        var moveHorizontal = Input.GetAxis("Horizontal");
+        var moveVertical = Input.GetAxis("Vertical");
+        transform.Translate(moveHorizontal * _moveSpeed, 0, moveVertical * _moveSpeed);
     }
 }

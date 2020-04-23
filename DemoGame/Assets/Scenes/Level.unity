@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53e8af5ba3cfd94a89218e2dbd699c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GenerationManager: {fileID: 714242152}
-  Player: {fileID: 8496558497067364064, guid: 2be594b9c700d614599c03ba6df3ad61, type: 3}
-  PlayerSpawned: 0
+  generationManager: {fileID: 714242152}
+  player: {fileID: 8496558497067364064, guid: 2be594b9c700d614599c03ba6df3ad61, type: 3}
+  playerSpawned: 0
 --- !u!4 &53258771
 Transform:
   m_ObjectHideFlags: 0
@@ -361,81 +361,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406f12898b568884685e8e6b4c3c34ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minBuildingXAxisSize: 8
-  maxBuildingXAxisSize: 20
-  minBuildingZAxisSize: 8
-  maxBuildingZAxisSize: 20
+  buildingTypes:
+  - isEven: 0
+    minFloorCount: 5
+    maxFloorCount: 6
+    minFlatCount: 1
+    maxFlatCount: 3
+    flats:
+    - {fileID: 11400000, guid: 8df0cca2700b67149921bee174e73939, type: 2}
+    porchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
+      type: 3}
+    porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
+    cornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
+      type: 3}
+    wallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
+      type: 3}
+    windowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
+      type: 3}
+    emptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
+      type: 3}
+    cellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
+      type: 3}
+    cellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+      type: 3}
+    doorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
+      type: 3}
+    roofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
+      type: 3}
+    roofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
+      type: 3}
+    roofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
+      type: 3}
+    roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
+      type: 3}
+    materials:
+    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
+  - isEven: 1
+    minFloorCount: 5
+    maxFloorCount: 10
+    minFlatCount: 1
+    maxFlatCount: 3
+    flats:
+    - {fileID: 11400000, guid: 8df0cca2700b67149921bee174e73939, type: 2}
+    porchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
+      type: 3}
+    porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
+    cornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
+      type: 3}
+    wallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
+      type: 3}
+    windowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
+      type: 3}
+    emptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
+      type: 3}
+    cellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
+      type: 3}
+    cellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
+      type: 3}
+    doorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
+      type: 3}
+    roofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
+      type: 3}
+    roofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
+      type: 3}
+    roofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
+      type: 3}
+    roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
+      type: 3}
+    materials:
+    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
   maxBuildingResizeIterations: 50
-  minYardZAxisSize: 6
+  maxBuildingXAxisSize: 20
+  maxBuildingZAxisSize: 20
+  minBuildingXAxisSize: 8
+  minBuildingZAxisSize: 8
   minYardXAxisSize: 6
+  minYardZAxisSize: 6
   passWidth: 3
-  BuildingTypes:
-  - IsEven: 0
-    MinFloorCount: 5
-    MaxFloorCount: 6
-    PorchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
-      type: 3}
-    Porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
-    CornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
-      type: 3}
-    WallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
-      type: 3}
-    WindowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
-      type: 3}
-    EmptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
-      type: 3}
-    CellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
-      type: 3}
-    CellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
-      type: 3}
-    DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
-      type: 3}
-    RoofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
-      type: 3}
-    RoofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
-      type: 3}
-    RoofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
-      type: 3}
-    RoofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
-      type: 3}
-    Materials:
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
-  - IsEven: 1
-    MinFloorCount: 5
-    MaxFloorCount: 10
-    PorchBase: {fileID: 2381068397641958089, guid: 8d2c30fd299067346a25eccd7ae040d1,
-      type: 3}
-    Porch: {fileID: 1282307613992332418, guid: 6e779c1e5e11c3349925636b822a0d39, type: 3}
-    CornerPart: {fileID: 1921300615196523711, guid: ff391be766fb5ad44a0f64f7ba823e7e,
-      type: 3}
-    WallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
-      type: 3}
-    WindowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
-      type: 3}
-    EmptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
-      type: 3}
-    CellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
-      type: 3}
-    CellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
-      type: 3}
-    DoorFramePart: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
-      type: 3}
-    RoofSidePart: {fileID: 2122133011321525346, guid: 2eb741193519f7d47b0cbeb515cc5a5b,
-      type: 3}
-    RoofCornerPart: {fileID: 1559344479102873434, guid: e46a9bb763776464b97a4fb1cfcfa5e7,
-      type: 3}
-    RoofTopPart: {fileID: 1530653259173235639, guid: 25aed4dedf451b346b8f2692db43ae72,
-      type: 3}
-    RoofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
-      type: 3}
-    Materials:
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
 --- !u!4 &714242151
 Transform:
   m_ObjectHideFlags: 0
@@ -462,30 +470,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a341234eb8f394cb24717f2b1ec92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingPoint: {x: 0, y: 0, z: 0}
-  LevelXLength: 40
-  LevelZLength: 40
-  LevelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
+  grass: {fileID: 2100000, guid: ca8c0b64170620a4b8f9b8e0d554ddb3, type: 2}
+  heightMultiplier: 35
+  isDone: 0
+  levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
-  TerrainPartSizeMin: 4
-  TerrainPartSizeMax: 255
-  MinSize: 0
-  PerlinNoiseScale: 250
-  HeightMultiplier: 35
-  StreetsAlongX:
-  - Width: 5
-    Count: 3
-    StreetRadius: 20
-  StreetsAlongZ:
-  - Width: 3
-    Count: 3
-    StreetRadius: 20
-  Soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
-  Road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-  Pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-  Grass: {fileID: 2100000, guid: ca8c0b64170620a4b8f9b8e0d554ddb3, type: 2}
-  Materials: []
-  IsDone: 0
+  levelXLength: 60
+  levelZLength: 60
+  materials: []
+  minSize: 0
+  pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+  perlinNoiseScale: 250
+  road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+  soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
+  startingPoint: {x: 0, y: 0, z: 0}
+  streetsAlongX:
+  - width: 5
+    count: 3
+    streetRadius: 20
+  streetsAlongZ:
+  - width: 3
+    count: 3
+    streetRadius: 20
+  terrainPartSizeMax: 255
+  terrainPartSizeMin: 4
 --- !u!33 &714242153
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -506,29 +514,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eee742d80526804493c658d6ff12c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingPoint: {x: 0, y: 0, z: 0}
-  LevelXLength: 500
-  LevelZLength: 500
-  LevelWall: {fileID: 0}
-  TerrainPartSizeMin: 4
-  TerrainPartSizeMax: 255
-  MinSize: 0
-  PerlinNoiseScale: 250
-  HeightMultiplier: 35
-  StreetsAlongX:
-  - Width: 5
-    Count: 3
-    StreetRadius: 20
-  StreetsAlongZ:
-  - Width: 4
-    Count: 2
-    StreetRadius: 20
-  Soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
-  Road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-  Pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-  Grass: {fileID: 0}
-  Materials: []
-  IsDone: 0
+  grass: {fileID: 0}
+  heightMultiplier: 35
+  isDone: 0
+  levelWall: {fileID: 0}
+  levelXLength: 500
+  levelZLength: 500
+  materials: []
+  minSize: 0
+  pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+  perlinNoiseScale: 250
+  road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+  soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
+  startingPoint: {x: 0, y: 0, z: 0}
+  streetsAlongX:
+  - width: 5
+    count: 3
+    streetRadius: 20
+  streetsAlongZ:
+  - width: 4
+    count: 2
+    streetRadius: 20
+  terrainPartSizeMax: 255
+  terrainPartSizeMin: 4
 --- !u!1 &1262548582
 GameObject:
   m_ObjectHideFlags: 0

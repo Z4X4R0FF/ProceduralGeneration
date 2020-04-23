@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\kiril\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\kiril\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_DemoGame.-406652023.00" t="ExcludeRecursive" />
+    <e p="C:\Users\kiril\Desktop\GitRepositories\ProceduralGeneration\DemoGame" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="BuildingGen" t="Include">
+            <e p="Building.cs" t="Include" />
+            <e p="BuildingGenerator.cs" t="Include" />
+            <e p="ComponentLoader.cs" t="Include" />
+            <e p="ScriptableObject Scripts" t="Include">
+              <e p="Flat.cs" t="Include" />
+              <e p="InteriorObject.cs" t="Include" />
+              <e p="InteriorObjectType.cs" t="Include" />
+              <e p="Room.cs" t="Include" />
+            </e>
+          </e>
+          <e p="GunScript.cs" t="Include" />
+          <e p="LevelGen" t="Include">
+            <e p="EvenNumberGenerator.cs" t="Include" />
+            <e p="LevelGenerator.cs" t="Include" />
+            <e p="LevelMapPoint.cs" t="Include" />
+            <e p="StreetGenerator.cs" t="Include" />
+            <e p="StreetsToGenerate.cs" t="Include" />
+            <e p="TerrainGenerator.cs" t="Include" />
+          </e>
+          <e p="LevelLoader.cs" t="Include" />
+          <e p="LevelManager.cs" t="Include" />
+          <e p="ObjectToInstantiate.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="CameraController.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="DemoGame.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

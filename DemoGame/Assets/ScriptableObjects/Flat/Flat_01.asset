@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb095f94718b784a95d3e51a91b9051, type: 3}
   m_Name: Flat_01
   m_EditorClassIdentifier: 
-  LivingRooms:
-  - {fileID: 11400000, guid: 3e8aefe9d367f084ca341916c0ef3232, type: 2}
-  BedRooms:
+  bathRooms: []
+  bedRooms:
   - {fileID: 11400000, guid: 62262c33fee54874a83b00c8558aa7bd, type: 2}
-  Kitchen: {fileID: 11400000, guid: 0ce17134149485542a2cc982eac5f9f8, type: 2}
-  WashingRooms:
-  - {fileID: 11400000, guid: 2c7126e456127744cbb1a74991fece2d, type: 2}
-  StorageRooms:
+  corridor: {fileID: 11400000, guid: 8c4fec6bb6d10cd478d2c66fedd1d96c, type: 2}
+  kitchen: {fileID: 11400000, guid: 0ce17134149485542a2cc982eac5f9f8, type: 2}
+  livingRooms:
+  - {fileID: 11400000, guid: 3e8aefe9d367f084ca341916c0ef3232, type: 2}
+  storageRooms:
   - {fileID: 11400000, guid: a047f82050f03c648b51d10c9f4a632f, type: 2}
-  Corridor: {fileID: 11400000, guid: 8c4fec6bb6d10cd478d2c66fedd1d96c, type: 2}

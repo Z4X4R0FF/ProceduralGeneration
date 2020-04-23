@@ -1,14 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ComponentLoader : MonoBehaviour
 {
-    public MeshFilter[] MeshFilters;
-    public MeshRenderer[] MeshRenderers;
+    [FormerlySerializedAs("MeshFilters")] public MeshFilter[] meshFilters;
+
+    [FormerlySerializedAs("MeshRenderers")]
+    public MeshRenderer[] meshRenderers;
+
     private void Awake()
     {
-        MeshFilters = GetComponentsInChildren<MeshFilter>();
-        MeshRenderers = GetComponentsInChildren<MeshRenderer>();
+        meshFilters = GetComponentsInChildren<MeshFilter>();
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 }
