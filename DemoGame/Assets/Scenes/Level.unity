@@ -475,8 +475,8 @@ MonoBehaviour:
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
-  levelXLength: 60
-  levelZLength: 60
+  levelXLength: 20
+  levelZLength: 20
   materials: []
   minSize: 0
   pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}

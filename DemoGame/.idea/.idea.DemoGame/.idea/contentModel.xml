@@ -11,6 +11,7 @@
             <e p="Building.cs" t="Include" />
             <e p="BuildingGenerator.cs" t="Include" />
             <e p="ComponentLoader.cs" t="Include" />
+            <e p="FlatMapPoint.cs" t="Include" />
             <e p="ScriptableObject Scripts" t="Include">
               <e p="Flat.cs" t="Include" />
               <e p="InteriorObject.cs" t="Include" />

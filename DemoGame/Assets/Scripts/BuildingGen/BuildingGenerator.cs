@@ -651,7 +651,6 @@ public class BuildingGenerator : MonoBehaviour
         for (var i = 0; i < floorCount; i++, y++)
         {
             var flatCount = Random.Range(building.minFlatCount, building.maxFlatCount + 1);
-            Debug.Log(flatCount);
             flatCounts.Add(flatCount);
 
             for (var z = startingZ; z < startingZ + zAxisSize; z++)
@@ -946,8 +945,16 @@ public class BuildingGenerator : MonoBehaviour
             }
         }
 
-        yield return StartCoroutine(SpawnFlats(startingZ, startingX, startingY, building, floorCount, flatCounts,
-            buildingPorchPosition));
+        var flatMapList = LayoutFlats(startingZ, startingX, startingY, zAxisSize, xAxisSize,
+            buildingFaceZAxis,
+            building,
+            floorCount, flatCounts,
+            buildingPorchPosition);
+        LayoutRooms(flatMapList, startingZ, startingX, startingY, zAxisSize, xAxisSize,
+            buildingFaceZAxis,
+            building,
+            floorCount, flatCounts,
+            buildingPorchPosition);
         yield return StartCoroutine(SpawnBuildingRoof(startingZ, startingX, y, zAxisSize, xAxisSize, building,
             buildingParent, buildingFaceZAxis, buildingPorchPosition));
     }
@@ -1072,21 +1079,297 @@ public class BuildingGenerator : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator SpawnFlats(int startingZ, int startingX, float startingY, Building building, int floorCount,
+    private static List<FlatMapPoint[]> LayoutFlats(int startingZ, int startingX, float startingY, int zAxisSize,
+        int xAxisSize,
+        bool buildingFaceZAxis, Building building, int floorCount,
         List<int> flatCounts, Tuple<int, int> buildingPorchPosition)
     {
+        var flatMapList = new List<FlatMapPoint[]>();
         for (var i = 0; i < floorCount; i++)
+        {
+            var flatMap = new FlatMapPoint[zAxisSize * xAxisSize];
             switch (flatCounts[i])
             {
                 case 1:
+                    for (var z = 0; z < zAxisSize; z++)
+                    for (var x = 0; x < xAxisSize; x++)
+                    {
+                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                    }
+
                     break;
                 case 2:
+                {
+                    for (var z = 0; z < zAxisSize; z++)
+                    for (var x = 0; x < xAxisSize; x++)
+                    {
+                        if (buildingFaceZAxis)
+                        {
+                            if (x + startingX < buildingPorchPosition.Item1)
+                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                            else if (x + startingX > buildingPorchPosition.Item1)
+                            {
+                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                            }
+                            else
+                            {
+                                if (buildingPorchPosition.Item2 == startingZ)
+                                {
+                                    if (z < 2)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = zAxisSize / 2 + 2;
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = z <= middle ? 1 : 2};
+                                    }
+                                }
+                                else
+                                {
+                                    if (z > zAxisSize - 3)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = zAxisSize / 2 - 2;
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = z <= middle ? 1 : 2};
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (z + startingZ < buildingPorchPosition.Item2)
+                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                            else if (z + startingZ > buildingPorchPosition.Item2)
+                            {
+                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                            }
+                            else
+                            {
+                                if (buildingPorchPosition.Item1 == startingX)
+                                {
+                                    if (x < 2)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = xAxisSize / 2 + 2;
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = x <= middle ? 1 : 2};
+                                    }
+                                }
+                                else
+                                {
+                                    if (x > xAxisSize - 3)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = xAxisSize / 2 - 2;
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = x <= middle ? 1 : 2};
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     break;
+                }
                 case 3:
+                {
+                    if (buildingFaceZAxis)
+                    {
+                        var middleZ = zAxisSize / 2;
+                        var middleXLeft = (buildingPorchPosition.Item1 - startingX) / 2;
+                        var middleXRight = xAxisSize - (startingX + xAxisSize - buildingPorchPosition.Item1) / 2;
+                        Debug.Log($"{middleZ};{middleXLeft};{middleXRight}");
+
+
+                        for (var z = 0; z < zAxisSize; z++)
+                        for (var x = 0; x < xAxisSize; x++)
+                        {
+                            if (buildingPorchPosition.Item2 == startingZ)
+                                if (z < middleZ)
+                                {
+                                    if (startingX + x < buildingPorchPosition.Item1)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    else if (startingX + x > buildingPorchPosition.Item1)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        if (z > 1)
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (x < middleXLeft)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else if (x >= middleXRight)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            else
+                            {
+                                if (z > middleZ)
+                                {
+                                    if (startingX + x < buildingPorchPosition.Item1)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    else if (startingX + x > buildingPorchPosition.Item1)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        if (z > zAxisSize - 2)
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (x < middleXLeft)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else if (x >= middleXRight)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            }
+
+                            Debug.Log($"{z};{x};{flatMap[z * xAxisSize + x].FlatNumber}");
+                        }
+                    }
+                    else
+                    {
+                        var middleX = xAxisSize / 2;
+                        var middleZLeft = (buildingPorchPosition.Item2 - startingZ) / 2 + 1;
+                        var middleZRight =
+                            zAxisSize - (startingZ + zAxisSize - 1 - buildingPorchPosition.Item2) / 2;
+                        Debug.Log($"{middleX};{middleZLeft};{middleZRight}");
+                        for (var z = 0; z < zAxisSize; z++)
+                        for (var x = 0; x < xAxisSize; x++)
+                        {
+                            if (buildingPorchPosition.Item1 == startingX)
+                                if (x < middleX)
+                                {
+                                    if (startingZ + z < buildingPorchPosition.Item2)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    else if (startingZ + z > buildingPorchPosition.Item2)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        if (x > 1)
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (z < middleZLeft)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else if (z >= middleZRight)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            else
+                            {
+                                if (x > middleX)
+                                {
+                                    if (startingZ + z < buildingPorchPosition.Item2)
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    else if (startingZ + z > buildingPorchPosition.Item2)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        if (x < xAxisSize - 2)
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (z < middleZLeft)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else if (z >= middleZRight)
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            }
+
+                            Debug.Log($"{z};{x};{flatMap[z * xAxisSize + x].FlatNumber}");
+                        }
+                    }
+                }
+
                     break;
             }
 
-        yield return null;
+            flatMapList.Add(flatMap);
+        }
+
+        return flatMapList;
+    }
+
+    private static void LayoutRooms(List<FlatMapPoint[]> flatMapList, int startingZ, int startingX,
+        float startingY, int zAxisSize, int xAxisSize,
+        bool buildingFaceZAxis, Building building, int floorCount,
+        List<int> flatCounts, Tuple<int, int> buildingPorchPosition)
+    {
+        for (var i = 0;
+            i < floorCount;
+            i++)
+        {
+            for (var j = 0; j < flatMapList[i].Length; j++)
+            {
+            }
+        }
     }
 
     private static IEnumerator CombineMesh(GameObject buildingMainParent, Building building)
@@ -1094,9 +1377,12 @@ public class BuildingGenerator : MonoBehaviour
         var loaders = buildingMainParent.GetComponentsInChildren<ComponentLoader>().ToArray();
         var meshFilters = loaders.SelectMany(r => r.meshFilters).ToArray();
         var meshRenderers = loaders.SelectMany(r => r.meshRenderers).ToArray();
+
         var materialSortedMeshFilters = new[]
             {new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>()};
-        for (var i = 0; i < meshFilters.Length; i++)
+        for (var i = 0;
+            i < meshFilters.Length;
+            i++)
         {
             var materialName = meshRenderers[i].material.name;
             if (materialName == building.materials[0].name + " (Instance)")
@@ -1109,7 +1395,9 @@ public class BuildingGenerator : MonoBehaviour
                 materialSortedMeshFilters[3].Add(meshFilters[i]);
         }
 
-        for (var i = 0; i < building.materials.Count; i++)
+        for (var i = 0;
+            i < building.materials.Count;
+            i++)
         {
             var buildingParent = new GameObject($"{buildingMainParent.name} sibling{i}");
             buildingParent.AddComponent<MeshRenderer>();
@@ -1155,6 +1443,7 @@ public class BuildingGenerator : MonoBehaviour
                     ? startingZ
                     : startingZ + zAxisSize - 1;
         }
+
         else
         {
             if (zAxisSize % 2 == 0)

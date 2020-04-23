@@ -20,81 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a847cd3f-eccc-4404-8c81-e7a9269cde71" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Flat/Flat_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Flat/Flat_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObjectType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObjectType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GunScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GunScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/EvenNumberGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/EvenNumberGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelMapPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelMapPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetsToGenerate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetsToGenerate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObjectToInstantiate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObjectToInstantiate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/00/000f7d7a2703c5c26396bd1a6df4eca6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/03/031caab80d967ffacf32f8fc1670facc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/04/043de11a52b5fa145ee066800bd29401" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0a/0ad0cc30196504cad0c76dd6f3626406" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0e/0e425b33d39aa092249273955d6bc06e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/19/19564d345ae7c1fa3781d05280cae662" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/23/23554c27980bf827db7582df2ad85c0c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/27/27825ee03f9dfa2630dd3d7af94fd27e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2b/2bae3fd1041cb3661de8784eb3e4c4d9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2e/2efa1ec977a229613efde00527a13466" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/33/33f685e5fdabe4792582f7ea97ed7f5b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/45/45c3a033c36614b980e9b1c54448d41e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4d/4df861df11539ca985f45178dbbe8629" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/52/523a9d9e8c8ebfe0b5bcd0b1e430f12b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5a/5aae8c6a3e3af5189b9270f87e148393" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6a/6aebabd0e85457a618529950b60e03dc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6d/6d89ad1c5491e51f01f4633a5ed82d65" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6e/6e41e016dcff84d459386e0f015a78a9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6f/6f9b02a3b5262d9af1d96362e02eab08" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/88/88822408802d67108b16153218baa9ab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9a/9a39b5aea87323a529b75cbf159baa93" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a1/a1f13eb36970205efaacd6ec572ba33c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a9/a9dd99d5a0d178fd74e1c122647441bb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b0/b0587c8e4c826c9b1f495d226aa0bf80" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b5/b55d6f9e44b817449795b85cd8bf0062" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b7/b7755223c7e91671058339ebbd7476c0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/bf/bf711a79cb225d027fb74e40835b6077" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c4/c4ef842d22cc88df72ed2313c2ac0e91" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/cf/cffc746444b7c1e9c56423cb11a864ed" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d3/d388c78c396899c20bc4ec2a94ccf672" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/dc/dc5e56bfb284d6b374827ebade46fa98" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/df/df0980c9cfa144540597e91a2ae8d387" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e6/e6e92b4855d7630a013fcaecc6b27934" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ea/ea934653520c774ce47946915ad1327d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ea/ea95e75737200f3ce6343f481000837d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/eb/eb5e31fa9a1c166521eff0997954dcc4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/eb/ebdc4faad8a580cded91754d331d6d5d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ef/ef9699fd9f00eb0bb07aa99afbb7aef9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f1/f1b377e1337d70b3f7efd5ffac191dbd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3d/3d6a0bc1c66e692b1aa6338fddc4ffcc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/97/974ae5097d5545b59f00025a62d9ccb8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/be/bea31cf98afc33382a59ed0f6be7feeb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c5/c573da51cfb76c0e2ed6a2143b672b46" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
@@ -108,15 +48,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObjectType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -133,6 +75,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/123.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" />
       </list>
     </option>
@@ -144,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -178,6 +123,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
