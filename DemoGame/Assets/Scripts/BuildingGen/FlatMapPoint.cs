@@ -5,7 +5,9 @@ using UnityEngine;
 public class FlatMapPoint
 {
     public RoomTypes RoomType;
+    public int RoomNumber = 0;
     public int FlatNumber;
+    public Flat Flat;
     public GameObject WallZUp;
     public GameObject WallZDown;
     public GameObject WallXUp;

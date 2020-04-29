@@ -362,9 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingTypes:
-  - isEven: 0
-    minFloorCount: 5
-    maxFloorCount: 6
+  - isEven: 1
+    minFloorCount: 1
+    maxFloorCount: 1
     minFlatCount: 1
     maxFlatCount: 3
     flats:
@@ -395,13 +395,13 @@ MonoBehaviour:
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
     materials:
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
     - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
-  - isEven: 1
-    minFloorCount: 5
-    maxFloorCount: 10
+  - isEven: 0
+    minFloorCount: 1
+    maxFloorCount: 1
     minFlatCount: 1
     maxFlatCount: 3
     flats:
@@ -432,15 +432,15 @@ MonoBehaviour:
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
     materials:
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
+    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
     - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
   maxBuildingResizeIterations: 50
-  maxBuildingXAxisSize: 20
-  maxBuildingZAxisSize: 20
-  minBuildingXAxisSize: 8
-  minBuildingZAxisSize: 8
+  maxBuildingXAxisSize: 8
+  maxBuildingZAxisSize: 8
+  minBuildingXAxisSize: 5
+  minBuildingZAxisSize: 5
   minYardXAxisSize: 6
   minYardZAxisSize: 6
   passWidth: 3
@@ -475,8 +475,8 @@ MonoBehaviour:
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
-  levelXLength: 20
-  levelZLength: 20
+  levelXLength: 30
+  levelZLength: 30
   materials: []
   minSize: 0
   pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}

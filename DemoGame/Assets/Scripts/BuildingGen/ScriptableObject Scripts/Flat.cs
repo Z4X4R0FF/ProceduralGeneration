@@ -5,9 +5,14 @@ using UnityEngine;
 public class Flat : ScriptableObject
 {
     [SerializeField] public List<Room> bathRooms;
-    [SerializeField] public List<Room> bedRooms;
+    [SerializeField] public Room bedRoom;
+    [SerializeField] public List<Room> additionalBedRooms;
+    [SerializeField] public List<Room> additionalLivingRooms;
     [SerializeField] public Room corridor;
     [SerializeField] public Room kitchen;
-    [SerializeField] public List<Room> livingRooms;
+    [SerializeField] public Room livingRooms;
     [SerializeField] public List<Room> storageRooms;
+
+    public int AdditionalRoomsCount =>
+        bathRooms.Count + storageRooms.Count + additionalBedRooms.Count + additionalLivingRooms.Count;
 }
