@@ -13,10 +13,11 @@ public class Room : ScriptableObject
 
 public enum RoomTypes
 {
-    LivingRoom,
-    BedRoom,
-    BathRoom,
-    StorageRoom,
-    Corridor,
-    Kitchen
+    EmptyRoom = 0,
+    LivingRoom = 1,
+    BedRoom = 2,
+    BathRoom = 3,
+    StorageRoom = 4,
+    Corridor = 5,
+    Kitchen = 6
 }

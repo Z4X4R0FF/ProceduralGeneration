@@ -12,7 +12,4 @@ public class Flat : ScriptableObject
     [SerializeField] public Room kitchen;
     [SerializeField] public Room livingRooms;
     [SerializeField] public List<Room> storageRooms;
-
-    public int AdditionalRoomsCount =>
-        bathRooms.Count + storageRooms.Count + additionalBedRooms.Count + additionalLivingRooms.Count;
 }

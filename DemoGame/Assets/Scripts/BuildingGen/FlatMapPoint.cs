@@ -7,11 +7,10 @@ public class FlatMapPoint
     public RoomTypes RoomType;
     public int RoomNumber = 0;
     public int FlatNumber;
-    public Flat Flat;
-    public GameObject WallZUp;
-    public GameObject WallZDown;
-    public GameObject WallXUp;
-    public GameObject WallXDown;
+    public bool WallZUp = false;
+    public bool WallZDown = false;
+    public bool WallXUp = false;
+    public bool WallXDown = false;
     public List<InteriorObject> InteriorObjects;
     public bool IsPorch = false;
 }

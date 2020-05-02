@@ -5,5 +5,6 @@ using UnityEngine;
 public class BuildingFloorInfo
 {
     public int FlatCount;
-    public FlatMapPoint[] FlatMap;
+    public FlatMapPoint[] FloorMap;
+    public int[] AdditionalFlatRooms;
 }

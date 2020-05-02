@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc9ffd448a1c0048bdb06116984dac5, type: 3}
   m_Name: BedRoom_01
   m_EditorClassIdentifier: 
-  Name: BedRoom_01
-  RoomType: 1
   minXLength: 2
   minZLength: 2
-  maxXLength: 5
-  maxZLength: 5
-  Wall: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653, type: 3}
+  name: 
+  roomType: 0
+  wall: {fileID: 6479167910744679769, guid: 49c21e021bbece043a3bb88bbaa6ef4a, type: 3}
