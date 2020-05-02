@@ -962,8 +962,8 @@ public class BuildingGenerator : MonoBehaviour
             building,
             floorCount, flats,
             buildingPorchPosition);
-        AssignEmptyFlatMapPoints(flatMapList, zAxisSize, xAxisSize);
-        UpdateFlatMap(flatMapList, flats, zAxisSize, xAxisSize);
+
+
         SpawnInnerWalls(flatMapList, flats, buildingParent, zAxisSize, xAxisSize, startingX, startingY, startingZ);
         yield return StartCoroutine(SpawnBuildingRoof(startingZ, startingX, y, zAxisSize, xAxisSize, building,
             buildingParent, buildingFaceZAxis, buildingPorchPosition));
@@ -1441,7 +1441,7 @@ public class BuildingGenerator : MonoBehaviour
         return floorInfoList;
     }
 
-    private static void LayoutRooms(IReadOnlyList<BuildingFloorInfo> floorInfoList, int startingZ, int startingX,
+    private static void LayoutRooms(List<BuildingFloorInfo> flatMapList, int startingZ, int startingX,
         int zAxisSize, int xAxisSize,
         bool buildingFaceZAxis, Building building, int floorCount, List<Flat>[] flats,
         Tuple<int, int> buildingPorchPosition)
@@ -1449,7 +1449,7 @@ public class BuildingGenerator : MonoBehaviour
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++)
         {
             var startingPoints = new List<List<Vector3Int>>();
-            switch (floorInfoList[floorNumber].FlatCount)
+            switch (flatMapList[floorNumber].FlatCount)
             {
                 case 1:
                 {
@@ -1470,19 +1470,19 @@ public class BuildingGenerator : MonoBehaviour
                         {
                             new Vector3Int(0, 0, 0),
                             new Vector3Int(0, 0, zAxisSize - 1),
-                            FindNextEdgePoint(new Vector3Int(0, 0, 0), false, true, floorInfoList[floorNumber].FloorMap,
+                            FindNextEdgePoint(new Vector3Int(0, 0, 0), false, true, flatMapList[floorNumber].FloorMap,
                                 xAxisSize),
                             FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), false, true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                flatMapList[floorNumber].FloorMap, xAxisSize)
                         });
                         startingPoints.Add(new List<Vector3Int>()
                         {
                             new Vector3Int(xAxisSize - 1, 0, 0),
                             new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                             FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), false, false,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                flatMapList[floorNumber].FloorMap, xAxisSize),
                             FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1), false, false,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                flatMapList[floorNumber].FloorMap, xAxisSize)
                         });
                     }
                     else
@@ -1492,18 +1492,18 @@ public class BuildingGenerator : MonoBehaviour
                             new Vector3Int(0, 0, 0),
                             new Vector3Int(xAxisSize - 1, 0, 0),
                             FindNextEdgePoint(new Vector3Int(0, 0, 0), true, true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                flatMapList[floorNumber].FloorMap, xAxisSize),
                             FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), true, true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                flatMapList[floorNumber].FloorMap, xAxisSize)
                         });
                         startingPoints.Add(new List<Vector3Int>()
                         {
                             new Vector3Int(0, 0, zAxisSize - 1),
                             new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                             FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), true, false,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                flatMapList[floorNumber].FloorMap, xAxisSize),
                             FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1), true, false,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                flatMapList[floorNumber].FloorMap, xAxisSize)
                         });
                     }
 
@@ -1520,36 +1520,36 @@ public class BuildingGenerator : MonoBehaviour
                                 new Vector3Int(0, 0, 0),
                                 new Vector3Int(0, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(0, 0, 0), false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(0, 0, 0), false, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                             var centralFlatStartingPoint = FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), false,
                                 true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize);
+                                flatMapList[floorNumber].FloorMap, xAxisSize);
                             centralFlatStartingPoint.x += 1;
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 centralFlatStartingPoint,
                                 FindNextEdgePoint(centralFlatStartingPoint, true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(centralFlatStartingPoint, false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(
                                     FindNextEdgePoint(centralFlatStartingPoint, false, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                             });
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 new Vector3Int(xAxisSize - 1, 0, 0),
                                 new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), false, false,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                         }
                         else
@@ -1559,37 +1559,37 @@ public class BuildingGenerator : MonoBehaviour
                                 new Vector3Int(0, 0, 0),
                                 new Vector3Int(0, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), false, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                             var centralFlatStartingPoint = FindNextEdgePoint(new Vector3Int(0, 0, 0), false, true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize);
+                                flatMapList[floorNumber].FloorMap, xAxisSize);
                             centralFlatStartingPoint.x += 1;
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 centralFlatStartingPoint,
                                 FindNextEdgePoint(centralFlatStartingPoint, true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(centralFlatStartingPoint, false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(
                                     FindNextEdgePoint(centralFlatStartingPoint, false, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                             });
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 new Vector3Int(xAxisSize - 1, 0, 0),
                                 new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1), false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                         false,
                                         false,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), true, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                         }
                     }
@@ -1602,38 +1602,38 @@ public class BuildingGenerator : MonoBehaviour
                                 new Vector3Int(0, 0, 0),
                                 new Vector3Int(xAxisSize - 1, 0, 0),
                                 FindNextEdgePoint(new Vector3Int(0, 0, 0), true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(0, 0, 0), true, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                             var centralFlatStartingPoint = FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), true,
                                 true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize);
+                                flatMapList[floorNumber].FloorMap, xAxisSize);
                             centralFlatStartingPoint.z += 1;
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 centralFlatStartingPoint,
                                 FindNextEdgePoint(centralFlatStartingPoint, true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(centralFlatStartingPoint, false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(
                                     FindNextEdgePoint(centralFlatStartingPoint, true, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                             });
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 new Vector3Int(0, 0, zAxisSize - 1),
                                 new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1), true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(0, 0, zAxisSize - 1),
                                         true,
                                         false,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                         }
                         else
@@ -1643,37 +1643,37 @@ public class BuildingGenerator : MonoBehaviour
                                 new Vector3Int(0, 0, 0),
                                 new Vector3Int(xAxisSize - 1, 0, 0),
                                 FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, 0), true, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                             var centralFlatStartingPoint = FindNextEdgePoint(new Vector3Int(0, 0, 0), true, true,
-                                floorInfoList[floorNumber].FloorMap, xAxisSize);
+                                flatMapList[floorNumber].FloorMap, xAxisSize);
                             centralFlatStartingPoint.z += 1;
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 centralFlatStartingPoint,
                                 FindNextEdgePoint(centralFlatStartingPoint, true, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(centralFlatStartingPoint, false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(
                                     FindNextEdgePoint(centralFlatStartingPoint, true, true,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, true,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, true,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                             });
                             startingPoints.Add(new List<Vector3Int>()
                             {
                                 new Vector3Int(0, 0, zAxisSize - 1),
                                 new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                 FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1), true, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize),
+                                    flatMapList[floorNumber].FloorMap, xAxisSize),
                                 FindNextEdgePoint(FindNextEdgePoint(new Vector3Int(xAxisSize - 1, 0, zAxisSize - 1),
                                         true,
                                         false,
-                                        floorInfoList[floorNumber].FloorMap, xAxisSize), false, false,
-                                    floorInfoList[floorNumber].FloorMap, xAxisSize)
+                                        flatMapList[floorNumber].FloorMap, xAxisSize), false, false,
+                                    flatMapList[floorNumber].FloorMap, xAxisSize)
                             });
                         }
                     }
@@ -1684,8 +1684,12 @@ public class BuildingGenerator : MonoBehaviour
 
             for (var flatNumber = 0; flatNumber < startingPoints.Count; flatNumber++)
             {
-                GrowRoom(floorInfoList[floorNumber], flatNumber + 1, startingPoints[flatNumber], zAxisSize, xAxisSize);
+                GrowRoom(flatMapList[floorNumber], flatNumber + 1, startingPoints[flatNumber], zAxisSize, xAxisSize);
             }
+
+            AssignEmptyFlatMapPoints(flatMapList[floorNumber], startingPoints, zAxisSize, xAxisSize);
+            UpdateFlatMap(flatMapList[floorNumber], flats, zAxisSize, xAxisSize);
+            ConnectRooms(flatMapList[floorNumber], startingPoints, buildingPorchPosition, xAxisSize);
         }
     }
 
@@ -2004,38 +2008,293 @@ public class BuildingGenerator : MonoBehaviour
         }
     }
 
-    private static void AssignEmptyFlatMapPoints(List<BuildingFloorInfo> flatMapList, int zAxisSize, int xAxisSize)
+    private static void AssignEmptyFlatMapPoints(BuildingFloorInfo floorInfo, List<List<Vector3Int>> startingRoomPoints,
+        int zAxisSize, int xAxisSize)
     {
-        for (var floorNumber = 0; floorNumber < flatMapList.Count; floorNumber++)
+        for (var z = 0; z < zAxisSize; z++)
         {
-            for (var z = 0; z < zAxisSize; z++)
+            for (var x = 0; x < xAxisSize; x++)
             {
-                for (var x = 0; x < xAxisSize; x++)
+                var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
+                if (pointInfo.RoomNumber == 0 && !pointInfo.IsPorch)
                 {
-                    var pointInfo = flatMapList[floorNumber].FloorMap[z * xAxisSize + x];
-                    if (pointInfo.RoomNumber == 0 && !pointInfo.IsPorch)
+                    if (floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
+                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber;
+                    else if (floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
+                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber;
+                    else if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
+                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber;
+                    else if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
+                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber;
+                    else
                     {
-                        if (flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
-                            flatMapList[floorNumber].FloorMap[z * xAxisSize + x].RoomNumber =
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber;
-                        else if (flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
-                            flatMapList[floorNumber].FloorMap[z * xAxisSize + x].RoomNumber =
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber;
-                        else if (flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
-                            flatMapList[floorNumber].FloorMap[z * xAxisSize + x].RoomNumber =
-                                flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber;
-                        else if (flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
-                            flatMapList[floorNumber].FloorMap[z * xAxisSize + x].RoomNumber =
-                                flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber;
-                        else
-                        {
-                            flatMapList[floorNumber].FloorMap[z * xAxisSize + x].RoomNumber =
-                                4 + flatMapList[floorNumber]
-                                    .AdditionalFlatRooms[
-                                        flatMapList[floorNumber].FloorMap[z * xAxisSize + x].FlatNumber - 1] + 1;
-                            flatMapList[floorNumber]
+                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                            4 + floorInfo
                                 .AdditionalFlatRooms[
-                                    flatMapList[floorNumber].FloorMap[z * xAxisSize + x].FlatNumber - 1]++;
+                                    floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1] + 1;
+                        floorInfo
+                            .AdditionalFlatRooms[
+                                floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1]++;
+                        startingRoomPoints[pointInfo.FlatNumber - 1].Add(new Vector3Int(x, 0, z));
+                    }
+                }
+            }
+        }
+    }
+
+    private static void UpdateFlatMap(BuildingFloorInfo floorInfo, List<Flat>[] flats, int zAxisSize,
+        int xAxisSize)
+    {
+        for (var z = 0; z < zAxisSize; z++)
+        {
+            for (var x = 0; x < xAxisSize; x++)
+            {
+                var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
+
+                if (z == 0)
+                {
+                    if (x == 0)
+                    {
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                        }
+                    }
+                    else if (x == xAxisSize - 1)
+                    {
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+                    }
+                    else
+                    {
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                        }
+                    }
+                }
+                else if (z == zAxisSize - 1)
+                {
+                    if (x == 0)
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                        }
+                    }
+                    else if (x == xAxisSize - 1)
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+                    }
+                    else
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                        }
+                    }
+                }
+                else
+                {
+                    if (x == 0)
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                        }
+                    }
+                    else if (x == xAxisSize - 1)
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+                    }
+                    else
+                    {
+                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                        }
+
+                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                             pointInfo.FlatNumber ||
+                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                             pointInfo.RoomNumber) &&
+                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        {
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
                         }
                     }
                 }
@@ -2043,258 +2302,160 @@ public class BuildingGenerator : MonoBehaviour
         }
     }
 
-    private static void UpdateFlatMap(List<BuildingFloorInfo> flatMapList, List<Flat>[] flats, int zAxisSize,
-        int xAxisSize)
+    private static void ConnectRooms(BuildingFloorInfo floorInfo, List<List<Vector3Int>> startingRoomPoints,
+        Tuple<int, int> buildingPorchPosition, int xAxisSize)
     {
-        for (var floorNumber = 0; floorNumber < flatMapList.Count; floorNumber++)
+        for (var flatNumber = 0; flatNumber < startingRoomPoints.Count; flatNumber++)
         {
-            for (var z = 0; z < zAxisSize; z++)
+            var foundPoints = new bool[startingRoomPoints[flatNumber].Count];
+
+            var startingRoomPointIndex = Random.Range(0, startingRoomPoints[flatNumber].Count);
+            foundPoints[startingRoomPointIndex] = true;
+            var startingRoomPointCoordinates =
+                startingRoomPoints[flatNumber][startingRoomPointIndex];
+            var startingRoomPoint =
+                floorInfo.FloorMap[startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+
+            var nextNearestRoomPoint = Vector3Int.zero;
+            var nextNearestRoomPointIndex = 0;
+            var distanceToNearestPoint = 0f;
+
+            foundPoints[startingRoomPointIndex] = true;
+
+            while (foundPoints.Any(r => r == false))
             {
-                for (var x = 0; x < xAxisSize; x++)
+                for (int point = 0; point < startingRoomPoints[flatNumber].Count; point++)
                 {
-                    var pointInfo = flatMapList[floorNumber].FloorMap[z * xAxisSize + x];
-
-                    if (z == 0)
+                    if (!foundPoints[point])
                     {
-                        if (x == 0)
+                        var pointToCheck = startingRoomPoints[flatNumber][point];
+                        var distanceToPoint = Mathf.Sqrt(Mathf.Pow(startingRoomPointCoordinates.x - pointToCheck.x, 2) +
+                                                         Mathf.Pow(startingRoomPointCoordinates.z - pointToCheck.z, 2));
+                        if (distanceToNearestPoint == 0f)
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
-                            }
-                        }
-                        else if (x == xAxisSize - 1)
-                        {
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
+                            distanceToNearestPoint = distanceToPoint;
+                            nextNearestRoomPoint = pointToCheck;
+                            nextNearestRoomPointIndex = point;
                         }
                         else
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                            if (distanceToPoint < distanceToNearestPoint)
                             {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
+                                distanceToNearestPoint = distanceToPoint;
+                                nextNearestRoomPoint = pointToCheck;
+                                nextNearestRoomPointIndex = point;
                             }
                         }
                     }
-                    else if (z == zAxisSize - 1)
+                }
+
+                var roomWasFound = false;
+                while (!roomWasFound)
+                {
+                    var distanceX = Math.Abs(startingRoomPointCoordinates.x - nextNearestRoomPoint.x);
+                    var distanceZ = Math.Abs(startingRoomPointCoordinates.z - nextNearestRoomPoint.z);
+                    if (distanceX > distanceZ)
                     {
-                        if (x == 0)
+                        if (startingRoomPointCoordinates.x < nextNearestRoomPoint.x)
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                            if (floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
+                                .RoomNumber != startingRoomPoint.RoomNumber)
                             {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
+                                roomWasFound = true;
+                                foundPoints[floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
+                                    .RoomNumber] = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                    .DoorFrameXUp = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
+                                    .DoorFrameXDown = true;
                             }
 
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
-                            }
-                        }
-                        else if (x == xAxisSize - 1)
-                        {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
+                            startingRoomPointCoordinates.x++;
+                            startingRoomPoint =
+                                floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
                         }
                         else
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                            if (floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
+                                .RoomNumber != startingRoomPoint.RoomNumber)
                             {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
+                                roomWasFound = true;
+                                foundPoints[floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
+                                    .RoomNumber] = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                    .DoorFrameXDown = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
+                                    .DoorFrameXUp = true;
                             }
 
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
-                            }
+                            startingRoomPointCoordinates.x--;
+                            startingRoomPoint =
+                                floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
                         }
                     }
                     else
                     {
-                        if (x == 0)
+                        if (startingRoomPointCoordinates.z < nextNearestRoomPoint.z)
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                            if (floorInfo.FloorMap[
+                                    (startingRoomPointCoordinates.z + 1) * xAxisSize +
+                                    startingRoomPointCoordinates.x]
+                                .RoomNumber != startingRoomPoint.RoomNumber)
                             {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
+                                roomWasFound = true;
+                                foundPoints[floorInfo.FloorMap[
+                                        (startingRoomPointCoordinates.z + 1) * xAxisSize +
+                                        startingRoomPointCoordinates.x]
+                                    .RoomNumber] = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                    .DoorFrameZUp = true;
+                                floorInfo.FloorMap[
+                                        (startingRoomPointCoordinates.z + 1) * xAxisSize +
+                                        startingRoomPointCoordinates.x]
+                                    .DoorFrameZDown = true;
                             }
 
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
-                            }
-                        }
-                        else if (x == xAxisSize - 1)
-                        {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
+                            startingRoomPointCoordinates.z++;
+                            startingRoomPoint =
+                                floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
                         }
                         else
                         {
-                            if ((flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                            if (floorInfo.FloorMap[
+                                    (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                    startingRoomPointCoordinates.x]
+                                .RoomNumber != startingRoomPoint.RoomNumber)
                             {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZDown = true;
+                                roomWasFound = true;
+                                foundPoints[floorInfo.FloorMap[
+                                        (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                        startingRoomPointCoordinates.x]
+                                    .RoomNumber] = true;
+                                floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                    .DoorFrameZDown = true;
+                                floorInfo.FloorMap[
+                                        (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                        startingRoomPointCoordinates.x]
+                                    .DoorFrameZUp = true;
                             }
 
-                            if ((flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[(z + 1) * xAxisSize + x].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallZUp = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x - 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXDown = true;
-                            }
-
-                            if ((flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                                 pointInfo.FlatNumber ||
-                                 flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                                 pointInfo.RoomNumber) &&
-                                !flatMapList[floorNumber].FloorMap[z * xAxisSize + x + 1].IsPorch)
-                            {
-                                flatMapList[floorNumber].FloorMap[z * xAxisSize + x].WallXUp = true;
-                            }
+                            startingRoomPointCoordinates.z--;
+                            startingRoomPoint =
+                                floorInfo.FloorMap[
+                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
                         }
                     }
                 }
@@ -2320,28 +2481,52 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     case RoomTypes.LivingRoom:
                     {
-                        if (flatMapPoint.WallXDown)
+                        if (flatMapPoint.DoorFrameXDown)
+                        {
+                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                Quaternion.Euler(0f, 180f, 0f));
+                        }
+                        else if (flatMapPoint.WallXDown)
                         {
                             part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
                                 Quaternion.Euler(0f, 180f, 0f));
                         }
 
-                        if (flatMapPoint.WallXUp)
+                        if (flatMapPoint.DoorFrameXUp)
+                        {
+                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                Quaternion.Euler(0f, 0f, 0f));
+                        }
+                        else if (flatMapPoint.WallXUp)
                         {
                             part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
                                 Quaternion.Euler(0f, 0f, 0f));
                         }
 
-                        if (flatMapPoint.WallZDown)
+                        if (flatMapPoint.DoorFrameZDown)
+                        {
+                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                Quaternion.Euler(0f, 90f, 0f));
+                        }
+                        else if (flatMapPoint.WallZDown)
                         {
                             part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
                                 Quaternion.Euler(0f, 90f, 0f));
                         }
 
-                        if (flatMapPoint.WallZUp)
+                        if (flatMapPoint.DoorFrameZUp)
+                        {
+                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                Quaternion.Euler(0f, 270f, 0f));
+                        }
+                        else if (flatMapPoint.WallZUp)
                         {
                             part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),

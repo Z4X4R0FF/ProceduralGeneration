@@ -9,6 +9,8 @@ public class Room : ScriptableObject
     [SerializeField] public new string name;
     [SerializeField] public RoomTypes roomType;
     [SerializeField] public GameObject wall;
+    [SerializeField] public GameObject doorFrame;
+    [SerializeField] public bool isPassThrough;
 }
 
 public enum RoomTypes
