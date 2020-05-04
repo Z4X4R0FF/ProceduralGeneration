@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -1312,7 +1313,7 @@ public class BuildingGenerator : MonoBehaviour
                                         }
                                         else
                                         {
-                                            if (z > zAxisSize - 2)
+                                            if (z < zAxisSize - 2)
                                                 flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
                                             else
                                             {
@@ -2018,16 +2019,16 @@ public class BuildingGenerator : MonoBehaviour
                 var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
                 if (pointInfo.RoomNumber == 0 && !pointInfo.IsPorch)
                 {
-                    if (floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
+                    if (x != xAxisSize - 1 && floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
                         floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber;
-                    else if (floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
+                    else if (x != 0 && floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
                         floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber;
-                    else if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
+                    else if (z != zAxisSize - 1 && floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
                         floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber;
-                    else if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
+                    else if (z != 0 && floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
                         floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber;
                     else
@@ -2049,7 +2050,9 @@ public class BuildingGenerator : MonoBehaviour
     private static void UpdateFlatMap(BuildingFloorInfo floorInfo, List<Flat>[] flats, int zAxisSize,
         int xAxisSize)
     {
-        for (var z = 0; z < zAxisSize; z++)
+        for (var z = 0;
+            z < zAxisSize;
+            z++)
         {
             for (var x = 0; x < xAxisSize; x++)
             {
@@ -2305,7 +2308,9 @@ public class BuildingGenerator : MonoBehaviour
     private static void ConnectRooms(BuildingFloorInfo floorInfo, List<List<Vector3Int>> startingRoomPoints,
         Tuple<int, int> buildingPorchPosition, int xAxisSize)
     {
-        for (var flatNumber = 0; flatNumber < startingRoomPoints.Count; flatNumber++)
+        for (var flatNumber = 0;
+            flatNumber < startingRoomPoints.Count;
+            flatNumber++)
         {
             var foundPoints = new bool[startingRoomPoints[flatNumber].Count];
 
@@ -2316,8 +2321,8 @@ public class BuildingGenerator : MonoBehaviour
             var startingRoomPoint =
                 floorInfo.FloorMap[startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
 
+
             var nextNearestRoomPoint = Vector3Int.zero;
-            var nextNearestRoomPointIndex = 0;
             var distanceToNearestPoint = 0f;
 
             foundPoints[startingRoomPointIndex] = true;
@@ -2329,13 +2334,12 @@ public class BuildingGenerator : MonoBehaviour
                     if (!foundPoints[point])
                     {
                         var pointToCheck = startingRoomPoints[flatNumber][point];
-                        var distanceToPoint = Mathf.Sqrt(Mathf.Pow(startingRoomPointCoordinates.x - pointToCheck.x, 2) +
-                                                         Mathf.Pow(startingRoomPointCoordinates.z - pointToCheck.z, 2));
+                        var distanceToPoint = math.sqrt(math.pow(startingRoomPointCoordinates.x - pointToCheck.x, 2) +
+                                                        math.pow(startingRoomPointCoordinates.z - pointToCheck.z, 2));
                         if (distanceToNearestPoint == 0f)
                         {
                             distanceToNearestPoint = distanceToPoint;
                             nextNearestRoomPoint = pointToCheck;
-                            nextNearestRoomPointIndex = point;
                         }
                         else
                         {
@@ -2343,64 +2347,95 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 distanceToNearestPoint = distanceToPoint;
                                 nextNearestRoomPoint = pointToCheck;
-                                nextNearestRoomPointIndex = point;
                             }
                         }
                     }
                 }
 
+                var mainPathBlocked = false;
                 var roomWasFound = false;
                 while (!roomWasFound)
                 {
                     var distanceX = Math.Abs(startingRoomPointCoordinates.x - nextNearestRoomPoint.x);
                     var distanceZ = Math.Abs(startingRoomPointCoordinates.z - nextNearestRoomPoint.z);
-                    if (distanceX > distanceZ)
+                    var directionX = distanceX > distanceZ;
+                    if (mainPathBlocked)
+                    {
+                        directionX = !directionX;
+                        mainPathBlocked = false;
+                    }
+
+                    if (directionX)
                     {
                         if (startingRoomPointCoordinates.x < nextNearestRoomPoint.x)
                         {
                             if (floorInfo.FloorMap[
                                     startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
-                                .RoomNumber != startingRoomPoint.RoomNumber)
+                                .FlatNumber == flatNumber + 1)
                             {
-                                roomWasFound = true;
-                                foundPoints[floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
-                                    .RoomNumber] = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                    .DoorFrameXUp = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
-                                    .DoorFrameXDown = true;
-                            }
+                                if (floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x + 1]
+                                    .RoomNumber != startingRoomPoint.RoomNumber)
+                                {
+                                    roomWasFound = true;
+                                    foundPoints[floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x + 1]
+                                        .RoomNumber - 1] = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                        .DoorFrameXUp = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x + 1]
+                                        .DoorFrameXDown = true;
+                                }
 
-                            startingRoomPointCoordinates.x++;
-                            startingRoomPoint =
-                                floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                startingRoomPointCoordinates.x++;
+                                startingRoomPoint =
+                                    floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                            }
+                            else
+                            {
+                                mainPathBlocked = true;
+                            }
                         }
-                        else
+                        else if (startingRoomPointCoordinates.x > nextNearestRoomPoint.x)
                         {
                             if (floorInfo.FloorMap[
                                     startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
-                                .RoomNumber != startingRoomPoint.RoomNumber)
+                                .FlatNumber == flatNumber + 1)
                             {
-                                roomWasFound = true;
-                                foundPoints[floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
-                                    .RoomNumber] = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                    .DoorFrameXDown = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
-                                    .DoorFrameXUp = true;
-                            }
+                                if (floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x - 1]
+                                    .RoomNumber != startingRoomPoint.RoomNumber)
+                                {
+                                    roomWasFound = true;
+                                    foundPoints[floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x - 1]
+                                        .RoomNumber - 1] = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                        .DoorFrameXDown = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x - 1]
+                                        .DoorFrameXUp = true;
+                                }
 
-                            startingRoomPointCoordinates.x--;
-                            startingRoomPoint =
-                                floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                startingRoomPointCoordinates.x--;
+                                startingRoomPoint =
+                                    floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                            }
+                            else
+                            {
+                                mainPathBlocked = true;
+                            }
                         }
                     }
                     else
@@ -2410,54 +2445,84 @@ public class BuildingGenerator : MonoBehaviour
                             if (floorInfo.FloorMap[
                                     (startingRoomPointCoordinates.z + 1) * xAxisSize +
                                     startingRoomPointCoordinates.x]
-                                .RoomNumber != startingRoomPoint.RoomNumber)
+                                .FlatNumber == flatNumber + 1)
                             {
-                                roomWasFound = true;
-                                foundPoints[floorInfo.FloorMap[
+                                if (floorInfo.FloorMap[
                                         (startingRoomPointCoordinates.z + 1) * xAxisSize +
                                         startingRoomPointCoordinates.x]
-                                    .RoomNumber] = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                    .DoorFrameZUp = true;
-                                floorInfo.FloorMap[
-                                        (startingRoomPointCoordinates.z + 1) * xAxisSize +
-                                        startingRoomPointCoordinates.x]
-                                    .DoorFrameZDown = true;
-                            }
+                                    .RoomNumber != startingRoomPoint.RoomNumber)
+                                {
+                                    roomWasFound = true;
+                                    foundPoints[floorInfo.FloorMap[
+                                            (startingRoomPointCoordinates.z + 1) * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .RoomNumber - 1] = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                        .DoorFrameZUp = true;
+                                    floorInfo.FloorMap[
+                                            (startingRoomPointCoordinates.z + 1) * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .DoorFrameZDown = true;
+                                }
 
-                            startingRoomPointCoordinates.z++;
-                            startingRoomPoint =
-                                floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                startingRoomPointCoordinates.z++;
+                                startingRoomPoint =
+                                    floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                            }
+                            else
+                            {
+                                mainPathBlocked = true;
+                            }
                         }
-                        else
+                        else if (startingRoomPointCoordinates.z > nextNearestRoomPoint.z)
                         {
                             if (floorInfo.FloorMap[
                                     (startingRoomPointCoordinates.z - 1) * xAxisSize +
                                     startingRoomPointCoordinates.x]
-                                .RoomNumber != startingRoomPoint.RoomNumber)
+                                .FlatNumber == flatNumber + 1)
                             {
-                                roomWasFound = true;
-                                foundPoints[floorInfo.FloorMap[
+                                if (floorInfo.FloorMap[
                                         (startingRoomPointCoordinates.z - 1) * xAxisSize +
                                         startingRoomPointCoordinates.x]
-                                    .RoomNumber] = true;
-                                floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                    .DoorFrameZDown = true;
-                                floorInfo.FloorMap[
-                                        (startingRoomPointCoordinates.z - 1) * xAxisSize +
-                                        startingRoomPointCoordinates.x]
-                                    .DoorFrameZUp = true;
-                            }
+                                    .RoomNumber != startingRoomPoint.RoomNumber)
+                                {
+                                    roomWasFound = true;
+                                    foundPoints[floorInfo.FloorMap[
+                                            (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .RoomNumber - 1] = true;
+                                    floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
+                                        .DoorFrameZDown = true;
+                                    floorInfo.FloorMap[
+                                            (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .DoorFrameZUp = true;
+                                }
 
-                            startingRoomPointCoordinates.z--;
-                            startingRoomPoint =
-                                floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                startingRoomPointCoordinates.z--;
+                                startingRoomPoint =
+                                    floorInfo.FloorMap[
+                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                            }
+                            else
+                            {
+                                mainPathBlocked = true;
+                            }
                         }
                     }
+
+                    if (startingRoomPoint.IsPorch)
+                    {
+                        startingRoomPointCoordinates = startingRoomPoints[flatNumber][startingRoomPointIndex];
+                        startingRoomPoint = floorInfo.FloorMap[
+                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                    }
+
+                    if (roomWasFound)
+                        distanceToNearestPoint = 0f;
                 }
             }
         }
@@ -2468,7 +2533,9 @@ public class BuildingGenerator : MonoBehaviour
         int startingX, float startingY, int startingZ)
     {
         var y = startingY;
-        for (var floorNumber = 0; floorNumber < flatMapList.Count; floorNumber++, y++)
+        for (var floorNumber = 0;
+            floorNumber < flatMapList.Count;
+            floorNumber++, y++)
         {
             for (var z = 0; z < zAxisSize; z++)
             for (var x = 0; x < xAxisSize; x++)

@@ -437,8 +437,8 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
     - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
   maxBuildingResizeIterations: 50
-  maxBuildingXAxisSize: 12
-  maxBuildingZAxisSize: 12
+  maxBuildingXAxisSize: 16
+  maxBuildingZAxisSize: 16
   minBuildingXAxisSize: 10
   minBuildingZAxisSize: 10
   minYardXAxisSize: 6
@@ -475,8 +475,8 @@ MonoBehaviour:
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
-  levelXLength: 30
-  levelZLength: 30
+  levelXLength: 60
+  levelZLength: 60
   materials: []
   minSize: 0
   pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
