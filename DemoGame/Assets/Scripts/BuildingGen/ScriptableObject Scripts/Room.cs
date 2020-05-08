@@ -11,6 +11,9 @@ public class Room : ScriptableObject
     [SerializeField] public GameObject wall;
     [SerializeField] public GameObject doorFrame;
     [SerializeField] public bool isPassThrough;
+    [SerializeField] public Material WallMaterial;
+    [SerializeField] public Material FloorMaterial;
+    [SerializeField] public Material CeilingMaterial;
 }
 
 public enum RoomTypes

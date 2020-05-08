@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public struct Building
 {
     public bool isEven;
+    [Range(1, 40)]
     public int minFloorCount;
+    [Range(1, 40)]
     public int maxFloorCount;
+    [Range(1, 3)]
     public int minFlatCount;
+    [Range(1, 3)]
     public int maxFlatCount;
     public List<Flat> flats;
     [Header("Building Parts")] public GameObject porchBase;
@@ -25,5 +28,7 @@ public struct Building
     public GameObject roofCornerPart;
     public GameObject roofTopPart;
     public GameObject roofPorchPart;
-    [Header("Materials")] public List<Material> materials;
+    [Header("Materials")] 
+    [SerializeField]
+    public BuildingMaterials materials;
 }

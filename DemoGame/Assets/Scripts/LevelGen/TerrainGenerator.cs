@@ -27,10 +27,13 @@ public class TerrainGenerator : MonoBehaviour
     private int _terrainPartSizeX;
     private int _terrainPartSizeZ;
     private Vector3[] _vertices;
-    [FormerlySerializedAs("Grass")] public Material grass;
+
 
     [FormerlySerializedAs("HeightMultiplier")]
     public float heightMultiplier;
+
+    [FormerlySerializedAs("PerlinNoiseScale")]
+    public float perlinNoiseScale;
 
     [FormerlySerializedAs("IsDone")] public bool isDone;
     [FormerlySerializedAs("LevelWall")] public GameObject levelWall;
@@ -48,15 +51,14 @@ public class TerrainGenerator : MonoBehaviour
         "Set to 'True' to make the algorithm choose the smallest available part size. Only works with small 'LevelLength' values")]
     public bool minSize;
 
-    [FormerlySerializedAs("Pavement")] public Material pavement;
+    [Header("Material settings")] [FormerlySerializedAs("Pavement")]
+    public Material pavement;
 
-    [FormerlySerializedAs("PerlinNoiseScale")]
-    public float perlinNoiseScale;
+    [FormerlySerializedAs("Grass")] public Material grass;
 
     [FormerlySerializedAs("Road")] public Material road;
 
-    [FormerlySerializedAs("Soil")] [Header("Material settings")]
-    public Material soil;
+    [FormerlySerializedAs("Soil")] public Material soil;
 
     [FormerlySerializedAs("StartingPoint")]
     [Header("Level Settings")]
@@ -69,14 +71,14 @@ public class TerrainGenerator : MonoBehaviour
     [FormerlySerializedAs("StreetsAlongZ")]
     public List<StreetsToGenerate> streetsAlongZ = new List<StreetsToGenerate>();
 
-    [FormerlySerializedAs("TerrainPartSizeMax")] [Tooltip("Maximum size of one terrain mesh part")] [Range(2, 255)]
-    public int terrainPartSizeMax;
-
     [FormerlySerializedAs("TerrainPartSizeMin")]
     [Header("Terrain mesh settings")]
     [Tooltip("Minimal size of one terrain mesh part")]
     [Range(2, 255)]
     public int terrainPartSizeMin;
+
+    [FormerlySerializedAs("TerrainPartSizeMax")] [Tooltip("Maximum size of one terrain mesh part")] [Range(2, 255)]
+    public int terrainPartSizeMax;
 
     private void Start()
     {

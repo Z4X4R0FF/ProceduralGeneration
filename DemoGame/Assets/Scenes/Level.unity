@@ -166,7 +166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &324190281
 PrefabInstance:
@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 6269932065953548885, guid: cab633267b9da954584219b738a695ab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269932065953548885, guid: cab633267b9da954584219b738a695ab,
         type: 3}
@@ -365,7 +365,7 @@ MonoBehaviour:
   - isEven: 1
     minFloorCount: 1
     maxFloorCount: 1
-    minFlatCount: 1
+    minFlatCount: 2
     maxFlatCount: 3
     flats:
     - {fileID: 11400000, guid: 8df0cca2700b67149921bee174e73939, type: 2}
@@ -395,14 +395,22 @@ MonoBehaviour:
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
     materials:
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
+      BasementPrimaryMaterial: {fileID: 2100000, guid: 158282338a8879d42a56bea7c6dd40b9,
+        type: 2}
+      BasementSecondaryMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e,
+        type: 2}
+      StructurePrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+        type: 2}
+      StructureSecondaryMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e,
+        type: 2}
+      RoofMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
+      WindowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
+      FloorMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
+      RoomMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8, type: 2}
   - isEven: 0
     minFloorCount: 1
     maxFloorCount: 1
-    minFlatCount: 1
+    minFlatCount: 2
     maxFlatCount: 3
     flats:
     - {fileID: 11400000, guid: 8df0cca2700b67149921bee174e73939, type: 2}
@@ -432,10 +440,18 @@ MonoBehaviour:
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
     materials:
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-    - {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
-    - {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
+      BasementPrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+        type: 2}
+      BasementSecondaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+        type: 2}
+      StructurePrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+        type: 2}
+      StructureSecondaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+        type: 2}
+      RoofMaterial: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
+      WindowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
+      FloorMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
+      RoomMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8, type: 2}
   maxBuildingResizeIterations: 50
   maxBuildingXAxisSize: 16
   maxBuildingZAxisSize: 16
@@ -456,7 +472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &714242152
 MonoBehaviour:
@@ -470,8 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a341234eb8f394cb24717f2b1ec92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grass: {fileID: 2100000, guid: ca8c0b64170620a4b8f9b8e0d554ddb3, type: 2}
   heightMultiplier: 35
+  perlinNoiseScale: 250
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
@@ -480,7 +496,7 @@ MonoBehaviour:
   materials: []
   minSize: 0
   pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-  perlinNoiseScale: 250
+  grass: {fileID: 2100000, guid: ca8c0b64170620a4b8f9b8e0d554ddb3, type: 2}
   road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
   soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
   startingPoint: {x: 0, y: 0, z: 0}
@@ -492,8 +508,8 @@ MonoBehaviour:
   - width: 3
     count: 3
     streetRadius: 20
-  terrainPartSizeMax: 255
   terrainPartSizeMin: 4
+  terrainPartSizeMax: 255
 --- !u!33 &714242153
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -629,74 +645,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2707903728786012019
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6479167910744679769, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_Name
-      value: roompartwall
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048488044906223434, guid: 49c21e021bbece043a3bb88bbaa6ef4a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 49c21e021bbece043a3bb88bbaa6ef4a, type: 3}

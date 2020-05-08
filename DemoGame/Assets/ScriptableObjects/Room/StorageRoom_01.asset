@@ -16,7 +16,10 @@ MonoBehaviour:
   minZLength: 1
   name: 
   roomType: 0
-  wall: {fileID: 6479167910744679769, guid: 49c21e021bbece043a3bb88bbaa6ef4a, type: 3}
-  doorFrame: {fileID: 6479167910744679769, guid: a9350a0a009cfcc44b7aa172dccbc918,
+  wall: {fileID: 4693486732001654776, guid: a9350a0a009cfcc44b7aa172dccbc918, type: 3}
+  doorFrame: {fileID: 2440230387682181332, guid: 141b0e1a0bd5c714b9d1cd9d903a1f6f,
     type: 3}
   isPassThrough: 0
+  WallMaterial: {fileID: 0}
+  FloorMaterial: {fileID: 0}
+  CeilingMaterial: {fileID: 0}
