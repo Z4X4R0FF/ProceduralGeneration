@@ -15,6 +15,5 @@ public class FlatMapPoint
     public bool DoorFrameZDown = false;
     public bool DoorFrameXUp = false;
     public bool DoorFrameXDown = false;
-    public List<InteriorObject> InteriorObjects;
     public bool IsPorch = false;
 }

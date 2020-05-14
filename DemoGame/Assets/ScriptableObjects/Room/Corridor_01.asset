@@ -12,14 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc9ffd448a1c0048bdb06116984dac5, type: 3}
   m_Name: Corridor_01
   m_EditorClassIdentifier: 
-  minXLength: 0
-  minZLength: 0
-  name: 
-  roomType: 0
-  wall: {fileID: 4693486732001654776, guid: a9350a0a009cfcc44b7aa172dccbc918, type: 3}
-  doorFrame: {fileID: 2472030932899887615, guid: 05c423a10cdca74439b173eee8e84141,
+  wall: {fileID: 1859334577276535166, guid: 7a930cd5bda907a48b322d530b230fd9, type: 3}
+  doorFrame: {fileID: 2800315967195578866, guid: 05c423a10cdca74439b173eee8e84141,
     type: 3}
-  isPassThrough: 0
-  WallMaterial: {fileID: 0}
-  FloorMaterial: {fileID: 0}
-  CeilingMaterial: {fileID: 0}

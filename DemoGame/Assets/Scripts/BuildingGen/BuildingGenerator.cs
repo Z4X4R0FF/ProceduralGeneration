@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
@@ -367,8 +368,6 @@ public class BuildingGenerator : MonoBehaviour
                             }
                         }
 
-                        //Debug.Log("remaining " + zAxisSizeRemaining);
-                        // Debug.Log("Size " + buildingSize);
                         iteration++;
                         if (iteration == maxBuildingResizeIterations)
                         {
@@ -403,12 +402,10 @@ public class BuildingGenerator : MonoBehaviour
                     for (int z = startingZ, currentBuilding = 0; z < startingZ + quadZAxisSize; currentBuilding++)
                     {
                         if (startingZ + quadZAxisSize - z < minBuildingZAxisSize) break;
-                        var zAxisBuildingSize = 0;
-                        if (x == startingX)
-                            zAxisBuildingSize = Random.Range(minBuildingZAxisSize,
-                                Mathf.Min(startingZ + quadZAxisSize - z, maxBuildingZAxisSize));
-                        else
-                            zAxisBuildingSize = zAxisBuildingSizeList[currentBuilding];
+                        int zAxisBuildingSize = x == startingX
+                            ? Random.Range(minBuildingZAxisSize,
+                                Mathf.Min(startingZ + quadZAxisSize - z, maxBuildingZAxisSize))
+                            : zAxisBuildingSizeList[currentBuilding];
                         yield return StartCoroutine(SpawnBuildingBasement(z, x, zAxisBuildingSize, xAxisBuildingSize));
                         if (x == startingX)
                             zAxisBuildingSizeList.Add(zAxisBuildingSize);
@@ -438,8 +435,7 @@ public class BuildingGenerator : MonoBehaviour
                     for (int x = startingX, currentBuilding = 0; x < startingX + quadXAxisSize; currentBuilding++)
                     {
                         if (startingX + quadXAxisSize - x < minBuildingXAxisSize) break;
-                        var xAxisBuildingSize = 0;
-                        xAxisBuildingSize = z == startingZ
+                        var xAxisBuildingSize = z == startingZ
                             ? Random.Range(minBuildingXAxisSize,
                                 Mathf.Min(startingX + quadXAxisSize - x, maxBuildingXAxisSize))
                             : xAxisBuildingSizeList[currentBuilding];
@@ -512,7 +508,6 @@ public class BuildingGenerator : MonoBehaviour
         for (var z = startingZ; z < startingZ + zAxisSize; z++)
         for (var x = startingX; x < startingX + xAxisSize; x++)
         {
-            GameObject part = null;
             if (i == 0)
             {
                 if (buildingFaceZAxis)
@@ -521,25 +516,28 @@ public class BuildingGenerator : MonoBehaviour
                     {
                         if (x == buildingPorchPosition.Item1 - 1)
                         {
-                            part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 0f, 0f),
+                                buildingParent);
                             continue;
                         }
 
                         if (x == buildingPorchPosition.Item1)
                         {
-                            part = Instantiate(building.porchBase, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 270f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.porchBase,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 270f, 0f),
+                                buildingParent);
                             continue;
                         }
 
                         if (x == buildingPorchPosition.Item1 + 1)
                         {
-                            part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 180f : 270f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 180f : 270f, 0f),
+                                buildingParent);
                             continue;
                         }
                     }
@@ -562,25 +560,28 @@ public class BuildingGenerator : MonoBehaviour
                     {
                         if (z == buildingPorchPosition.Item2 - 1)
                         {
-                            part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 270f : 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 270f : 0f, 0f),
+                                buildingParent);
                             continue;
                         }
 
                         if (z == buildingPorchPosition.Item2)
                         {
-                            part = Instantiate(building.porchBase, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.porchBase,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 0f, 0f),
+                                buildingParent);
                             continue;
                         }
 
                         if (z == buildingPorchPosition.Item2 + 1)
                         {
-                            part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 90f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                                new Vector3(x + 0.5f, currentY, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 90f, 0f),
+                                buildingParent);
                             continue;
                         }
                     }
@@ -602,39 +603,40 @@ public class BuildingGenerator : MonoBehaviour
             if (z == startingZ)
             {
                 if (x == startingX)
-                    part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, 180f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                        new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, 180f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, 90f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                        new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
                 else
-                    part = Instantiate(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, 90f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
             }
             else if (z == startingZ + zAxisSize - 1)
             {
                 if (x == startingX)
-                    part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, -90f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                        new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.cellingCornerPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.identity);
+                    InstantiateBuildingPartAsChild(building.cellingCornerPart,
+                        new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.identity, buildingParent);
                 else
-                    part = Instantiate(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, -90f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
             }
             else
             {
                 if (x == startingX)
-                    part = Instantiate(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, 180f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, 180f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
-                        Quaternion.Euler(0f, 0f, 0f));
+                    InstantiateBuildingPartAsChild(building.cellingWallPart, new Vector3(x + 0.5f, currentY, z + 0.5f),
+                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
             }
-
-            if (part != null)
-                part.transform.SetParent(buildingParent.transform);
         }
 
         yield return StartCoroutine(SpawnBuildingStructure(startingZ, startingX, y + 1, zAxisSize, xAxisSize, building,
@@ -677,16 +679,15 @@ public class BuildingGenerator : MonoBehaviour
             for (var z = startingZ; z < startingZ + zAxisSize; z++)
             for (var x = startingX; x < startingX + xAxisSize; x++)
             {
-                GameObject part = null;
                 if (buildingFaceZAxis)
                 {
                     if (z == buildingPorchPosition.Item2)
                     {
                         if (x == buildingPorchPosition.Item1 - 1)
                         {
-                            part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 0f, 0f),
+                                buildingParent);
                             continue;
                         }
 
@@ -694,9 +695,10 @@ public class BuildingGenerator : MonoBehaviour
                         {
                             if (floorNumber != floorCount - 1)
                             {
-                                part = Instantiate(building.porch, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
-                                    Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 270f, 0f));
-                                part.transform.SetParent(buildingParent.transform);
+                                InstantiateBuildingPartAsChild(building.porch,
+                                    new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
+                                    Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 90f : 270f, 0f),
+                                    buildingParent);
                             }
 
                             continue;
@@ -704,9 +706,9 @@ public class BuildingGenerator : MonoBehaviour
 
                         if (x == buildingPorchPosition.Item1 + 1)
                         {
-                            part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 180f : 270f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item2 == startingZ ? 180f : 270f, 0f),
+                                buildingParent);
                             continue;
                         }
                     }
@@ -718,9 +720,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (x == buildingPorchPosition.Item1 - 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
 
@@ -728,9 +731,10 @@ public class BuildingGenerator : MonoBehaviour
 
                                 if (x == buildingPorchPosition.Item1 + 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -738,9 +742,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (x == buildingPorchPosition.Item1)
                                 {
-                                    part = Instantiate(flatCount == 2 ? building.wallPart : building.doorFramePart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -751,9 +756,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (x == buildingPorchPosition.Item1 - 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
 
@@ -761,9 +767,10 @@ public class BuildingGenerator : MonoBehaviour
 
                                 if (x == buildingPorchPosition.Item1 + 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -771,9 +778,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (x == buildingPorchPosition.Item1)
                                 {
-                                    part = Instantiate(flatCount == 2 ? building.wallPart : building.doorFramePart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -786,9 +794,9 @@ public class BuildingGenerator : MonoBehaviour
                     {
                         if (z == buildingPorchPosition.Item2 - 1)
                         {
-                            part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 270f : 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 270f : 0f, 0f),
+                                buildingParent);
                             continue;
                         }
 
@@ -796,9 +804,10 @@ public class BuildingGenerator : MonoBehaviour
                         {
                             if (floorNumber != floorCount - 1)
                             {
-                                part = Instantiate(building.porch, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
-                                    Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 0f, 0f));
-                                part.transform.SetParent(buildingParent.transform);
+                                InstantiateBuildingPartAsChild(building.porch,
+                                    new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
+                                    Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 0f, 0f),
+                                    buildingParent);
                             }
 
                             continue;
@@ -806,9 +815,9 @@ public class BuildingGenerator : MonoBehaviour
 
                         if (z == buildingPorchPosition.Item2 + 1)
                         {
-                            part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 90f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                            InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                                Quaternion.Euler(0f, buildingPorchPosition.Item1 == startingX ? 180f : 90f, 0f),
+                                buildingParent);
                             continue;
                         }
                     }
@@ -820,9 +829,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (z == buildingPorchPosition.Item2 - 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
 
@@ -830,9 +840,10 @@ public class BuildingGenerator : MonoBehaviour
 
                                 if (z == buildingPorchPosition.Item2 + 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -840,9 +851,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (z == buildingPorchPosition.Item2)
                                 {
-                                    part = Instantiate(flatCount == 2 ? building.wallPart : building.doorFramePart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -853,9 +865,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (z == buildingPorchPosition.Item2 - 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
 
@@ -866,9 +879,10 @@ public class BuildingGenerator : MonoBehaviour
 
                                 if (z == buildingPorchPosition.Item2 + 1)
                                 {
-                                    part = Instantiate(flatCount != 1 ? building.doorFramePart : building.wallPart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -876,9 +890,10 @@ public class BuildingGenerator : MonoBehaviour
                             {
                                 if (z == buildingPorchPosition.Item2)
                                 {
-                                    part = Instantiate(flatCount == 2 ? building.wallPart : building.doorFramePart,
-                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
-                                    part.transform.SetParent(buildingParent.transform);
+                                    InstantiateBuildingPartAsChild(
+                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
+                                        buildingParent);
                                     continue;
                                 }
                             }
@@ -890,46 +905,48 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     if (x == startingX)
                     {
-                        part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.Euler(0f, 180f, 0f));
+                        InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                            Quaternion.Euler(0f, 180f, 0f), buildingParent);
                     }
                     else if (x == startingX + xAxisSize - 1)
                     {
-                        part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.Euler(0f, 90f, 0f));
+                        InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                            Quaternion.Euler(0f, 90f, 0f), buildingParent);
                     }
                     else
                     {
                         if (x - startingX < xAxisSize / 2)
-                            part = Instantiate((x - startingX) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
+                            InstantiateBuildingPartAsChild(
+                                (x - startingX) % 2 == 1 ? building.windowPart : building.wallPart,
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f), buildingParent);
                         else
-                            part = Instantiate(
+                            InstantiateBuildingPartAsChild(
                                 (xAxisSize + startingX - x + 1) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f));
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f), buildingParent);
                     }
                 }
                 else if (z == startingZ + zAxisSize - 1)
                 {
                     if (x == startingX)
                     {
-                        part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.Euler(0f, -90f, 0f));
+                        InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                            Quaternion.Euler(0f, -90f, 0f), buildingParent);
                     }
                     else if (x == startingX + xAxisSize - 1)
                     {
-                        part = Instantiate(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.identity);
+                        InstantiateBuildingPartAsChild(building.cornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                            Quaternion.identity, buildingParent);
                     }
                     else
                     {
                         if (x - startingX < xAxisSize / 2)
-                            part = Instantiate((x - startingX) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f));
+                            InstantiateBuildingPartAsChild(
+                                (x - startingX) % 2 == 1 ? building.windowPart : building.wallPart,
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f), buildingParent);
                         else
-                            part = Instantiate(
+                            InstantiateBuildingPartAsChild(
                                 (xAxisSize + startingX - x + 1) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f));
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, -90f, 0f), buildingParent);
                     }
                 }
                 else
@@ -937,32 +954,31 @@ public class BuildingGenerator : MonoBehaviour
                     if (x == startingX)
                     {
                         if (z - startingZ < zAxisSize / 2)
-                            part = Instantiate((z - startingZ) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
+                            InstantiateBuildingPartAsChild(
+                                (z - startingZ) % 2 == 1 ? building.windowPart : building.wallPart,
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f), buildingParent);
                         else
-                            part = Instantiate(
+                            InstantiateBuildingPartAsChild(
                                 (zAxisSize + startingZ - z + 1) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f));
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f), buildingParent);
                     }
                     else if (x == startingX + xAxisSize - 1)
                     {
                         if (z - startingZ < zAxisSize / 2)
-                            part = Instantiate((z - startingZ) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
+                            InstantiateBuildingPartAsChild(
+                                (z - startingZ) % 2 == 1 ? building.windowPart : building.wallPart,
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f), buildingParent);
                         else
-                            part = Instantiate(
+                            InstantiateBuildingPartAsChild(
                                 (zAxisSize + startingZ - z + 1) % 2 == 1 ? building.windowPart : building.wallPart,
-                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f));
+                                new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f), buildingParent);
                     }
                     else
                     {
-                        part = Instantiate(building.emptyPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.Euler(0f, 0f, 0f));
+                        InstantiateBuildingPartAsChild(building.emptyPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                            Quaternion.Euler(0f, 0f, 0f), buildingParent);
                     }
                 }
-
-                if (part != null)
-                    part.transform.SetParent(buildingParent.transform);
             }
         }
 
@@ -972,8 +988,7 @@ public class BuildingGenerator : MonoBehaviour
             buildingPorchPosition);
         LayoutRooms(flatMapList, startingZ, startingX, zAxisSize, xAxisSize,
             buildingFaceZAxis,
-            building,
-            floorCount, flats,
+            floorCount,
             buildingPorchPosition);
 
 
@@ -997,7 +1012,6 @@ public class BuildingGenerator : MonoBehaviour
         for (var z = startingZ; z < startingZ + zAxisSize; z++)
         for (var x = startingX; x < startingX + xAxisSize; x++)
         {
-            GameObject part = null;
             var (buildingPorchPositionX, buildingPorchPositionZ) = buildingPorchPosition;
             if (buildingFaceZAxis)
             {
@@ -1005,9 +1019,9 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     if (x == buildingPorchPositionX)
                     {
-                        part = Instantiate(building.roofPorchPart, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
-                            Quaternion.Euler(0f, buildingPorchPositionZ == startingZ ? 90f : 270f, 0f));
-                        part.transform.SetParent(buildingParent.transform);
+                        InstantiateBuildingPartAsChild(building.roofPorchPart,
+                            new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
+                            Quaternion.Euler(0f, buildingPorchPositionZ == startingZ ? 90f : 270f, 0f), buildingParent);
                         continue;
                     }
                 }
@@ -1033,9 +1047,9 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     if (z == buildingPorchPositionZ)
                     {
-                        part = Instantiate(building.roofPorchPart, new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
-                            Quaternion.Euler(0f, buildingPorchPositionX == startingX ? 180f : 0f, 0f));
-                        part.transform.SetParent(buildingParent.transform);
+                        InstantiateBuildingPartAsChild(building.roofPorchPart,
+                            new Vector3(x + 0.5f, y + 0.5f, z + 0.5f),
+                            Quaternion.Euler(0f, buildingPorchPositionX == startingX ? 180f : 0f, 0f), buildingParent);
                         continue;
                     }
                 }
@@ -1059,42 +1073,39 @@ public class BuildingGenerator : MonoBehaviour
             if (z == startingZ)
             {
                 if (x == startingX)
-                    part = Instantiate(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 90f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 0f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
                 else
-                    part = Instantiate(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 90f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
             }
             else if (z == startingZ + zAxisSize - 1)
             {
                 if (x == startingX)
-                    part = Instantiate(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, -180f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, -180f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, -90f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
                 else
-                    part = Instantiate(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, -90f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
             }
             else
             {
                 if (x == startingX)
-                    part = Instantiate(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 180f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 180f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
-                    part = Instantiate(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 0f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
                 else
-                    part = Instantiate(building.roofTopPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 0f, 0f));
+                    InstantiateBuildingPartAsChild(building.roofTopPart, new Vector3(x + 0.5f, y, z + 0.5f),
+                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
             }
-
-            if (part != null)
-                part.transform.SetParent(buildingParent.transform);
         }
 
         //yield return StartCoroutine(
@@ -1108,342 +1119,320 @@ public class BuildingGenerator : MonoBehaviour
         bool buildingFaceZAxis, int floorCount,
         int[] flatCounts, Tuple<int, int> buildingPorchPosition)
     {
-        bool oneFlat = false, twoFlat = false, threeFlat = false;
-        var oneFlatMapPattern = new FlatMapPoint[zAxisSize * xAxisSize];
-        var twoFlatMapPattern = new FlatMapPoint[zAxisSize * xAxisSize];
-        var threeFlatMapPattern = new FlatMapPoint[zAxisSize * xAxisSize];
         var floorInfoList = new List<BuildingFloorInfo>();
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++)
         {
             var floorInfo = new BuildingFloorInfo
-                {FlatCount = flatCounts[floorNumber], AdditionalFlatRooms = new int[flatCounts[floorNumber]]};
+            {
+                FlatCount = flatCounts[floorNumber], AdditionalFlatRooms = new int[flatCounts[floorNumber]],
+                FloorMap = new FlatMapPoint[zAxisSize * xAxisSize]
+            };
             for (var j = 0; j < floorInfo.AdditionalFlatRooms.Length; j++)
             {
                 floorInfo.AdditionalFlatRooms[j] = 0;
             }
 
-            var flatMap = new FlatMapPoint[zAxisSize * xAxisSize];
             switch (flatCounts[floorNumber])
             {
                 case 1:
                 {
-                    if (!oneFlat)
-                    {
-                        for (var z = 0; z < zAxisSize; z++)
-                        for (var x = 0; x < xAxisSize; x++)
-                        {
-                            if (buildingFaceZAxis)
-                            {
-                                if (startingX + x == buildingPorchPosition.Item1)
-                                {
-                                    if (startingZ + z == buildingPorchPosition.Item2 ||
-                                        startingZ + z == buildingPorchPosition.Item2 + 1 ||
-                                        startingZ + z == buildingPorchPosition.Item2 - 1)
-                                    {
-                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                    }
-                                    else
-                                    {
-                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                    }
-                                }
-                                else
-                                {
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                }
-                            }
-                            else
-                            {
-                                if (startingZ + z == buildingPorchPosition.Item2)
-                                {
-                                    if (startingX + x == buildingPorchPosition.Item1 ||
-                                        startingX + x == buildingPorchPosition.Item1 + 1 ||
-                                        startingX + x == buildingPorchPosition.Item1 - 1)
-                                    {
-                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                    }
-                                    else
-                                    {
-                                        flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                    }
-                                }
-                                else
-                                {
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                }
-                            }
-                        }
-
-                        oneFlat = true;
-                        oneFlatMapPattern = flatMap;
-                    }
-
-                    floorInfo.FloorMap = oneFlatMapPattern;
-                    break;
-                }
-                case 2:
-                {
-                    if (!twoFlat)
-                    {
-                        for (var z = 0; z < zAxisSize; z++)
-                        for (var x = 0; x < xAxisSize; x++)
-                        {
-                            if (buildingFaceZAxis)
-                            {
-                                if (x + startingX < buildingPorchPosition.Item1)
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                else if (x + startingX > buildingPorchPosition.Item1)
-                                {
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                }
-                                else
-                                {
-                                    if (buildingPorchPosition.Item2 == startingZ)
-                                    {
-                                        if (z < 2)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                        else
-                                        {
-                                            var middle = zAxisSize / 2 + 2;
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint
-                                                {FlatNumber = z <= middle ? 1 : 2};
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (z > zAxisSize - 3)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                        else
-                                        {
-                                            var middle = zAxisSize / 2 - 2;
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint
-                                                {FlatNumber = z <= middle ? 1 : 2};
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (z + startingZ < buildingPorchPosition.Item2)
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                else if (z + startingZ > buildingPorchPosition.Item2)
-                                {
-                                    flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                }
-                                else
-                                {
-                                    if (buildingPorchPosition.Item1 == startingX)
-                                    {
-                                        if (x < 2)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                        else
-                                        {
-                                            var middle = xAxisSize / 2 + 2;
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint
-                                                {FlatNumber = x <= middle ? 1 : 2};
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (x > xAxisSize - 3)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                        else
-                                        {
-                                            var middle = xAxisSize / 2 - 2;
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint
-                                                {FlatNumber = x <= middle ? 1 : 2};
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        twoFlat = true;
-                        twoFlatMapPattern = flatMap;
-                    }
-
-                    floorInfo.FloorMap = twoFlatMapPattern;
-                    break;
-                }
-                case 3:
-                {
-                    if (!threeFlat)
+                    for (var z = 0; z < zAxisSize; z++)
+                    for (var x = 0; x < xAxisSize; x++)
                     {
                         if (buildingFaceZAxis)
                         {
-                            var middleZ = zAxisSize / 2;
-                            var middleXLeft = (buildingPorchPosition.Item1 - startingX) / 2;
-                            var middleXRight = xAxisSize - (startingX + xAxisSize - buildingPorchPosition.Item1) / 2;
-                            //Debug.Log($"{middleZ};{middleXLeft};{middleXRight}");
-
-
-                            for (var z = 0; z < zAxisSize; z++)
-                            for (var x = 0; x < xAxisSize; x++)
+                            if (startingX + x == buildingPorchPosition.Item1)
                             {
-                                if (buildingPorchPosition.Item2 == startingZ)
-                                    if (z < middleZ)
-                                    {
-                                        if (startingX + x < buildingPorchPosition.Item1)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        else if (startingX + x > buildingPorchPosition.Item1)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
-                                        else
-                                        {
-                                            if (z > 1)
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                            else
-                                            {
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (x < middleXLeft)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else if (x >= middleXRight)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
-                                        else
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                        }
-                                    }
+                                if (startingZ + z == buildingPorchPosition.Item2 ||
+                                    startingZ + z == buildingPorchPosition.Item2 + 1 ||
+                                    startingZ + z == buildingPorchPosition.Item2 - 1)
+                                {
+                                    floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                }
                                 else
                                 {
-                                    if (z > middleZ)
-                                    {
-                                        if (startingX + x < buildingPorchPosition.Item1)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        else if (startingX + x > buildingPorchPosition.Item1)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else
-                                        {
-                                            if (z < zAxisSize - 2)
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                            else
-                                            {
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (x < middleXLeft)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
-                                        else if (x >= middleXRight)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                        }
-                                    }
+                                    floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
                                 }
-
-                                //Debug.Log($"{z};{x};{flatMap[z * xAxisSize + x].FlatNumber}");
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
                             }
                         }
                         else
                         {
-                            var middleX = xAxisSize / 2;
-                            var middleZLeft = (buildingPorchPosition.Item2 - startingZ) / 2 + 1;
-                            var middleZRight =
-                                zAxisSize - (startingZ + zAxisSize - 1 - buildingPorchPosition.Item2) / 2;
-                           // Debug.Log($"{middleX};{middleZLeft};{middleZRight}");
-                            for (var z = 0; z < zAxisSize; z++)
-                            for (var x = 0; x < xAxisSize; x++)
+                            if (startingZ + z == buildingPorchPosition.Item2)
                             {
-                                if (buildingPorchPosition.Item1 == startingX)
-                                    if (x < middleX)
-                                    {
-                                        if (startingZ + z < buildingPorchPosition.Item2)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        else if (startingZ + z > buildingPorchPosition.Item2)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else
-                                        {
-                                            if (x > 1)
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                            else
-                                            {
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (z < middleZLeft)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
-                                        else if (z >= middleZRight)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                        }
-                                    }
+                                if (startingX + x == buildingPorchPosition.Item1 ||
+                                    startingX + x == buildingPorchPosition.Item1 + 1 ||
+                                    startingX + x == buildingPorchPosition.Item1 - 1)
+                                {
+                                    floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                }
                                 else
                                 {
-                                    if (x > middleX)
+                                    floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                }
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                            }
+                        }
+                    }
+
+                    break;
+                }
+                case 2:
+                {
+                    for (var z = 0; z < zAxisSize; z++)
+                    for (var x = 0; x < xAxisSize; x++)
+                    {
+                        if (buildingFaceZAxis)
+                        {
+                            if (x + startingX < buildingPorchPosition.Item1)
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                            else if (x + startingX > buildingPorchPosition.Item1)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                            }
+                            else
+                            {
+                                if (buildingPorchPosition.Item2 == startingZ)
+                                {
+                                    if (z < 2)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
                                     {
-                                        if (startingZ + z < buildingPorchPosition.Item2)
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        else if (startingZ + z > buildingPorchPosition.Item2)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
-                                        else
-                                        {
-                                            if (x < xAxisSize - 2)
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
-                                            else
-                                            {
-                                                flatMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
-                                            }
-                                        }
+                                        var middle = zAxisSize / 2 + 2;
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = z <= middle ? 1 : 2};
+                                    }
+                                }
+                                else
+                                {
+                                    if (z > zAxisSize - 3)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = zAxisSize / 2 - 2;
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = z <= middle ? 1 : 2};
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (z + startingZ < buildingPorchPosition.Item2)
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                            else if (z + startingZ > buildingPorchPosition.Item2)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                            }
+                            else
+                            {
+                                if (buildingPorchPosition.Item1 == startingX)
+                                {
+                                    if (x < 2)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = xAxisSize / 2 + 2;
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = x <= middle ? 1 : 2};
+                                    }
+                                }
+                                else
+                                {
+                                    if (x > xAxisSize - 3)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {IsPorch = true};
+                                    else
+                                    {
+                                        var middle = xAxisSize / 2 - 2;
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint
+                                            {FlatNumber = x <= middle ? 1 : 2};
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    break;
+                }
+                case 3:
+                {
+                    if (buildingFaceZAxis)
+                    {
+                        var middleZ = zAxisSize / 2;
+                        var middleXLeft = (buildingPorchPosition.Item1 - startingX) / 2;
+                        var middleXRight = xAxisSize - (startingX + xAxisSize - buildingPorchPosition.Item1) / 2;
+
+
+                        for (var z = 0; z < zAxisSize; z++)
+                        for (var x = 0; x < xAxisSize; x++)
+                        {
+                            if (buildingPorchPosition.Item2 == startingZ)
+                                if (z < middleZ)
+                                {
+                                    if (startingX + x < buildingPorchPosition.Item1)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    else if (startingX + x > buildingPorchPosition.Item1)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
                                     }
                                     else
                                     {
-                                        if (z < middleZLeft)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
-                                        }
-                                        else if (z >= middleZRight)
-                                        {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
-                                        }
+                                        if (z > 1)
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {FlatNumber = 2};
                                         else
                                         {
-                                            flatMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {IsPorch = true};
                                         }
                                     }
                                 }
-
-                                //Debug.Log($"{z};{x};{flatMap[z * xAxisSize + x].FlatNumber}");
+                                else
+                                {
+                                    if (x < middleXLeft)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else if (x >= middleXRight)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            else
+                            {
+                                if (z > middleZ)
+                                {
+                                    if (startingX + x < buildingPorchPosition.Item1)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    else if (startingX + x > buildingPorchPosition.Item1)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        if (z < zAxisSize - 2)
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (x < middleXLeft)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else if (x >= middleXRight)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
                             }
                         }
-
-                        threeFlat = true;
-                        threeFlatMapPattern = flatMap;
                     }
-
-                    floorInfo.FloorMap = threeFlatMapPattern;
+                    else
+                    {
+                        var middleX = xAxisSize / 2;
+                        var middleZLeft = (buildingPorchPosition.Item2 - startingZ) / 2 + 1;
+                        var middleZRight =
+                            zAxisSize - (startingZ + zAxisSize - 1 - buildingPorchPosition.Item2) / 2;
+                        for (var z = 0; z < zAxisSize; z++)
+                        for (var x = 0; x < xAxisSize; x++)
+                        {
+                            if (buildingPorchPosition.Item1 == startingX)
+                                if (x < middleX)
+                                {
+                                    if (startingZ + z < buildingPorchPosition.Item2)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    else if (startingZ + z > buildingPorchPosition.Item2)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        if (x > 1)
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (z < middleZLeft)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else if (z >= middleZRight)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            else
+                            {
+                                if (x > middleX)
+                                {
+                                    if (startingZ + z < buildingPorchPosition.Item2)
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    else if (startingZ + z > buildingPorchPosition.Item2)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        if (x < xAxisSize - 2)
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {FlatNumber = 2};
+                                        else
+                                        {
+                                            floorInfo.FloorMap[z * xAxisSize + x] =
+                                                new FlatMapPoint {IsPorch = true};
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (z < middleZLeft)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 1};
+                                    }
+                                    else if (z >= middleZRight)
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 3};
+                                    }
+                                    else
+                                    {
+                                        floorInfo.FloorMap[z * xAxisSize + x] = new FlatMapPoint {FlatNumber = 2};
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                     break;
@@ -1457,7 +1446,7 @@ public class BuildingGenerator : MonoBehaviour
 
     private static void LayoutRooms(List<BuildingFloorInfo> flatMapList, int startingZ, int startingX,
         int zAxisSize, int xAxisSize,
-        bool buildingFaceZAxis, Building building, int floorCount, List<Flat>[] flats,
+        bool buildingFaceZAxis, int floorCount,
         Tuple<int, int> buildingPorchPosition)
     {
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++)
@@ -1702,8 +1691,8 @@ public class BuildingGenerator : MonoBehaviour
             }
 
             AssignEmptyFlatMapPoints(flatMapList[floorNumber], startingPoints, zAxisSize, xAxisSize);
-            UpdateFlatMap(flatMapList[floorNumber], flats, zAxisSize, xAxisSize);
-            ConnectRooms(flatMapList[floorNumber], startingPoints, buildingPorchPosition, xAxisSize);
+            UpdateFlatMap(flatMapList[floorNumber], zAxisSize, xAxisSize);
+            ConnectRooms(flatMapList[floorNumber], startingPoints, xAxisSize);
         }
     }
 
@@ -1713,7 +1702,6 @@ public class BuildingGenerator : MonoBehaviour
         var growRoomDirectionList = new List<GrowRoomDirection>();
         for (var pointNumber = 0; pointNumber < startingPoints.Count; pointNumber++)
         {
-            Debug.Log(pointNumber);
             var point = startingPoints[pointNumber];
             floorInfo.FloorMap[point.z * xAxisSize + point.x].RoomNumber = pointNumber + 1;
             growRoomDirectionList.Add(new GrowRoomDirection
@@ -1730,7 +1718,6 @@ public class BuildingGenerator : MonoBehaviour
 
             for (var pointNumber = 0; pointNumber < startingPoints.Count; pointNumber++)
             {
-                Debug.Log(pointNumber);
                 if (growRoomDirectionList[pointNumber].CanGrow)
                 {
                     var point = startingPoints[pointNumber];
@@ -2032,39 +2019,35 @@ public class BuildingGenerator : MonoBehaviour
             for (var x = 0; x < xAxisSize; x++)
             {
                 var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
-                Debug.Log(pointInfo);
-                if (pointInfo.RoomNumber == 0 && !pointInfo.IsPorch)
+                if (pointInfo.RoomNumber != 0 || pointInfo.IsPorch) continue;
+                if (x != xAxisSize - 1 && floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
+                    floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                        floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber;
+                else if (x != 0 && floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
+                    floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                        floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber;
+                else if (z != zAxisSize - 1 && floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
+                    floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                        floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber;
+                else if (z != 0 && floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
+                    floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                        floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber;
+                else
                 {
-                    if (x != xAxisSize - 1 && floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber > 4)
-                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
-                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber;
-                    else if (x != 0 && floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber > 4)
-                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
-                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber;
-                    else if (z != zAxisSize - 1 && floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber > 4)
-                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
-                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber;
-                    else if (z != 0 && floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber > 4)
-                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
-                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber;
-                    else
-                    {
-                        floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
-                            4 + floorInfo
-                                .AdditionalFlatRooms[
-                                    floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1] + 1;
-                        floorInfo
+                    floorInfo.FloorMap[z * xAxisSize + x].RoomNumber =
+                        4 + floorInfo
                             .AdditionalFlatRooms[
-                                floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1]++;
-                        startingRoomPoints[pointInfo.FlatNumber - 1].Add(new Vector3Int(x, 0, z));
-                        Debug.Log(pointInfo.FlatNumber-1+"th point added");
-                    }
+                                floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1] + 1;
+                    floorInfo
+                        .AdditionalFlatRooms[
+                            floorInfo.FloorMap[z * xAxisSize + x].FlatNumber - 1]++;
+                    startingRoomPoints[pointInfo.FlatNumber - 1].Add(new Vector3Int(x, 0, z));
                 }
             }
         }
     }
 
-    private static void UpdateFlatMap(BuildingFloorInfo floorInfo, List<Flat>[] flats, int zAxisSize,
+    private static void UpdateFlatMap(BuildingFloorInfo floorInfo, int zAxisSize,
         int xAxisSize)
     {
         for (var z = 0;
@@ -2074,6 +2057,7 @@ public class BuildingGenerator : MonoBehaviour
             for (var x = 0; x < xAxisSize; x++)
             {
                 var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
+                //floorInfo.FloorMap[z * xAxisSize + x].RoomType
 
                 if (z == 0)
                 {
@@ -2322,8 +2306,9 @@ public class BuildingGenerator : MonoBehaviour
         }
     }
 
+    [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
     private static void ConnectRooms(BuildingFloorInfo floorInfo, List<List<Vector3Int>> startingRoomPoints,
-        Tuple<int, int> buildingPorchPosition, int xAxisSize)
+        int xAxisSize)
     {
         for (var flatNumber = 0;
             flatNumber < startingRoomPoints.Count;
@@ -2344,7 +2329,7 @@ public class BuildingGenerator : MonoBehaviour
 
             while (foundPoints.Any(r => r == false))
             {
-                for (int point = 0; point < startingRoomPoints[flatNumber].Count; point++)
+                for (var point = 0; point < startingRoomPoints[flatNumber].Count; point++)
                 {
                     if (!foundPoints[point])
                     {
@@ -2371,13 +2356,46 @@ public class BuildingGenerator : MonoBehaviour
                 var roomWasFound = false;
                 while (!roomWasFound)
                 {
-                    var distanceX = Math.Abs(startingRoomPointCoordinates.x - nextNearestRoomPoint.x);
-                    var distanceZ = Math.Abs(startingRoomPointCoordinates.z - nextNearestRoomPoint.z);
-                    var directionX = distanceX > distanceZ;
+                    //var distanceX = Math.Abs(startingRoomPointCoordinates.x - nextNearestRoomPoint.x);
+                    //var distanceZ = Math.Abs(startingRoomPointCoordinates.z - nextNearestRoomPoint.z);
+                    var directionX = Random.Range(0, 2) == 0;
 
                     if (mainPathBlocked)
                     {
-                        directionX = !directionX;
+                        var foundPointsCount = foundPoints.Count(r => r == true);
+                        if (foundPointsCount <= 2)
+                        {
+                            var notFoundIndices = new List<int>();
+                            for (var i = 0; i < foundPoints.Length; i++)
+                            {
+                                if (!foundPoints[i])
+                                {
+                                    notFoundIndices.Add(i);
+                                }
+                            }
+
+                            var newPoint =
+                                startingRoomPoints[flatNumber][notFoundIndices[Random.Range(0, notFoundIndices.Count)]];
+                            nextNearestRoomPoint = newPoint;
+                        }
+                        else
+                        {
+                            var foundIndices = new List<int>();
+                            for (var i = 0; i < foundPoints.Length; i++)
+                            {
+                                if (foundPoints[i])
+                                {
+                                    foundIndices.Add(i);
+                                }
+                            }
+
+                            var newPoint =
+                                startingRoomPoints[flatNumber][foundIndices[Random.Range(0, foundIndices.Count)]];
+                            startingRoomPointCoordinates = newPoint;
+                            startingRoomPoint = floorInfo.FloorMap[
+                                startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                        }
+
                         mainPathBlocked = false;
                     }
 
@@ -2430,19 +2448,10 @@ public class BuildingGenerator : MonoBehaviour
                                     .RoomNumber != startingRoomPoint.RoomNumber)
                                 {
                                     roomWasFound = true;
-                                    try
-                                    {
-                                        foundPoints[floorInfo.FloorMap[
-                                                startingRoomPointCoordinates.z * xAxisSize +
-                                                startingRoomPointCoordinates.x - 1]
-                                            .RoomNumber - 1] = true;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        Console.WriteLine(e);
-                                        throw;
-                                    }
-
+                                    foundPoints[floorInfo.FloorMap[
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x - 1]
+                                        .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
                                             startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
                                         .DoorFrameXDown = true;
@@ -2514,19 +2523,10 @@ public class BuildingGenerator : MonoBehaviour
                                     .RoomNumber != startingRoomPoint.RoomNumber)
                                 {
                                     roomWasFound = true;
-                                    try
-                                    {
-                                        foundPoints[floorInfo.FloorMap[
-                                                (startingRoomPointCoordinates.z - 1) * xAxisSize +
-                                                startingRoomPointCoordinates.x]
-                                            .RoomNumber - 1] = true;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        Console.WriteLine(e);
-                                        throw;
-                                    }
-
+                                    foundPoints[floorInfo.FloorMap[
+                                            (startingRoomPointCoordinates.z - 1) * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
                                             startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
                                         .DoorFrameZDown = true;
@@ -2562,7 +2562,8 @@ public class BuildingGenerator : MonoBehaviour
         }
     }
 
-    private void SpawnInnerWalls(List<BuildingFloorInfo> flatMapList, List<Flat>[] flats, GameObject buildingParent,
+    private static void SpawnInnerWalls(List<BuildingFloorInfo> flatMapList, List<Flat>[] flats,
+        GameObject buildingParent,
         int zAxisSize, int xAxisSize,
         int startingX, float startingY, int startingZ)
     {
@@ -2576,7 +2577,6 @@ public class BuildingGenerator : MonoBehaviour
             {
                 var flatMapPoint = flatMapList[floorNumber].FloorMap[z * xAxisSize + x];
                 if (flatMapPoint.IsPorch) continue;
-                GameObject part = null;
                 flatMapPoint.RoomType = RoomTypes.LivingRoom; //(RoomTypes) flatMapPoint.RoomNumber;
                 switch (flatMapPoint.RoomType)
                 {
@@ -2584,62 +2584,62 @@ public class BuildingGenerator : MonoBehaviour
                     {
                         if (flatMapPoint.DoorFrameXDown)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 180f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 180f, 0f), buildingParent);
                         }
                         else if (flatMapPoint.WallXDown)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 180f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 180f, 0f), buildingParent);
                         }
 
                         if (flatMapPoint.DoorFrameXUp)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 0f, 0f), buildingParent);
                         }
                         else if (flatMapPoint.WallXUp)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 0f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 0f, 0f), buildingParent);
                         }
 
                         if (flatMapPoint.DoorFrameZDown)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 90f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 90f, 0f), buildingParent);
                         }
                         else if (flatMapPoint.WallZDown)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 90f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 90f, 0f), buildingParent);
                         }
 
                         if (flatMapPoint.DoorFrameZUp)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 270f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 270f, 0f), buildingParent);
                         }
                         else if (flatMapPoint.WallZUp)
                         {
-                            part = Instantiate(flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
+                            InstantiateBuildingPartAsChild(
+                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
                                 new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 270f, 0f));
-                            part.transform.SetParent(buildingParent.transform);
+                                Quaternion.Euler(0f, 270f, 0f), buildingParent);
                         }
 
                         break;
@@ -2682,35 +2682,22 @@ public class BuildingGenerator : MonoBehaviour
         var meshFilters = loaders.SelectMany(r => r.meshFilters).ToArray();
         var meshRenderers = loaders.SelectMany(r => r.meshRenderers).ToArray();
 
-        var materialSortedMeshFilters = new[]
+        var materialSortedMeshFilters = new List<MeshFilter>[DefaultMaterialNames.Count];
+        for (var i = 0; i < materialSortedMeshFilters.Length; i++)
         {
-            new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>(),
-            new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>(), new List<MeshFilter>()
-        };
+            materialSortedMeshFilters[i] = new List<MeshFilter>();
+        }
+
         for (var i = 0;
             i < meshFilters.Length;
             i++)
         {
             var materialName = meshRenderers[i].material.name;
-            if (materialName == DefaultMaterialNames[0])
-                materialSortedMeshFilters[0].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[1])
-                materialSortedMeshFilters[1].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[2])
-                materialSortedMeshFilters[2].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[3])
-                materialSortedMeshFilters[3].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[4])
-                materialSortedMeshFilters[4].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[5])
-                materialSortedMeshFilters[5].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[6])
-                materialSortedMeshFilters[6].Add(meshFilters[i]);
-            else if (materialName == DefaultMaterialNames[7])
-                materialSortedMeshFilters[7].Add(meshFilters[i]);
-            else
+            for (var j = 0; j < materialSortedMeshFilters.Length; j++)
             {
-                Debug.LogWarning("WrongDefaultMaterialNameDetected");
+                if (materialName != DefaultMaterialNames[j]) continue;
+                materialSortedMeshFilters[j].Add(meshFilters[i]);
+                break;
             }
         }
 
@@ -2733,7 +2720,7 @@ public class BuildingGenerator : MonoBehaviour
                 //if (index % 75 == 0) yield return null;
             }
 
-            var mesh = new Mesh();
+            var mesh = new Mesh {indexFormat = UnityEngine.Rendering.IndexFormat.UInt32};
             mesh.CombineMeshes(combineList.ToArray());
             mesh.RecalculateBounds();
             buildingParent.transform.GetComponent<MeshFilter>().mesh = mesh;
@@ -2781,5 +2768,13 @@ public class BuildingGenerator : MonoBehaviour
 
         var position = new Tuple<int, int>(x, z);
         return position;
+    }
+
+    private static void InstantiateBuildingPartAsChild(GameObject gameObject, Vector3 position, Quaternion rotation,
+        GameObject parent)
+    {
+        var part = Instantiate(gameObject, position,
+            rotation);
+        part.transform.SetParent(parent.transform);
     }
 }

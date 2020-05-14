@@ -91,7 +91,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void OnDestroy()
     {
-        //StaticOcclusionCulling.RemoveCacheFolder();
+        StaticOcclusionCulling.RemoveCacheFolder();
     }
 
     private IEnumerator DoBigProcess()
@@ -106,8 +106,8 @@ public class TerrainGenerator : MonoBehaviour
         yield return null;
         yield return StartCoroutine(AssembleTerrainParts());
         SpawnLevelBorders();
-        //StaticOcclusionCulling.GenerateInBackground();
-        //while (StaticOcclusionCulling.isRunning) yield return null;
+        StaticOcclusionCulling.GenerateInBackground();
+        while (StaticOcclusionCulling.isRunning) yield return null;
         yield return null;
         isDone = true;
         yield return null;
