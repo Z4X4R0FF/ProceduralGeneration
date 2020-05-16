@@ -20,42 +20,131 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a847cd3f-eccc-4404-8c81-e7a9269cde71" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartDoorframe.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartDoorframe.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartwall 1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartwall 1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Textures/Downloaded/Wallpaper_01/TexturesCom_Plaster_WallpaperOld_512_normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Textures/Downloaded/Wallpaper_01/TexturesCom_Plaster_WallpaperOld_512_normal.tif.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructureSecondaryMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructureSecondaryMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Flat/Flat_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Flat/Flat_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/10/10e1208e466c0062637660f0ba1f8ad8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/15/15ba132a1562db4a834b1b631b98c6f0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8b/8bd7efd468781cc745950afb38501900" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8e/8e67ff672b09827b670c992164c0720f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a2/a26fad2b87b448c24acc93f3ada2d8d1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c6/c616af9be2d42a8d8963bf2488eabc48" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d3/d35fb23c503fe8df1964e3185295fe14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/01/01563e3734f66bbaf524fd7aa27d23fc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/03/035fa820ddc5632f8fafde61d89aa78f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/03/037c1646f4ad2ba5eb96ec6cdd006d0e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/05/05db9946e1aa3e453d287d190850e8e0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/05/05fc4422754cc47c2a54f60867d7d845" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0a/0a62a48d3fea64e34271ec00bace7a71" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0a/0aec3368345f76c927926254e3dba572" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0e/0e94a66e913932c0c0956d8b1130d818" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0f/0fc918d514cc659c5d0cd856a2f6b06b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/11/113a1c7c7938c44d887ca95d0b9c14f8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/13/13843345979d18e4957b339afd1f0bdc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/14/14d363b0c5c7365ea8089afd20cf25ba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/15/15b787669a76e96c07349db1a4b8e1c1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1a/1a6513a34cba867cf4c0bb23d4154e93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1f/1fabbef921f3ae1c00faca39343c8a5a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/26/26538a6b72360fecec92f0ff0d36ed6a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/26/26b198831243c0bfaa62fa2d681fc087" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/2940db3813334833156e410fe19d7d68" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/29dbc215d990d4bf52ab0fa2738419ab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/29eed800a7fe5eeea114d935016b6f2a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2f/2f32b0fab4c14b62a669a0446b4d88f2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/34/342785104915ec565dd4a8d559424821" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/35/35215fd1db6a9ed60f0a0be5e3da60b8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/39/39f3187edbbe57112845d20a2f8bdf38" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3a/3ab4aa6978d31cc7d6ab01e25fa2dc3f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3c/3c6694592ac62ae11949ce23be6951e5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/44/445016736ed04652569cf99a580d46ab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/46/4661fa256cdc49e0e68f6d141342ac39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4a/4a7dcca02ade66965ef4f165bf82f52c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/50/5055f8e05e4ab3dbdd64fef2890ee9d6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/50/50bf90bfba6ba9576ec794388ff472d9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/54/544a5a2f94da30dc3ee075d03e5e2ac6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/56/56cb14d13ef80764509c5db82979ace7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/57/574475967c5c767c22c14721b076d4f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/58/5848580459b304beca308a3c95610046" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5d/5d29da61dda2716974383ca718d51593" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5d/5d5d4bf8471a78d4851e2fdc0f8bcf89" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/61/61017cfcac2e53bea7260f2f2dae8dc4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/63/6396065d098e6be2eaa81d6423e61c67" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/65/652bf8fe92bd1b8f54c76ef339d7a1f7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/65/654fbfac41eb7daf291d32e058cec858" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/69/6997050af01333b6c43ed1beb82c9038" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6e/6e23af4f6be568f2fbc4ad2abe4d2f83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/70/70f3242667f3d5a5a6c1484d3bdfdbe0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/71/710db24115461627c5341ff9e81e4a21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/75/75a09191983700b1876bf63b3977e666" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/77/777396d2004ff0532d7bcae2a790da5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/78/7819ad38abebf3500a1ef905fdb420b6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/7c/7ce28fade16ccebde3fa5d24184520b9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/7e/7e3d5cd05b6a78147534ff998638f595" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/7e/7eaab931153a64de4109f86334c5c14d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/84/847d9442156763df74f1bf811a454920" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/86/86b35011a2fe372cae2869b1b123a142" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/88/883a4d4c0c977be0792b061b158a9d28" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8a/8ae187fc139c48ba8b853ce2f9f682f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8f/8fea681a439f2aa1b7c620b48cf7431b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/92/922ef60c1282ec0ef1f5927dbde56dcd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/be/be1d27d874bb99b34c8a32962bd1a21f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/bf/bf136964b84488815ddc3b8f9a001092" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c7/c7312228d5e9338a3aaf649b5d0e6a1d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/cd/cd337eb86d261e08f8cd41c9c694a22b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d2/d26d472b10946d538414c47d8a64caff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d3/d30615b608988f7ce0925a9b52621f85" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d6/d6a329937548b0e2a36915a44de7885a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d8/d8aa75b0d4112f87243deb8011e0fc6c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/da/dabe4f9778fa84057f5f5df67bf032d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/dd/dd497e512ae859cf3e60913146c1e349" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e1/e1cb3e17b3c45daabe919ad61463450b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e7/e7d0a4f12b1240bcc49956d4fa95a325" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ea/eab263f84b0fb82b427111c963c33370" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/eb/eb1a54bd73f2eeaa71a766eb996c2276" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/eb/eb9169a94f27cd07548c768f3290c32d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ee/ee058f03f236d03985c967df2bcb0040" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ee/eee74f994ffecbd61546aa4661ea095f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f1/f15d52806ef31fabaef5c30e60031d9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f7/f7d2b21d60d6a810581b62936347aca4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/fc/fc3d73f3a13adc793388045e89fd9cce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ff/ffc061124c54666340baa46ce3d3e7c1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-6e779c1e5e11c33499.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-6e779c1e5e11c33499.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-04e65b8eda7da6d469.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-04e65b8eda7da6d469.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-05c423a10cdca74439.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-05c423a10cdca74439.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-04e65b8eda7da6d469.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-04e65b8eda7da6d469.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-05c423a10cdca74439.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-05c423a10cdca74439.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-141b0e1a0bd5c714b9.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-141b0e1a0bd5c714b9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-2b58661bbe365094f8.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-2b58661bbe365094f8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-459dd0c3aac4b5f4d8.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-459dd0c3aac4b5f4d8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-ff391be766fb5ad44a.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-ff391be766fb5ad44a.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/96d794-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,27 +155,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351E49E2-A5BF-4FD6-BEAB-B458CE2255F3/7b/960f42dd/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingFloorInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/e1/c3028b99/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/GrowRoomDirection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/c1/31dbeb08/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/67/a5bdb975/Vector3Int.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/StreetGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObjectType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/InteriorObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/e4/04c81ef8/Int32.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -100,13 +192,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/123.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/GrowRoomDirection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingFloorInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" />
       </list>
     </option>
@@ -127,10 +220,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.environmentSetup" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21740">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21744">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="21740" />
+      <option name="pid" value="21744" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -161,97 +254,101 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="855" y="273" key="#xdebugger.XInspectDialog" timestamp="1587983424591">
+    <state x="855" y="273" key="#xdebugger.XInspectDialog" timestamp="1589545348063">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="855" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587983424591" />
+    <state x="855" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589545348063" />
+    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1589545373084">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589545373084" />
     <state x="718" y="379" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1587559781247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="379" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587559781247" />
-    <state width="839" height="464" key="DebuggerActiveHint" timestamp="1589449415765">
+    <state width="839" height="464" key="DebuggerActiveHint" timestamp="1589536653350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="839" height="464" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589449415765" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1589451921421">
+    <state width="839" height="464" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589536653350" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1589547857578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857578" />
     <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225939" />
-    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.3.bottom" timestamp="1589451921422">
+    <state width="1877" height="285" key="GridCell.Tab.3.bottom" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921422" />
+    <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.3.center" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.3.center" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.3.left" timestamp="1589451921421">
+    <state width="1877" height="285" key="GridCell.Tab.3.left" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921421" />
+    <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
-    <state width="1877" height="285" key="GridCell.Tab.3.right" timestamp="1589451921422">
+    <state width="1877" height="285" key="GridCell.Tab.3.right" timestamp="1589547857579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589451921422" />
+    <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589547857579" />
     <state width="1877" height="375" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588925225940" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1587628410083">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -274,69 +371,199 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2330</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2323">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs</url>
+          <line>52</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" initialLine="54">
             <startOffsets>
-              <option value="121043" />
+              <option value="1836" />
             </startOffsets>
             <endOffsets>
-              <option value="121044" />
+              <option value="1857" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2551</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2477">
+          <line>2127</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2087">
             <startOffsets>
-              <option value="133205" />
+              <option value="111909" />
             </startOffsets>
             <endOffsets>
-              <option value="133206" />
+              <option value="111944" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2679</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2652">
+          <line>2098</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2086">
             <startOffsets>
-              <option value="139115" />
+              <option value="110667" />
             </startOffsets>
             <endOffsets>
-              <option value="139116" />
+              <option value="110741" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2357</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2357">
+          <line>2125</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2113">
             <startOffsets>
-              <option value="122326" />
+              <option value="111898" />
             </startOffsets>
             <endOffsets>
-              <option value="122327" />
+              <option value="111899" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2365</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2365">
+          <line>2775</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2707">
             <startOffsets>
-              <option value="122770" />
+              <option value="144499" />
             </startOffsets>
             <endOffsets>
-              <option value="122796" />
+              <option value="144601" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs</url>
+          <line>59</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" initialLine="59">
+            <startOffsets>
+              <option value="1944" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1945" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3671</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3615">
+            <startOffsets>
+              <option value="192767" />
+            </startOffsets>
+            <endOffsets>
+              <option value="192768" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3636</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3580">
+            <startOffsets>
+              <option value="190914" />
+            </startOffsets>
+            <endOffsets>
+              <option value="190915" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3601</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3545">
+            <startOffsets>
+              <option value="189062" />
+            </startOffsets>
+            <endOffsets>
+              <option value="189063" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3567</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3511">
+            <startOffsets>
+              <option value="187243" />
+            </startOffsets>
+            <endOffsets>
+              <option value="187577" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3520</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3464">
+            <startOffsets>
+              <option value="184625" />
+            </startOffsets>
+            <endOffsets>
+              <option value="184626" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3486</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3430">
+            <startOffsets>
+              <option value="182806" />
+            </startOffsets>
+            <endOffsets>
+              <option value="183139" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3451</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3395">
+            <startOffsets>
+              <option value="180954" />
+            </startOffsets>
+            <endOffsets>
+              <option value="181286" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>3415</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3359">
+            <startOffsets>
+              <option value="179067" />
+            </startOffsets>
+            <endOffsets>
+              <option value="179068" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
+          <line>915</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="915">
+            <startOffsets>
+              <option value="47617" />
+            </startOffsets>
+            <endOffsets>
+              <option value="47618" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

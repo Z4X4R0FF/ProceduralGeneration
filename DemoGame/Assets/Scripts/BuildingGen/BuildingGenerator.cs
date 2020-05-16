@@ -23,7 +23,7 @@ public class BuildingGenerator : MonoBehaviour
     [Header("Yard Settings")] public int minYardZAxisSize;
     public int passWidth;
 
-    private static List<string> DefaultMaterialNames = new List<string>()
+    private static List<string> DefaultMaterialNames = new List<string>
     {
         "DefaultBasementPrimaryMaterial (Instance)",
         "DefaultBasementSecondaryMaterial (Instance)",
@@ -31,8 +31,6 @@ public class BuildingGenerator : MonoBehaviour
         "DefaultStructureSecondaryMaterial (Instance)",
         "DefaultRoofMaterial (Instance)",
         "DefaultWindowMaterial (Instance)",
-        "DefaultFloorMaterial (Instance)",
-        "DefaultRoomMaterial (Instance)"
     };
 
     public IEnumerator GenerateBuildingBasement(LevelMapPoint[,] levelMap)
@@ -666,16 +664,35 @@ public class BuildingGenerator : MonoBehaviour
         var flatCounts = new int[floorCount];
         var flats = new List<Flat>[floorCount];
         var y = startingY;
-        for (var floorNumber = 0; floorNumber < floorCount; floorNumber++, y++)
+
+        for (var floorNumber = 0; floorNumber < floorCount; floorNumber++)
         {
             var flatCount = Random.Range(building.minFlatCount, building.maxFlatCount + 1);
             flatCounts[floorNumber] = flatCount;
             flats[floorNumber] = new List<Flat>();
             for (var j = 0; j < flatCount; j++)
             {
-                flats[floorNumber].Add(building.flats[Random.Range(0, building.flats.Count)]);
+                for (var i = 0; i < flatCounts[floorNumber]; i++)
+                {
+                    flats[floorNumber].Add(building.flats[Random.Range(0, building.flats.Count)]);
+                }
             }
+        }
 
+
+        var flatMapList = LayoutFlats(startingZ, startingX, zAxisSize, xAxisSize,
+            buildingFaceZAxis,
+            floorCount, flatCounts,
+            buildingPorchPosition);
+        LayoutRooms(flatMapList, startingZ, startingX, zAxisSize, xAxisSize,
+            buildingFaceZAxis,
+            floorCount,
+            buildingPorchPosition, flats);
+        SpawnInnerWalls(flatMapList, flats, building, buildingParent, zAxisSize, xAxisSize, startingX, startingY,
+            startingZ);
+
+        for (var floorNumber = 0; floorNumber < floorCount; floorNumber++, y++)
+        {
             for (var z = startingZ; z < startingZ + zAxisSize; z++)
             for (var x = startingX; x < startingX + xAxisSize; x++)
             {
@@ -721,9 +738,11 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1 - 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXUp = WallTypes.DoorFrame;
                                     continue;
                                 }
 
@@ -732,9 +751,11 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1 + 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXDown = WallTypes.DoorFrame;
                                     continue;
                                 }
                             }
@@ -743,9 +764,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        flatCounts[floorNumber] == 2 ? building.wallPart : building.doorFramePart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZDown = flatCounts[floorNumber] == 2
+                                        ? WallTypes.Wall
+                                        : WallTypes.DoorFrame;
                                     continue;
                                 }
                             }
@@ -757,9 +782,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1 - 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXUp = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
 
@@ -768,9 +797,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1 + 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXDown = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
                             }
@@ -779,9 +812,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (x == buildingPorchPosition.Item1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        flatCounts[floorNumber] == 2 ? building.wallPart : building.doorFramePart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZUp = flatCounts[floorNumber] == 2
+                                        ? WallTypes.Wall
+                                        : WallTypes.DoorFrame;
                                     continue;
                                 }
                             }
@@ -830,9 +867,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2 - 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZUp = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
 
@@ -841,9 +882,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2 + 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZDown = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
                             }
@@ -852,9 +897,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        flatCounts[floorNumber] == 2 ? building.wallPart : building.doorFramePart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 180f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXDown = flatCounts[floorNumber] == 2
+                                        ? WallTypes.Wall
+                                        : WallTypes.DoorFrame;
                                     continue;
                                 }
                             }
@@ -866,9 +915,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2 - 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 270f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZUp = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
 
@@ -880,9 +933,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2 + 1)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount != 1 ? building.doorFramePart : building.wallPart,
+                                        flatCounts[floorNumber] != 1 ? building.doorFramePart : building.wallPart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 90f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallZDown = flatCounts[floorNumber] != 1
+                                        ? WallTypes.DoorFrame
+                                        : WallTypes.Wall;
                                     continue;
                                 }
                             }
@@ -891,9 +948,13 @@ public class BuildingGenerator : MonoBehaviour
                                 if (z == buildingPorchPosition.Item2)
                                 {
                                     InstantiateBuildingPartAsChild(
-                                        flatCount == 2 ? building.wallPart : building.doorFramePart,
+                                        flatCounts[floorNumber] == 2 ? building.wallPart : building.doorFramePart,
                                         new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f),
                                         buildingParent);
+                                    flatMapList[floorNumber].FloorMap[(z - startingZ) * xAxisSize + x - startingX]
+                                        .WallXUp = flatCounts[floorNumber] == 2
+                                        ? WallTypes.Wall
+                                        : WallTypes.DoorFrame;
                                     continue;
                                 }
                             }
@@ -973,26 +1034,11 @@ public class BuildingGenerator : MonoBehaviour
                                 (zAxisSize + startingZ - z + 1) % 2 == 1 ? building.windowPart : building.wallPart,
                                 new Vector3(x + 0.5f, y, z + 0.5f), Quaternion.Euler(0f, 0f, 0f), buildingParent);
                     }
-                    else
-                    {
-                        InstantiateBuildingPartAsChild(building.emptyPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                            Quaternion.Euler(0f, 0f, 0f), buildingParent);
-                    }
                 }
             }
         }
 
-        var flatMapList = LayoutFlats(startingZ, startingX, zAxisSize, xAxisSize,
-            buildingFaceZAxis,
-            floorCount, flatCounts,
-            buildingPorchPosition);
-        LayoutRooms(flatMapList, startingZ, startingX, zAxisSize, xAxisSize,
-            buildingFaceZAxis,
-            floorCount,
-            buildingPorchPosition);
 
-
-        SpawnInnerWalls(flatMapList, flats, buildingParent, zAxisSize, xAxisSize, startingX, startingY, startingZ);
         yield return StartCoroutine(SpawnBuildingRoof(startingZ, startingX, y, zAxisSize, xAxisSize, building,
             buildingParent, buildingFaceZAxis, buildingPorchPosition));
     }
@@ -1109,7 +1155,7 @@ public class BuildingGenerator : MonoBehaviour
         }
 
         //yield return StartCoroutine(
-        CombineMesh(buildingParent, building);
+        CombineBuildingStructureMesh(buildingParent, building);
 
         yield return null;
     }
@@ -1447,7 +1493,7 @@ public class BuildingGenerator : MonoBehaviour
     private static void LayoutRooms(List<BuildingFloorInfo> flatMapList, int startingZ, int startingX,
         int zAxisSize, int xAxisSize,
         bool buildingFaceZAxis, int floorCount,
-        Tuple<int, int> buildingPorchPosition)
+        Tuple<int, int> buildingPorchPosition, List<Flat>[] flats)
     {
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++)
         {
@@ -1691,6 +1737,7 @@ public class BuildingGenerator : MonoBehaviour
             }
 
             AssignEmptyFlatMapPoints(flatMapList[floorNumber], startingPoints, zAxisSize, xAxisSize);
+            AssignRooms(flatMapList[floorNumber], flats[floorNumber], zAxisSize, xAxisSize);
             UpdateFlatMap(flatMapList[floorNumber], zAxisSize, xAxisSize);
             ConnectRooms(flatMapList[floorNumber], startingPoints, xAxisSize);
         }
@@ -2047,6 +2094,48 @@ public class BuildingGenerator : MonoBehaviour
         }
     }
 
+    private static void AssignRooms(BuildingFloorInfo floorInfo, List<Flat> flats, int zAxisSize, int xAxisSize)
+    {
+        var roomNumberTypes = new Dictionary<int, RoomTypes>[floorInfo.FlatCount];
+        for (var i = 0; i < roomNumberTypes.Length; i++)
+        {
+            var mainRooms = new List<RoomTypes>
+                {RoomTypes.Kitchen, RoomTypes.BedRoom, RoomTypes.LivingRoom,RoomTypes.BathRoom};
+            var additionalRooms = new List<RoomTypes>
+            {
+                RoomTypes.Corridor, RoomTypes.BedRoom, RoomTypes.StorageRoom, RoomTypes.LivingRoom, RoomTypes.BathRoom
+            };
+            roomNumberTypes[i] = new Dictionary<int, RoomTypes>();
+            for (int j = 0; j < 4 + floorInfo.AdditionalFlatRooms[i]; j++)
+            {
+                if (j < 4)
+                {
+                    var index = Random.Range(0, mainRooms.Count);
+                    var room = mainRooms[index];
+                    roomNumberTypes[i].Add(j, room);
+                    mainRooms.RemoveAt(index);
+                }
+                else
+                {
+                    var index = Random.Range(0, additionalRooms.Count);
+                    var room = additionalRooms[index];
+                    roomNumberTypes[i].Add(j, room);
+                    //mainRooms.RemoveAt(index);
+                }
+            }
+        }
+
+        for (var z = 0; z < zAxisSize; z++)
+        {
+            for (var x = 0; x < xAxisSize; x++)
+            {
+                var point = floorInfo.FloorMap[z * xAxisSize + x];
+                if (point.IsPorch) continue;
+                point.RoomType = roomNumberTypes[point.FlatNumber - 1][point.RoomNumber - 1];
+            }
+        }
+    }
+
     private static void UpdateFlatMap(BuildingFloorInfo floorInfo, int zAxisSize,
         int xAxisSize)
     {
@@ -2057,7 +2146,6 @@ public class BuildingGenerator : MonoBehaviour
             for (var x = 0; x < xAxisSize; x++)
             {
                 var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
-                //floorInfo.FloorMap[z * xAxisSize + x].RoomType
 
                 if (z == 0)
                 {
@@ -2066,68 +2154,92 @@ public class BuildingGenerator : MonoBehaviour
                         if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
                         if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
                         }
+
+                        floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
+                        floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                     }
                     else if (x == xAxisSize - 1)
                     {
                         if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
                         if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
                         }
+
+                        floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                     }
                     else
                     {
                         if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        }
+
+                        if (x < xAxisSize / 2)
+                        {
+                            if (!floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZDown =
+                                    x % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
+                            }
+                        }
+                        else
+                        {
+                            if (!floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZDown =
+                                    (xAxisSize - x + 1) % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
+                            }
                         }
                     }
                 }
@@ -2135,71 +2247,95 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     if (x == 0)
                     {
-                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
                         }
+
+                        floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
+                        floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                     }
                     else if (x == xAxisSize - 1)
                     {
-                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
                         }
+
+                        floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                     }
                     else
                     {
                         if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
                              pointInfo.FlatNumber ||
                              floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                             pointInfo.RoomNumber))
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        }
+
+                        if (x < xAxisSize / 2)
+                        {
+                            if (!floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZUp =
+                                    x % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
+                            }
+                        }
+                        else
+                        {
+                            if (!floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZUp =
+                                    (xAxisSize - x + 1) % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            }
+                            else
+                            {
+                                floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
+                            }
                         }
                     }
                 }
@@ -2207,22 +2343,20 @@ public class BuildingGenerator : MonoBehaviour
                 {
                     if (x == 0)
                     {
-                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
                         if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
@@ -2231,27 +2365,42 @@ public class BuildingGenerator : MonoBehaviour
                              pointInfo.RoomNumber) &&
                             !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        }
+
+                        if (z < zAxisSize / 2)
+                        {
+                            if (!floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXDown =
+                                    z % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            else
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
+                        }
+                        else
+                        {
+                            if (!floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXDown =
+                                    (zAxisSize - z + 1) % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            else
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
                         }
                     }
                     else if (x == xAxisSize - 1)
                     {
-                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
                         if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
@@ -2260,45 +2409,70 @@ public class BuildingGenerator : MonoBehaviour
                              pointInfo.RoomNumber) &&
                             !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = WallTypes.Wall;
+                        }
+
+                        if (z < zAxisSize / 2)
+                        {
+                            if (!floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXUp =
+                                    z % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            else
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
+                        }
+                        else
+                        {
+                            if (!floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXUp =
+                                    (zAxisSize - z + 1) % 2 == 1 ? WallTypes.Window : WallTypes.Wall;
+                            else
+                                floorInfo.FloorMap[z * xAxisSize + x].WallXUp = WallTypes.Wall;
                         }
                     }
                     else
                     {
-                        if ((floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z - 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown =
+                                floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch
+                                    ? WallTypes.DoorFrame
+                                    : WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch)
+                        if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp =
+                                floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch
+                                    ? WallTypes.DoorFrame
+                                    : WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown =
+                                floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch
+                                    ? WallTypes.DoorFrame
+                                    : WallTypes.Wall;
                         }
 
-                        if ((floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
-                             pointInfo.FlatNumber ||
-                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
-                             pointInfo.RoomNumber) &&
-                            !floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch)
+                        if (floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
+                            pointInfo.FlatNumber ||
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
+                            pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp = true;
+                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp =
+                                floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch
+                                    ? WallTypes.DoorFrame
+                                    : WallTypes.Wall;
                         }
                     }
                 }
@@ -2307,6 +2481,7 @@ public class BuildingGenerator : MonoBehaviour
     }
 
     [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
+    [SuppressMessage("ReSharper", "RedundantBoolCompare")]
     private static void ConnectRooms(BuildingFloorInfo floorInfo, List<List<Vector3Int>> startingRoomPoints,
         int xAxisSize)
     {
@@ -2334,8 +2509,9 @@ public class BuildingGenerator : MonoBehaviour
                     if (!foundPoints[point])
                     {
                         var pointToCheck = startingRoomPoints[flatNumber][point];
-                        var distanceToPoint = math.sqrt(math.pow(startingRoomPointCoordinates.x - pointToCheck.x, 2) +
-                                                        math.pow(startingRoomPointCoordinates.z - pointToCheck.z, 2));
+                        var distanceToPoint = math.sqrt(
+                            math.pow(startingRoomPointCoordinates.x - pointToCheck.x, 2) +
+                            math.pow(startingRoomPointCoordinates.z - pointToCheck.z, 2));
                         if (distanceToNearestPoint == 0f)
                         {
                             distanceToNearestPoint = distanceToPoint;
@@ -2356,8 +2532,6 @@ public class BuildingGenerator : MonoBehaviour
                 var roomWasFound = false;
                 while (!roomWasFound)
                 {
-                    //var distanceX = Math.Abs(startingRoomPointCoordinates.x - nextNearestRoomPoint.x);
-                    //var distanceZ = Math.Abs(startingRoomPointCoordinates.z - nextNearestRoomPoint.z);
                     var directionX = Random.Range(0, 2) == 0;
 
                     if (mainPathBlocked)
@@ -2375,7 +2549,8 @@ public class BuildingGenerator : MonoBehaviour
                             }
 
                             var newPoint =
-                                startingRoomPoints[flatNumber][notFoundIndices[Random.Range(0, notFoundIndices.Count)]];
+                                startingRoomPoints[flatNumber][
+                                    notFoundIndices[Random.Range(0, notFoundIndices.Count)]];
                             nextNearestRoomPoint = newPoint;
                         }
                         else
@@ -2390,7 +2565,8 @@ public class BuildingGenerator : MonoBehaviour
                             }
 
                             var newPoint =
-                                startingRoomPoints[flatNumber][foundIndices[Random.Range(0, foundIndices.Count)]];
+                                startingRoomPoints[flatNumber][
+                                    foundIndices[Random.Range(0, foundIndices.Count)]];
                             startingRoomPointCoordinates = newPoint;
                             startingRoomPoint = floorInfo.FloorMap[
                                 startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
@@ -2404,7 +2580,8 @@ public class BuildingGenerator : MonoBehaviour
                         if (startingRoomPointCoordinates.x < nextNearestRoomPoint.x)
                         {
                             if (floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x + 1]
+                                    startingRoomPointCoordinates.z * xAxisSize +
+                                    startingRoomPointCoordinates.x + 1]
                                 .FlatNumber == flatNumber + 1)
                             {
                                 if (floorInfo.FloorMap[
@@ -2418,18 +2595,20 @@ public class BuildingGenerator : MonoBehaviour
                                             startingRoomPointCoordinates.x + 1]
                                         .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
-                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                        .DoorFrameXUp = true;
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .WallXUp = WallTypes.DoorFrame;
                                     floorInfo.FloorMap[
                                             startingRoomPointCoordinates.z * xAxisSize +
                                             startingRoomPointCoordinates.x + 1]
-                                        .DoorFrameXDown = true;
+                                        .WallXDown = WallTypes.DoorFrame;
                                 }
 
                                 startingRoomPointCoordinates.x++;
                                 startingRoomPoint =
                                     floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x];
                             }
                             else
                             {
@@ -2439,7 +2618,8 @@ public class BuildingGenerator : MonoBehaviour
                         else if (startingRoomPointCoordinates.x > nextNearestRoomPoint.x)
                         {
                             if (floorInfo.FloorMap[
-                                    startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x - 1]
+                                    startingRoomPointCoordinates.z * xAxisSize +
+                                    startingRoomPointCoordinates.x - 1]
                                 .FlatNumber == flatNumber + 1)
                             {
                                 if (floorInfo.FloorMap[
@@ -2453,18 +2633,20 @@ public class BuildingGenerator : MonoBehaviour
                                             startingRoomPointCoordinates.x - 1]
                                         .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
-                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                        .DoorFrameXDown = true;
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .WallXDown = WallTypes.DoorFrame;
                                     floorInfo.FloorMap[
                                             startingRoomPointCoordinates.z * xAxisSize +
                                             startingRoomPointCoordinates.x - 1]
-                                        .DoorFrameXUp = true;
+                                        .WallXUp = WallTypes.DoorFrame;
                                 }
 
                                 startingRoomPointCoordinates.x--;
                                 startingRoomPoint =
                                     floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x];
                             }
                             else
                             {
@@ -2492,18 +2674,20 @@ public class BuildingGenerator : MonoBehaviour
                                             startingRoomPointCoordinates.x]
                                         .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
-                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                        .DoorFrameZUp = true;
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .WallZUp = WallTypes.DoorFrame;
                                     floorInfo.FloorMap[
                                             (startingRoomPointCoordinates.z + 1) * xAxisSize +
                                             startingRoomPointCoordinates.x]
-                                        .DoorFrameZDown = true;
+                                        .WallZDown = WallTypes.DoorFrame;
                                 }
 
                                 startingRoomPointCoordinates.z++;
                                 startingRoomPoint =
                                     floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x];
                             }
                             else
                             {
@@ -2528,18 +2712,20 @@ public class BuildingGenerator : MonoBehaviour
                                             startingRoomPointCoordinates.x]
                                         .RoomNumber - 1] = true;
                                     floorInfo.FloorMap[
-                                            startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x]
-                                        .DoorFrameZDown = true;
+                                            startingRoomPointCoordinates.z * xAxisSize +
+                                            startingRoomPointCoordinates.x]
+                                        .WallZDown = WallTypes.DoorFrame;
                                     floorInfo.FloorMap[
                                             (startingRoomPointCoordinates.z - 1) * xAxisSize +
                                             startingRoomPointCoordinates.x]
-                                        .DoorFrameZUp = true;
+                                        .WallZUp = WallTypes.DoorFrame;
                                 }
 
                                 startingRoomPointCoordinates.z--;
                                 startingRoomPoint =
                                     floorInfo.FloorMap[
-                                        startingRoomPointCoordinates.z * xAxisSize + startingRoomPointCoordinates.x];
+                                        startingRoomPointCoordinates.z * xAxisSize +
+                                        startingRoomPointCoordinates.x];
                             }
                             else
                             {
@@ -2563,11 +2749,30 @@ public class BuildingGenerator : MonoBehaviour
     }
 
     private static void SpawnInnerWalls(List<BuildingFloorInfo> flatMapList, List<Flat>[] flats,
+        Building building,
         GameObject buildingParent,
         int zAxisSize, int xAxisSize,
         int startingX, float startingY, int startingZ)
     {
+        var materialSortedBuildingParents = new Dictionary<Material, GameObject>();
+
         var y = startingY;
+
+        for (var i = 0;
+            i < building.FlatMaterialList.Count;
+            i++)
+        {
+            var material = building.FlatMaterialList[i];
+            if (!materialSortedBuildingParents.ContainsKey(material))
+            {
+                var materialParent = new GameObject($"Building({startingZ},{startingX}) {material}")
+                    {isStatic = true};
+                materialParent.AddComponent<MeshFilter>();
+                materialParent.AddComponent<MeshRenderer>();
+                materialSortedBuildingParents.Add(material, materialParent);
+            }
+        }
+
         for (var floorNumber = 0;
             floorNumber < flatMapList.Count;
             floorNumber++, y++)
@@ -2577,91 +2782,914 @@ public class BuildingGenerator : MonoBehaviour
             {
                 var flatMapPoint = flatMapList[floorNumber].FloorMap[z * xAxisSize + x];
                 if (flatMapPoint.IsPorch) continue;
-                flatMapPoint.RoomType = RoomTypes.LivingRoom; //(RoomTypes) flatMapPoint.RoomNumber;
+
                 switch (flatMapPoint.RoomType)
                 {
                     case RoomTypes.LivingRoom:
                     {
-                        if (flatMapPoint.DoorFrameXDown)
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRoom;
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
                         {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 180f, 0f), buildingParent);
-                        }
-                        else if (flatMapPoint.WallXDown)
-                        {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 180f, 0f), buildingParent);
-                        }
-
-                        if (flatMapPoint.DoorFrameXUp)
-                        {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 0f, 0f), buildingParent);
-                        }
-                        else if (flatMapPoint.WallXUp)
-                        {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 0f, 0f), buildingParent);
-                        }
-
-                        if (flatMapPoint.DoorFrameZDown)
-                        {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 90f, 0f), buildingParent);
-                        }
-                        else if (flatMapPoint.WallZDown)
-                        {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 90f, 0f), buildingParent);
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
                         }
 
-                        if (flatMapPoint.DoorFrameZUp)
+                        switch (flatMapPoint.WallXUp)
                         {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.doorFrame,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 270f, 0f), buildingParent);
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
                         }
-                        else if (flatMapPoint.WallZUp)
+
+                        switch (flatMapPoint.WallZDown)
                         {
-                            InstantiateBuildingPartAsChild(
-                                flats[floorNumber][flatMapPoint.FlatNumber - 1].livingRooms.wall,
-                                new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
-                                Quaternion.Euler(0f, 270f, 0f), buildingParent);
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
                         }
 
                         break;
                     }
                     case RoomTypes.BedRoom:
                     {
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].bedRoom;
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallXUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
                         break;
                     }
                     case RoomTypes.BathRoom:
                     {
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].bathRoom;
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallXUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
                         break;
                     }
                     case RoomTypes.StorageRoom:
                     {
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].storageRooms[
+                            Random.Range(0, flats[floorNumber][flatMapPoint.FlatNumber - 1].storageRooms.Count)];
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallXUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
                         break;
                     }
                     case RoomTypes.Corridor:
                     {
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].corridor;
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallXUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
                         break;
                     }
                     case RoomTypes.Kitchen:
                     {
+                        var room = flats[floorNumber][flatMapPoint.FlatNumber - 1].kitchen;
+                        InstantiateBuildingPartAsChild(room.floor,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.floorMaterial]);
+                        InstantiateBuildingPartAsChild(room.ceiling,
+                            new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                            Quaternion.identity, materialSortedBuildingParents[room.ceilingMaterial]);
+                        switch (flatMapPoint.WallXDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 180f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallXUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 0f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZDown)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 90f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        switch (flatMapPoint.WallZUp)
+                        {
+                            case WallTypes.Empty:
+                                break;
+                            case WallTypes.Wall:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.wall,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.DoorFrame:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.doorFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            case WallTypes.Window:
+                            {
+                                InstantiateBuildingPartAsChild(
+                                    room.windowFrame,
+                                    new Vector3(startingX + x + 0.5f, y, startingZ + z + 0.5f),
+                                    Quaternion.Euler(0f, 270f, 0f),
+                                    materialSortedBuildingParents[room.wallMaterial]);
+                                break;
+                            }
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
                         break;
                     }
                     case RoomTypes.EmptyRoom:
@@ -2674,47 +3702,89 @@ public class BuildingGenerator : MonoBehaviour
                 }
             }
         }
+
+        foreach (var item in materialSortedBuildingParents)
+        {
+            CombineMesh(item.Value, item.Key);
+        }
     }
 
-    private static void CombineMesh(GameObject buildingMainParent, Building building)
+    private static void CombineMesh(GameObject buildingParent, Material material)
+    {
+        var loaders = buildingParent.GetComponentsInChildren<ComponentLoader>().ToArray();
+        var meshFilters = loaders.SelectMany(r => r.meshFilters).ToList();
+        var meshRenderers = loaders.SelectMany(r => r.meshRenderers).ToArray();
+
+        var buildingParentSibling = new GameObject($"{buildingParent.name} sibling{material.name}");
+        buildingParentSibling.AddComponent<MeshRenderer>();
+        buildingParentSibling.AddComponent<MeshFilter>();
+        var combineList = new List<CombineInstance>();
+        for (var index = 0; index < meshFilters.Count; index++)
+        {
+            var t = meshFilters[index];
+            if (t.sharedMesh == null) continue;
+            var combine = new CombineInstance {mesh = t.sharedMesh, transform = t.transform.localToWorldMatrix};
+            t.gameObject.SetActive(false);
+            combineList.Add(combine);
+            //if (index % 75 == 0) yield return null;
+        }
+
+        var mesh = new Mesh {indexFormat = UnityEngine.Rendering.IndexFormat.UInt32};
+        mesh.CombineMeshes(combineList.ToArray());
+        mesh.RecalculateBounds();
+        buildingParentSibling.transform.GetComponent<MeshFilter>().mesh = mesh;
+        buildingParentSibling.transform.gameObject.SetActive(true);
+        buildingParentSibling.GetComponent<MeshRenderer>().material = material;
+        buildingParentSibling.isStatic = true;
+    }
+
+    private static void CombineBuildingStructureMesh(GameObject buildingMainParent, Building building)
     {
         var loaders = buildingMainParent.GetComponentsInChildren<ComponentLoader>().ToArray();
         var meshFilters = loaders.SelectMany(r => r.meshFilters).ToArray();
         var meshRenderers = loaders.SelectMany(r => r.meshRenderers).ToArray();
 
-        var materialSortedMeshFilters = new List<MeshFilter>[DefaultMaterialNames.Count];
-        for (var i = 0; i < materialSortedMeshFilters.Length; i++)
-        {
-            materialSortedMeshFilters[i] = new List<MeshFilter>();
-        }
+        var materialSortedMeshFilters = new Dictionary<string, List<MeshFilter>>();
+        // var materialSortedMeshFilters = new List<MeshFilter>[DefaultMaterialNames.Count];
+        // for (var i = 0; i < materialSortedMeshFilters.Length; i++)
+        // {
+        //     materialSortedMeshFilters[i] = new List<MeshFilter>();
+        // }
 
         for (var i = 0;
             i < meshFilters.Length;
             i++)
         {
             var materialName = meshRenderers[i].material.name;
-            for (var j = 0; j < materialSortedMeshFilters.Length; j++)
+            // for (var j = 0; j < materialSortedMeshFilters.Length; j++)
+            // {
+            //     if (materialName != DefaultMaterialNames[j]) continue;
+            //     materialSortedMeshFilters[j].Add(meshFilters[i]);
+            //     break;
+            // }
+            if (materialSortedMeshFilters.ContainsKey(materialName))
+                materialSortedMeshFilters[materialName].Add(meshFilters[i]);
+            else
             {
-                if (materialName != DefaultMaterialNames[j]) continue;
-                materialSortedMeshFilters[j].Add(meshFilters[i]);
-                break;
+                materialSortedMeshFilters.Add(materialName, new List<MeshFilter> {meshFilters[i]});
             }
         }
 
         for (var i = 0;
-            i < building.materials.MaterialList.Count;
+            i < DefaultMaterialNames.Count;
             i++)
         {
             var buildingParent = new GameObject($"{buildingMainParent.name} sibling{i}");
             buildingParent.AddComponent<MeshRenderer>();
             buildingParent.AddComponent<MeshFilter>();
             var combineList = new List<CombineInstance>();
-            var filters = materialSortedMeshFilters[i];
+            var filters = materialSortedMeshFilters[DefaultMaterialNames[i]];
             for (var index = 0; index < filters.Count; index++)
             {
                 var t = filters[index];
                 if (t.sharedMesh == null) continue;
-                var combine = new CombineInstance {mesh = t.sharedMesh, transform = t.transform.localToWorldMatrix};
+                var combine = new CombineInstance
+                    {mesh = t.sharedMesh, transform = t.transform.localToWorldMatrix};
                 t.gameObject.SetActive(false);
                 combineList.Add(combine);
                 //if (index % 75 == 0) yield return null;
@@ -2725,7 +3795,7 @@ public class BuildingGenerator : MonoBehaviour
             mesh.RecalculateBounds();
             buildingParent.transform.GetComponent<MeshFilter>().mesh = mesh;
             buildingParent.transform.gameObject.SetActive(true);
-            buildingParent.GetComponent<MeshRenderer>().material = building.materials.MaterialList[i];
+            buildingParent.GetComponent<MeshRenderer>().material = building.MaterialList[i];
             buildingParent.isStatic = true;
         }
     }
@@ -2770,7 +3840,8 @@ public class BuildingGenerator : MonoBehaviour
         return position;
     }
 
-    private static void InstantiateBuildingPartAsChild(GameObject gameObject, Vector3 position, Quaternion rotation,
+    private static void InstantiateBuildingPartAsChild(GameObject gameObject, Vector3 position,
+        Quaternion rotation,
         GameObject parent)
     {
         var part = Instantiate(gameObject, position,

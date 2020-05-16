@@ -13,4 +13,5 @@ public class ComponentLoader : MonoBehaviour
         meshFilters = GetComponentsInChildren<MeshFilter>();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
     }
+    
 }

@@ -15,3 +15,10 @@ MonoBehaviour:
   wall: {fileID: 1859334577276535166, guid: 7a930cd5bda907a48b322d530b230fd9, type: 3}
   doorFrame: {fileID: 2800315967195578866, guid: 05c423a10cdca74439b173eee8e84141,
     type: 3}
+  windowFrame: {fileID: 2844093537389421182, guid: c317fed61174831459bb494e9ab516c7,
+    type: 3}
+  floor: {fileID: 110184029086265222, guid: 04e65b8eda7da6d469f7f4c9e8012fd7, type: 3}
+  ceiling: {fileID: 8027190164473937763, guid: 5e06426741bd9694dbabe703face3d66, type: 3}
+  wallMaterial: {fileID: 2100000, guid: bc0e7753424475b409b7a918893367b8, type: 2}
+  floorMaterial: {fileID: 2100000, guid: 1f40729523ee5ef4ea1e31b2d844309b, type: 2}
+  ceilingMaterial: {fileID: 2100000, guid: 1f40729523ee5ef4ea1e31b2d844309b, type: 2}

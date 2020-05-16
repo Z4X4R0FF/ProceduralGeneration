@@ -7,13 +7,17 @@ public class FlatMapPoint
     public RoomTypes RoomType;
     public int RoomNumber = 0;
     public int FlatNumber;
-    public bool WallZUp = false;
-    public bool WallZDown = false;
-    public bool WallXUp = false;
-    public bool WallXDown = false;
-    public bool DoorFrameZUp = false;
-    public bool DoorFrameZDown = false;
-    public bool DoorFrameXUp = false;
-    public bool DoorFrameXDown = false;
+    public WallTypes WallZUp;
+    public WallTypes WallZDown;
+    public WallTypes WallXUp;
+    public WallTypes WallXDown;
     public bool IsPorch = false;
+}
+
+public enum WallTypes
+{
+    Empty=0,
+    Wall=1,
+    DoorFrame=2,
+    Window=3
 }

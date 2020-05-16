@@ -5,8 +5,8 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 1
-    smallestHole: 0.2
+    smallestOccluder: 0.8
+    smallestHole: 0.1
     backfaceThreshold: 100
   m_SceneGUID: 00000000000000000000000000000000
   m_OcclusionCullingData: {fileID: 0}
@@ -363,8 +363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypes:
   - isEven: 1
-    minFloorCount: 2
-    maxFloorCount: 40
+    minFloorCount: 8
+    maxFloorCount: 27
     minFlatCount: 1
     maxFlatCount: 3
     flats:
@@ -394,22 +394,19 @@ MonoBehaviour:
       type: 3}
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
-    materials:
-      basementPrimaryMaterial: {fileID: 2100000, guid: 158282338a8879d42a56bea7c6dd40b9,
-        type: 2}
-      basementSecondaryMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e,
-        type: 2}
-      structurePrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
-        type: 2}
-      structureSecondaryMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e,
-        type: 2}
-      roofMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
-      windowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
-      floorMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
-      roomMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8, type: 2}
+    basementPrimaryMaterial: {fileID: 2100000, guid: 158282338a8879d42a56bea7c6dd40b9,
+      type: 2}
+    basementSecondaryMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e,
+      type: 2}
+    structurePrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
+      type: 2}
+    structureSecondaryMaterial: {fileID: 2100000, guid: 158282338a8879d42a56bea7c6dd40b9,
+      type: 2}
+    roofMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e, type: 2}
+    windowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
   - isEven: 0
-    minFloorCount: 4
-    maxFloorCount: 20
+    minFloorCount: 1
+    maxFloorCount: 3
     minFlatCount: 1
     maxFlatCount: 3
     flats:
@@ -439,19 +436,16 @@ MonoBehaviour:
       type: 3}
     roofPorchPart: {fileID: 5136505958983112931, guid: 71016bb01841c6d4e817f6aa03c7dbf3,
       type: 3}
-    materials:
-      basementPrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
-        type: 2}
-      basementSecondaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
-        type: 2}
-      structurePrimaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
-        type: 2}
-      structureSecondaryMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8,
-        type: 2}
-      roofMaterial: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
-      windowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
-      floorMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
-      roomMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8, type: 2}
+    basementPrimaryMaterial: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b,
+      type: 2}
+    basementSecondaryMaterial: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b,
+      type: 2}
+    structurePrimaryMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4,
+      type: 2}
+    structureSecondaryMaterial: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b,
+      type: 2}
+    roofMaterial: {fileID: 2100000, guid: 4ad69256520173d41b7cceac858b394e, type: 2}
+    windowMaterial: {fileID: 2100000, guid: 124de051ea933eb47a5890e96d936f70, type: 2}
   maxBuildingResizeIterations: 50
   maxBuildingXAxisSize: 16
   maxBuildingZAxisSize: 16
@@ -487,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightMultiplier: 35
-  perlinNoiseScale: 250
+  perlinNoiseScale: 350
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
