@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "Room", menuName = "DemoGame/Room", order = 0)]
 public class Room : ScriptableObject
 {
-    //[SerializeField] public RoomTypes roomType;
     [SerializeField] public GameObject wall;
     [SerializeField] public GameObject doorFrame;
     [SerializeField] public GameObject windowFrame;

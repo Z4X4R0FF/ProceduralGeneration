@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(MeshFilter))]
 public class TerrainGenerator : MonoBehaviour
 {
+    #region private fields
+
     private LevelMapPoint[,] _levelMap;
     private Mesh _mesh;
     private int _numberTerrainMeshPartsX;
@@ -27,65 +29,50 @@ public class TerrainGenerator : MonoBehaviour
     private int _terrainPartSizeX;
     private int _terrainPartSizeZ;
     private Vector3[] _vertices;
+    private Material[] _materials;
 
+    #endregion
 
-    [FormerlySerializedAs("HeightMultiplier")]
-    public float heightMultiplier;
+    #region public fields
 
-    [FormerlySerializedAs("PerlinNoiseScale")]
-    public float perlinNoiseScale;
+    [HideInInspector] public bool isDone;
+    public GameObject levelWall;
 
-    [FormerlySerializedAs("IsDone")] public bool isDone;
-    [FormerlySerializedAs("LevelWall")] public GameObject levelWall;
+    [Header("Material settings")] public Material pavement;
+    public Material grass;
+    public Material road;
+    public Material soil;
 
-    [FormerlySerializedAs("LevelXLength")] [Tooltip("Number of squares along X axis. ONLY ODD VALUES ARE POSSIBLE")]
+    [Header("Level Settings")] [Tooltip("Position of top left corner of the mesh map on scene")]
+    public Vector3 startingPoint;
+
+    [Tooltip("Number of squares along X axis. ONLY ODD VALUES ARE POSSIBLE")]
     public int levelXLength;
 
-    [FormerlySerializedAs("LevelZLength")] [Tooltip("Number of squares along Z axis. ONLY ODD VALUES ARE POSSIBLE.")]
+    [Tooltip("Number of squares along Z axis. ONLY ODD VALUES ARE POSSIBLE.")]
     public int levelZLength;
 
-    [FormerlySerializedAs("Materials")] public Material[] materials;
+    [Header("Street Settings")] public List<StreetsToGenerate> streetsAlongX = new List<StreetsToGenerate>();
+    public List<StreetsToGenerate> streetsAlongZ = new List<StreetsToGenerate>();
 
-    [FormerlySerializedAs("MinSize")]
+    [Header("Terrain mesh settings")] [Tooltip("Minimal size of one terrain mesh part")] [Range(2, 255)]
+    public int terrainPartSizeMin;
+
+    [Tooltip("Maximum size of one terrain mesh part")] [Range(2, 255)]
+    public int terrainPartSizeMax;
+
     [Tooltip(
         "Set to 'True' to make the algorithm choose the smallest available part size. Only works with small 'LevelLength' values")]
     public bool minSize;
 
-    [Header("Material settings")] [FormerlySerializedAs("Pavement")]
-    public Material pavement;
+    public float heightMultiplier;
+    public float perlinNoiseScale;
 
-    [FormerlySerializedAs("Grass")] public Material grass;
-
-    [FormerlySerializedAs("Road")] public Material road;
-
-    [FormerlySerializedAs("Soil")] public Material soil;
-
-    [FormerlySerializedAs("StartingPoint")]
-    [Header("Level Settings")]
-    [Tooltip("Position of top left corner of the mesh map on scene")]
-    public Vector3 startingPoint;
-
-    [FormerlySerializedAs("StreetsAlongX")] [Header("Street Settings")]
-    public List<StreetsToGenerate> streetsAlongX = new List<StreetsToGenerate>();
-
-    [FormerlySerializedAs("StreetsAlongZ")]
-    public List<StreetsToGenerate> streetsAlongZ = new List<StreetsToGenerate>();
-
-    [FormerlySerializedAs("TerrainPartSizeMin")]
-    [Header("Terrain mesh settings")]
-    [Tooltip("Minimal size of one terrain mesh part")]
-    [Range(2, 255)]
-    public int terrainPartSizeMin;
-
-    [FormerlySerializedAs("TerrainPartSizeMax")] [Tooltip("Maximum size of one terrain mesh part")] [Range(2, 255)]
-    public int terrainPartSizeMax;
+    #endregion
 
     private void Start()
     {
-        levelXLength++;
-        levelZLength++;
-        materials = new[] {soil, road, pavement, grass};
-
+        _materials = new[] {soil, road, pavement, grass};
         StartCoroutine(DoBigProcess());
     }
 
@@ -96,13 +83,16 @@ public class TerrainGenerator : MonoBehaviour
 
     private IEnumerator DoBigProcess()
     {
+        levelXLength++;
+        levelZLength++;
+        
         yield return StartCoroutine(CalculateTerrainPartSize());
         _levelMap = StreetGenerator.GenerateStreetMap(levelZLength, levelXLength, streetsAlongX, streetsAlongZ);
         yield return null;
         yield return StartCoroutine(GenerateMesh());
         CreateTerrainParts(_numberTerrainMeshPartsX * _numberTerrainMeshPartsZ);
         yield return null;
-        yield return StartCoroutine(GetComponent<BuildingGenerator>().GenerateBuildingBasement(_levelMap));
+        yield return StartCoroutine(GetComponent<BuildingGenerator>().MarkUpLevelArea(_levelMap));
         yield return null;
         yield return StartCoroutine(AssembleTerrainParts());
         SpawnLevelBorders();
@@ -135,7 +125,7 @@ public class TerrainGenerator : MonoBehaviour
         _mesh.SetTriangles(_subMeshTris[1].Last(), 1);
         _mesh.SetTriangles(_subMeshTris[2].Last(), 2);
         _mesh.SetTriangles(_subMeshTris[3].Last(), 3);
-        terrainPart.GetComponent<MeshRenderer>().materials = materials;
+        terrainPart.GetComponent<MeshRenderer>().materials = _materials;
         for (var i = 0; i < uvsPart.Length; i++) uvsPart[i] = new Vector2(verticesPart[i].x, verticesPart[i].z);
         _mesh.uv = uvsPart;
         _mesh.RecalculateNormals();

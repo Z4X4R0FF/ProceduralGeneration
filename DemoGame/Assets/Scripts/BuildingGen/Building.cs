@@ -17,7 +17,6 @@ public struct Building
     public GameObject cornerPart;
     public GameObject wallPart;
     public GameObject windowPart;
-    public GameObject emptyPart;
     public GameObject cellingCornerPart;
     public GameObject cellingWallPart;
     public GameObject doorFramePart;

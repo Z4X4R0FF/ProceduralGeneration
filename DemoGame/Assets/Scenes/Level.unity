@@ -378,8 +378,6 @@ MonoBehaviour:
       type: 3}
     windowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
       type: 3}
-    emptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
-      type: 3}
     cellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
       type: 3}
     cellingWallPart: {fileID: 894101656945204032, guid: 1b6d408db360d0f4c8d081c4693a5cf6,
@@ -419,8 +417,6 @@ MonoBehaviour:
     wallPart: {fileID: 6385500712770947367, guid: 459dd0c3aac4b5f4d8053eb217f91653,
       type: 3}
     windowPart: {fileID: 6222388518487080800, guid: 2b58661bbe365094f847053b6c4172c3,
-      type: 3}
-    emptyPart: {fileID: 7702640062697201631, guid: 04e65b8eda7da6d469f7f4c9e8012fd7,
       type: 3}
     cellingCornerPart: {fileID: 1245960210881091037, guid: ef195a520950d3b4aa3cfa2bd62ab599,
       type: 3}
@@ -480,30 +476,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a341234eb8f394cb24717f2b1ec92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightMultiplier: 35
-  perlinNoiseScale: 350
   isDone: 0
   levelWall: {fileID: 7340772352327380989, guid: b9bae8b47329c8b4897c1fe4ba7c7821,
     type: 3}
-  levelXLength: 60
-  levelZLength: 60
-  materials: []
-  minSize: 0
   pavement: {fileID: 2100000, guid: 03f27abec8b88cc4290a9d775dcfb86b, type: 2}
   grass: {fileID: 2100000, guid: ca8c0b64170620a4b8f9b8e0d554ddb3, type: 2}
   road: {fileID: 2100000, guid: 69db4b6a1836a2d428a0a48254d00736, type: 2}
   soil: {fileID: 2100000, guid: 51c9794b78358d742a6e1ea7553f49eb, type: 2}
   startingPoint: {x: 0, y: 0, z: 0}
+  levelXLength: 60
+  levelZLength: 60
   streetsAlongX:
   - width: 5
-    count: 3
+    count: 1
     streetRadius: 20
   streetsAlongZ:
   - width: 3
-    count: 3
+    count: 1
     streetRadius: 20
   terrainPartSizeMin: 4
   terrainPartSizeMax: 255
+  minSize: 0
+  heightMultiplier: 35
+  perlinNoiseScale: 350
 --- !u!33 &714242153
 MeshFilter:
   m_ObjectHideFlags: 0

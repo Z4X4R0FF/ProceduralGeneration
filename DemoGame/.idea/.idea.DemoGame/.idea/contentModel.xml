@@ -13,6 +13,7 @@
             <e p="BuildingGenerator.cs" t="Include" />
             <e p="ComponentLoader.cs" t="Include" />
             <e p="FlatMapPoint.cs" t="Include" />
+            <e p="FloorGenerator.cs" t="Include" />
             <e p="GrowRoomDirection.cs" t="Include" />
             <e p="ScriptableObject Scripts" t="Include">
               <e p="Flat.cs" t="Include" />

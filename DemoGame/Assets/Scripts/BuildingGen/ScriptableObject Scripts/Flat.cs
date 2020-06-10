@@ -6,13 +6,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Flat", menuName = "DemoGame/Flat", order = 0)]
 public class Flat : ScriptableObject
 {
-    [SerializeField] public Room bathRoom;
+    [Header("Must be Initialized")] [SerializeField]
+    public Room bathRoom;
+
     [SerializeField] public Room bedRoom;
-    [SerializeField] public List<Room> additionalBedRooms;
-    [SerializeField] public List<Room> additionalLivingRooms;
     [SerializeField] public Room corridor;
     [SerializeField] public Room kitchen;
     [SerializeField] public Room livingRoom;
+
+    [Header("Additional Rooms")] [SerializeField]
+    public List<Room> additionalBedRooms;
+
+    [SerializeField] public List<Room> additionalLivingRooms;
     [SerializeField] public List<Room> storageRooms;
 
     public List<Room> RoomList
@@ -29,6 +34,5 @@ public class Flat : ScriptableObject
         }
     }
 
-    private List<Room> _roomList=null;
-
+    private List<Room> _roomList = null;
 }

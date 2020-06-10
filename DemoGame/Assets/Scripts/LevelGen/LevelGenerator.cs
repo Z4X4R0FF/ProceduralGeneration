@@ -7,7 +7,7 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-
+    //Не используется в проекте
 [RequireComponent(typeof(MeshFilter))]
 
 // public class LevelGenerator : MonoBehaviour
