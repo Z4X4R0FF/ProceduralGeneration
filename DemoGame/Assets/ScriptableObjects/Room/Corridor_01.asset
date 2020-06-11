@@ -19,6 +19,6 @@ MonoBehaviour:
     type: 3}
   floor: {fileID: 110184029086265222, guid: 04e65b8eda7da6d469f7f4c9e8012fd7, type: 3}
   ceiling: {fileID: 8027190164473937763, guid: 5e06426741bd9694dbabe703face3d66, type: 3}
-  wallMaterial: {fileID: 2100000, guid: faa5d9571ebd5c94ca9644b8801522a8, type: 2}
-  floorMaterial: {fileID: 2100000, guid: db502218f2ab8834380d14189a7f52c4, type: 2}
-  ceilingMaterial: {fileID: 2100000, guid: bc0e7753424475b409b7a918893367b8, type: 2}
+  wallMaterial: {fileID: 2100000, guid: 5cc63af2a2f7156468fef7d99b84cf75, type: 2}
+  floorMaterial: {fileID: 2100000, guid: c2a613ee0ec0a5046b85824381558048, type: 2}
+  ceilingMaterial: {fileID: 2100000, guid: 0e57038e93a032b4fb9e07f57427f16c, type: 2}
