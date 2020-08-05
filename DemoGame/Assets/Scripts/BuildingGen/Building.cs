@@ -7,6 +7,7 @@ using UnityEngine;
 public struct Building
 {
     public bool isEven;
+    public bool doSpawn;
     [Range(1, 40)] public int minFloorCount;
     [Range(1, 40)] public int maxFloorCount;
     [Range(1, 3)] public int minFlatCount;

@@ -20,81 +20,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a847cd3f-eccc-4404-8c81-e7a9269cde71" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" beforeDir="false" afterPath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3b/3b6b64910a81660ec575643d2c4dfea7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4f/4fa71a15639597b1a21f9efb8a5239fc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9e/9e24008d8046211b95eacab7f2834b8b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b8/b89a90b36fc8d8ef3b0c22e05d6e22c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c9/c93720ca6ac9535ef91b1d0594022af0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d9/d94a0853b9bb9759c3347809a1cbcd97" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/de/de6fe710bfeb5a45d020395dd77b390f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/eb/eb5e31fa9a1c166521eff0997954dcc4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Classic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Classic.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Common.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Common.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.DotsRuntime.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.DotsRuntime.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Internals.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.Internals.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Build.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Burst.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Burst.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Burst.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Burst.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Collections.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Collections.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Deformations.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Deformations.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.CodeGen.Tests.TestTypes.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.CodeGen.Tests.TestTypes.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.CodeGen.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.CodeGen.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.CodeGen.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.CodeGen.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.EndToEnd.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.EndToEnd.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Jobs.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Jobs.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Jobs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Jobs.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Mathematics.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.PerformanceTesting.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.PerformanceTesting.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.PerformanceTesting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.PerformanceTesting.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Platforms.Common.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Platforms.Common.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Platforms.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Platforms.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.CodeGen.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.CodeGen.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.Reflection.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.Reflection.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.UI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.UI.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.UI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Properties.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Rider.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Rider.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Scenes.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Scenes.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Searcher.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Searcher.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Serialization.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Serialization.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Serialization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Serialization.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Transforms.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.CacheServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.CacheServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptMapper" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptMapper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/5b1d44-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/UIElements/EditorWindows/UnityEditor.PackageManager.UI.PackageManagerWindow.pref" beforeDir="false" afterPath="$PROJECT_DIR$/Library/UIElements/EditorWindows/UnityEditor.PackageManager.UI.PackageManagerWindow.pref" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +93,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/e4/04c81ef8/Int32.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Shaders/Snow.shader" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -147,13 +109,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingMaterials.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FlatMapPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGen/TerrainGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Flat.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ScriptableObject Scripts/Room.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" />
       </list>
     </option>
   </component>
@@ -173,10 +135,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3684">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3684" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -207,111 +169,103 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="855" y="273" key="#xdebugger.XInspectDialog" timestamp="1589545348063">
+    <state x="855" y="273" key="#xdebugger.XInspectDialog" timestamp="1596628938907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="855" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589545348063" />
+    <state x="855" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596628938907" />
     <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1589545373084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589545373084" />
-    <state x="718" y="379" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1587559781247">
+    <state width="839" height="464" key="DebuggerActiveHint" timestamp="1596628831538">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="718" y="379" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587559781247" />
-    <state width="839" height="464" key="DebuggerActiveHint" timestamp="1589536653350">
+    <state width="839" height="464" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596628831538" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1596630668188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="839" height="464" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589536653350" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1596630668188">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
     <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1596630668188">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
     <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1596630668188">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
     <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1596630668188">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
     <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1590229739226">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.3.bottom" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.3.bottom" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851531" />
+    <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.3.center" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.3.center" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.3.left" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.3.left" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state width="1877" height="285" key="GridCell.Tab.3.right" timestamp="1590229739227">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="285" key="GridCell.Tab.3.right" timestamp="1596630668189">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590070851530" />
+    <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
     <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state x="2381" y="164" key="SettingsEditor" timestamp="1591775408713">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590069144028" />
     <state x="2381" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1591775408713" />
-    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1587979128439">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587979128439" />
     <state x="58" y="345" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588934519142">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -329,10 +283,10 @@
           <line>1188</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2707">
             <startOffsets>
-              <option value="61167" />
+              <option value="61193" />
             </startOffsets>
             <endOffsets>
-              <option value="61269" />
+              <option value="61295" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="53" />
@@ -342,10 +296,10 @@
           <line>2084</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3615">
             <startOffsets>
-              <option value="109435" />
+              <option value="109461" />
             </startOffsets>
             <endOffsets>
-              <option value="109436" />
+              <option value="109462" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="58" />
@@ -355,10 +309,10 @@
           <line>2049</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3580">
             <startOffsets>
-              <option value="107582" />
+              <option value="107608" />
             </startOffsets>
             <endOffsets>
-              <option value="107583" />
+              <option value="107609" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="59" />
@@ -368,10 +322,10 @@
           <line>2014</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3545">
             <startOffsets>
-              <option value="105730" />
+              <option value="105756" />
             </startOffsets>
             <endOffsets>
-              <option value="105731" />
+              <option value="105757" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="60" />
@@ -381,10 +335,10 @@
           <line>1980</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3511">
             <startOffsets>
-              <option value="103911" />
+              <option value="103937" />
             </startOffsets>
             <endOffsets>
-              <option value="104245" />
+              <option value="104271" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="61" />
@@ -394,10 +348,10 @@
           <line>1933</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3464">
             <startOffsets>
-              <option value="101293" />
+              <option value="101319" />
             </startOffsets>
             <endOffsets>
-              <option value="101294" />
+              <option value="101320" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="63" />
@@ -407,10 +361,10 @@
           <line>1899</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3430">
             <startOffsets>
-              <option value="99474" />
+              <option value="99500" />
             </startOffsets>
             <endOffsets>
-              <option value="99807" />
+              <option value="99833" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="64" />
@@ -420,10 +374,10 @@
           <line>1864</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3395">
             <startOffsets>
-              <option value="97622" />
+              <option value="97648" />
             </startOffsets>
             <endOffsets>
-              <option value="97954" />
+              <option value="97980" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="65" />
@@ -433,10 +387,10 @@
           <line>1828</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3359">
             <startOffsets>
-              <option value="95735" />
+              <option value="95761" />
             </startOffsets>
             <endOffsets>
-              <option value="95736" />
+              <option value="95762" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="66" />

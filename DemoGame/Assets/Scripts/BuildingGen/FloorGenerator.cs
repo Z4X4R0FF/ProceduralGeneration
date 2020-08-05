@@ -987,14 +987,12 @@ public static class FloorGenerator
     private static void UpdateFlatMap(BuildingFloorInfo floorInfo, int zAxisSize,
         int xAxisSize)
     {
-        for (var z = 0;
-            z < zAxisSize;
-            z++)
+        for (var z = 0; z < zAxisSize; z++)
+        for (var x = 0; x < xAxisSize; x++)
         {
-            for (var x = 0; x < xAxisSize; x++)
+            var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
+            if (!pointInfo.IsPorch)
             {
-                var pointInfo = floorInfo.FloorMap[z * xAxisSize + x];
-
                 if (z == 0)
                 {
                     if (x == 0)
@@ -1284,10 +1282,7 @@ public static class FloorGenerator
                             floorInfo.FloorMap[(z - 1) * xAxisSize + x].RoomNumber !=
                             pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZDown =
-                                floorInfo.FloorMap[(z - 1) * xAxisSize + x].IsPorch
-                                    ? WallTypes.DoorFrame
-                                    : WallTypes.Wall;
+                            floorInfo.FloorMap[(z - 1) * xAxisSize + x].WallZUp = WallTypes.Wall;
                         }
 
                         if (floorInfo.FloorMap[(z + 1) * xAxisSize + x].FlatNumber !=
@@ -1295,10 +1290,7 @@ public static class FloorGenerator
                             floorInfo.FloorMap[(z + 1) * xAxisSize + x].RoomNumber !=
                             pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallZUp =
-                                floorInfo.FloorMap[(z + 1) * xAxisSize + x].IsPorch
-                                    ? WallTypes.DoorFrame
-                                    : WallTypes.Wall;
+                            floorInfo.FloorMap[(z + 1) * xAxisSize + x].WallZDown = WallTypes.Wall;
                         }
 
                         if (floorInfo.FloorMap[z * xAxisSize + x - 1].FlatNumber !=
@@ -1306,10 +1298,7 @@ public static class FloorGenerator
                             floorInfo.FloorMap[z * xAxisSize + x - 1].RoomNumber !=
                             pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXDown =
-                                floorInfo.FloorMap[z * xAxisSize + x - 1].IsPorch
-                                    ? WallTypes.DoorFrame
-                                    : WallTypes.Wall;
+                            floorInfo.FloorMap[z * xAxisSize + x - 1].WallXUp = WallTypes.Wall;
                         }
 
                         if (floorInfo.FloorMap[z * xAxisSize + x + 1].FlatNumber !=
@@ -1317,10 +1306,7 @@ public static class FloorGenerator
                             floorInfo.FloorMap[z * xAxisSize + x + 1].RoomNumber !=
                             pointInfo.RoomNumber)
                         {
-                            floorInfo.FloorMap[z * xAxisSize + x].WallXUp =
-                                floorInfo.FloorMap[z * xAxisSize + x + 1].IsPorch
-                                    ? WallTypes.DoorFrame
-                                    : WallTypes.Wall;
+                            floorInfo.FloorMap[z * xAxisSize + x + 1].WallXDown = WallTypes.Wall;
                         }
                     }
                 }

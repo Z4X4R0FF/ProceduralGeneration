@@ -477,12 +477,12 @@ public class BuildingGenerator : MonoBehaviour
         {
             if (xAxisSize % 2 == 0)
             {
-                var evenBuildings = buildingTypes.Where(r => r.isEven).ToList();
+                var evenBuildings = buildingTypes.Where(r => r.isEven && r.doSpawn).ToList();
                 building = evenBuildings[Random.Range(0, evenBuildings.Count)];
             }
             else
             {
-                var oddBuildings = buildingTypes.Where(r => r.isEven == false).ToList();
+                var oddBuildings = buildingTypes.Where(r => !r.isEven && r.doSpawn).ToList();
                 building = oddBuildings[Random.Range(0, oddBuildings.Count)];
             }
         }
@@ -688,8 +688,7 @@ public class BuildingGenerator : MonoBehaviour
             buildingFaceZAxis,
             floorCount,
             buildingPorchPosition, flats);
-        SpawnInnerWalls(flatMapList, flats, building, buildingParent, zAxisSize, xAxisSize, startingX, startingY,
-            startingZ);
+        
 
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++, y++)
         {
@@ -1037,7 +1036,8 @@ public class BuildingGenerator : MonoBehaviour
                 }
             }
         }
-
+        SpawnInnerWalls(flatMapList, flats, building, buildingParent, zAxisSize, xAxisSize, startingX, startingY,
+            startingZ);
 
         yield return StartCoroutine(SpawnBuildingRoof(startingZ, startingX, y, zAxisSize, xAxisSize, building,
             buildingParent, buildingFaceZAxis, buildingPorchPosition));
