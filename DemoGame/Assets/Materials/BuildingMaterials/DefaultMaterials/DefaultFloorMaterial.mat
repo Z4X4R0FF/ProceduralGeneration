@@ -136,8 +136,9 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _UnlitColor: {r: 1, g: 0.0047169924, b: 0.0047169924, a: 1}
+    - _UnlitColor: {r: 1, g: 0.024262499, b: 0.0039215684, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &3636671304880891329
 MonoBehaviour:
   m_ObjectHideFlags: 11

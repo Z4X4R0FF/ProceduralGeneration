@@ -688,7 +688,7 @@ public class BuildingGenerator : MonoBehaviour
             buildingFaceZAxis,
             floorCount,
             buildingPorchPosition, flats);
-        
+
 
         for (var floorNumber = 0; floorNumber < floorCount; floorNumber++, y++)
         {
@@ -1036,6 +1036,7 @@ public class BuildingGenerator : MonoBehaviour
                 }
             }
         }
+
         SpawnInnerWalls(flatMapList, flats, building, buildingParent, zAxisSize, xAxisSize, startingX, startingY,
             startingZ);
 
@@ -1120,10 +1121,10 @@ public class BuildingGenerator : MonoBehaviour
             {
                 if (x == startingX)
                     InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
+                        Quaternion.Euler(0f, 180f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
                     InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
+                        Quaternion.Euler(0f, 90f, 0f), buildingParent);
                 else
                     InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
                         Quaternion.Euler(0f, 90f, 0f), buildingParent);
@@ -1132,10 +1133,10 @@ public class BuildingGenerator : MonoBehaviour
             {
                 if (x == startingX)
                     InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, -180f, 0f), buildingParent);
+                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
                 else if (x == startingX + xAxisSize - 1)
                     InstantiateBuildingPartAsChild(building.roofCornerPart, new Vector3(x + 0.5f, y, z + 0.5f),
-                        Quaternion.Euler(0f, -90f, 0f), buildingParent);
+                        Quaternion.Euler(0f, 0f, 0f), buildingParent);
                 else
                     InstantiateBuildingPartAsChild(building.roofSidePart, new Vector3(x + 0.5f, y, z + 0.5f),
                         Quaternion.Euler(0f, -90f, 0f), buildingParent);

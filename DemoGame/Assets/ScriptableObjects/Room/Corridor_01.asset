@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc9ffd448a1c0048bdb06116984dac5, type: 3}
   m_Name: Corridor_01
   m_EditorClassIdentifier: 
-  wall: {fileID: 1859334577276535166, guid: 7a930cd5bda907a48b322d530b230fd9, type: 3}
-  doorFrame: {fileID: 2800315967195578866, guid: 05c423a10cdca74439b173eee8e84141,
+  wall: {fileID: 6221839494920572332, guid: d3683de280becb7429224afd64ff0203, type: 3}
+  doorFrame: {fileID: 5300508902983212626, guid: e9ce88afa81668a4aa1c11805bb9bd7b,
     type: 3}
-  windowFrame: {fileID: 2844093537389421182, guid: c317fed61174831459bb494e9ab516c7,
+  windowFrame: {fileID: 1840074503784411689, guid: 59dba0e54a5e4dd44b58a2fcf3fa6fdc,
     type: 3}
-  floor: {fileID: 110184029086265222, guid: 04e65b8eda7da6d469f7f4c9e8012fd7, type: 3}
-  ceiling: {fileID: 8027190164473937763, guid: 5e06426741bd9694dbabe703face3d66, type: 3}
+  floor: {fileID: 6757797530151902960, guid: 03528d43a53a34f4fa81d80443571b73, type: 3}
+  ceiling: {fileID: 4832545604693208315, guid: 763b9d696d63154488d69dbd20d0cda8, type: 3}
   wallMaterial: {fileID: 2100000, guid: 5cc63af2a2f7156468fef7d99b84cf75, type: 2}
   floorMaterial: {fileID: 2100000, guid: c2a613ee0ec0a5046b85824381558048, type: 2}
   ceilingMaterial: {fileID: 2100000, guid: 0e57038e93a032b4fb9e07f57427f16c, type: 2}

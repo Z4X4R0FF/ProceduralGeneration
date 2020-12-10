@@ -22,42 +22,88 @@
     <list default="true" id="a847cd3f-eccc-4404-8c81-e7a9269cde71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DemoGame/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DemoGame/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/MainBP.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/MainBP.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/MainBP.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/MainBP.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/PorchBP.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/PorchBP.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/PorchBP.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/PorchBP.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/RoofBP.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/BasicParts/RoofBP.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/building_parts.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/building_parts.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roof.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roof.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_ceiling.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_ceiling.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_floor.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_floor.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_window.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/room_window.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartDoorframe.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartDoorframe.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartwall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Import/Level/buildingparts/roompartwall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultBasementPrimaryMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultBasementPrimaryMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultBasementSecondaryMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultBasementSecondaryMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultCeilingMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultCeilingMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultFloorMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultFloorMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultRoofMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultRoofMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultRoomMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultRoomMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructurePrimaryMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructurePrimaryMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructureSecondaryMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultStructureSecondaryMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultWindowMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/BuildingMaterials/DefaultMaterials/DefaultWindowMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_corner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_corner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_wall_window.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/building_wall_window.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/celling_corner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/celling_corner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/celling_wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/BasicParts_01/celling_wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch_base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/Porch_base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_corner_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_doorframe1_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/building_wall_window_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_corner_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/celling_wall_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_corner_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_porch 1_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_side_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roof_top_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_ceiling_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_floor_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/room_window_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartDoorframe_old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall_old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelGeneration/ProceduralBuildingParts/EvenMoreNew/roompartwall_old.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/OcclusionCullingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BathRoom_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/BedRoom_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Corridor_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/Kitchen_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/LivingRoom_01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Room/StorageRoom_01.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,8 +160,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/ComponentLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelGen/LevelGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/Building.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/FloorGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" />
       </list>
     </option>
   </component>
@@ -135,10 +181,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3684">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3684" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -173,10 +219,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="855" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596628938907" />
-    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1589545373084">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589545373084" />
     <state width="839" height="464" key="DebuggerActiveHint" timestamp="1596628831538">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -185,212 +227,188 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1596630668188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1596630668188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1596630668188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1596630668188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668188" />
-    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739226" />
     <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.3.bottom" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.3.center" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.3.left" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
     <state width="1877" height="285" key="GridCell.Tab.3.right" timestamp="1596630668189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596630668189" />
-    <state width="1877" height="285" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590229739227" />
-    <state x="2381" y="164" key="SettingsEditor" timestamp="1591775408713">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1599807565144">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590069144028" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599807565144" />
     <state x="2381" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1591775408713" />
-    <state x="58" y="345" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588934519142">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="58" y="345" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588934519142" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588245874954">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588245874954" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1188</line>
+          <line>1189</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="2707">
             <startOffsets>
-              <option value="61193" />
+              <option value="61185" />
             </startOffsets>
             <endOffsets>
-              <option value="61295" />
+              <option value="61287" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2084</line>
+          <line>2085</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3615">
             <startOffsets>
-              <option value="109461" />
+              <option value="109453" />
             </startOffsets>
             <endOffsets>
-              <option value="109462" />
+              <option value="109454" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2049</line>
+          <line>2050</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3580">
             <startOffsets>
-              <option value="107608" />
+              <option value="107600" />
             </startOffsets>
             <endOffsets>
-              <option value="107609" />
+              <option value="107601" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>2014</line>
+          <line>2015</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3545">
             <startOffsets>
-              <option value="105756" />
+              <option value="105748" />
             </startOffsets>
             <endOffsets>
-              <option value="105757" />
+              <option value="105749" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1980</line>
+          <line>1981</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3511">
             <startOffsets>
-              <option value="103937" />
+              <option value="103929" />
             </startOffsets>
             <endOffsets>
-              <option value="104271" />
+              <option value="104263" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1933</line>
+          <line>1934</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3464">
             <startOffsets>
-              <option value="101319" />
+              <option value="101311" />
             </startOffsets>
             <endOffsets>
-              <option value="101320" />
+              <option value="101312" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1899</line>
+          <line>1900</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3430">
             <startOffsets>
-              <option value="99500" />
+              <option value="99492" />
             </startOffsets>
             <endOffsets>
-              <option value="99833" />
+              <option value="99825" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1864</line>
+          <line>1865</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3395">
             <startOffsets>
-              <option value="97648" />
+              <option value="97640" />
             </startOffsets>
             <endOffsets>
-              <option value="97980" />
+              <option value="97972" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs</url>
-          <line>1828</line>
+          <line>1829</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BuildingGen/BuildingGenerator.cs" initialLine="3359">
             <startOffsets>
-              <option value="95761" />
+              <option value="95753" />
             </startOffsets>
             <endOffsets>
-              <option value="95762" />
+              <option value="95754" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="66" />
